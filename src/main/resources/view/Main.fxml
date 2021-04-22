@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Main">
+   <children>
+      <ImageView fitHeight="546.0" fitWidth="742.0" layoutX="196.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/x.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="74.0" fitWidth="200.0" layoutX="435.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/s.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="114.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/ghtk.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="222.0" fitWidth="410.0" layoutX="196.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/m.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
