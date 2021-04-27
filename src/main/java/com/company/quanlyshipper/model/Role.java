@@ -22,11 +22,11 @@ import lombok.Data;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="Id")
+    @Column(name="id")
     private int Id ;
     
     @Basic
-    @Column(name="RoleName")
+    @Column(name="role_name",columnDefinition = "nvarchar(50)")
     private String RoleName;
     
     public int getId() {
@@ -45,7 +45,8 @@ public class Role {
         this.RoleName = RoleName;
     }
     
-    public Role(String roleName, String password){
-        this.RoleName = roleName;
+    public Role(String roleName){
+        this.RoleName = roleName;        
     }
+    public Role(){}
 }

@@ -7,11 +7,11 @@ package com.company.quanlyshipper.service;
 
 import com.company.quanlyshipper.AppException;
 import com.company.quanlyshipper.model.Users;
-import com.company.quanlyshipper.repo.UserRepo;
 import com.microsoft.sqlserver.jdbc.StringUtils;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.company.quanlyshipper.repo.UsersRepo;
 
 /**
  *
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
     @Autowired
-    private UserRepo userRepo;
+    private UsersRepo userRepo;
        
     public Users login (String userName, String password) {
 //        Connection conn = ConnectDb();
@@ -30,8 +30,8 @@ public class LoginService {
         if(StringUtils.isEmpty(password)){
             throw new AppException("Mật khẩu không được để trống");
         }
-        Users user = userRepo.findById(userName)
-                .orElseThrow(()-> new AppException("Vui lòng check lại thông tin đăng nhập"));
+        Users user = userRepo.findByNameAndPassword(userName,password);
+                //.orElseThrow(()-> new AppException("Vui lòng check lại thông tin đăng nhập"));
         if(!password.equals(user.getPassword())){
             throw new AppException("Mật khẩu bạn vừa nhập không đúng");
         }  

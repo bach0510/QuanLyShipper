@@ -59,6 +59,9 @@ public class Login implements Initializable{
     private Button loginBtn;
     
     @FXML
+    private Button signUpBtn;
+    
+    @FXML
     void login(){
         Connection conn = ConnectDb();
         try{
@@ -89,9 +92,18 @@ public class Login implements Initializable{
 //        if (event.)
     }
     
+    @FXML
+    void signUp(){
+        SignUp.loadView();
+    }
+    
     public static void loadView(Stage stage) {
         try {
-            Parent view = FXMLLoader.load(QuanlyshipperApplication.class.getClassLoader().getResource("view/Login.fxml"));
+            //Parent view = FXMLLoader.load(QuanlyshipperApplication.class.getClassLoader().getResource("view/Login.fxml"));
+            
+            FXMLLoader loader = new FXMLLoader(SignUp.class.getClassLoader().getResource("view/Login.fxml"));
+            loader.setControllerFactory(QuanlyshipperApplication.getApplicationContext()::getBean);
+            Parent view = loader.load();
             stage.setScene(new Scene(view));
             
             stage.show();

@@ -30,7 +30,7 @@
          </font>
       </Button>
       <Label layoutX="121.0" layoutY="201.0" text="Or" textFill="WHITE" />
-      <Button layoutX="128.0" layoutY="194.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="163.0" style="-fx-background-color: transform;" text="Create an account" textFill="WHITE">
+      <Button fx:id="signUpBtn" layoutX="128.0" layoutY="194.0" mnemonicParsing="false" onAction="#signUp" prefHeight="28.0" prefWidth="163.0" style="-fx-background-color: transform;" text="Create an account" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>

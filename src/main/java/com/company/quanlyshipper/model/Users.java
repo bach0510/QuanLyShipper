@@ -12,28 +12,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Data;
+import org.springframework.data.annotation.PersistenceConstructor;
 //import javax.persistence.Table;
 
 //@Entity
 //@Table(name = "user")
 
-@Entity
+@Entity(name = "Users")
 @Data
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="Id")
+    @Column(name="id")
      private int Id ;
     
     //@Id
-    @Column(name="UserName")
+    @Column(name="user_name",columnDefinition = "nvarchar(MAX)")
+    
      private String UserName;
     
     @Basic
-    @Column(name="Password")
+    @Column(name="password")
      private String Password;
     
-    @Column(name="RoleId")
+    @Column(name="role_Id")
     private int RoleId ;
 
      
@@ -72,9 +74,10 @@ public class Users {
     public String toString() {
         return ""+UserName+"";
     }
-    
+    @PersistenceConstructor
     public Users(String userName, String password){
         this.Password = password;
         this.UserName = userName;
     }
+    public Users(){}
 }

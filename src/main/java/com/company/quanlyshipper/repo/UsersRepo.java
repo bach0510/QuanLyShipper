@@ -7,11 +7,13 @@ package com.company.quanlyshipper.repo;
 
 import com.company.quanlyshipper.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
  * @author Admin
  */
-public interface UserRepo extends JpaRepository<Users, String> {
-    
+public interface UsersRepo extends JpaRepository<Users, Integer> {
+    @Query("SELECT u FROM Users u WHERE u.UserName = ?1 AND u.Password = ?2")
+    Users findByNameAndPassword(String username,String password);
 }

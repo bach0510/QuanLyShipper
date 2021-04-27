@@ -35,9 +35,9 @@ public class QuanlyshipperApplication extends Application {
     public void start(Stage stage) throws Exception {
         Login.loadView(stage); 
     }
-//    public static ConfigurableApplicationContext getApplicationContext() {
-//        return applicationContext;
-//    }
+    public static ConfigurableApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
     public static void main(String[] args) {
         //SpringApplication.run(App.class, args);
         launch();
