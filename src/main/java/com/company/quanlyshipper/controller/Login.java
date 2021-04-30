@@ -67,19 +67,13 @@ public class Login implements Initializable{
         //Connection conn = ConnectDb();
         try{
             user = service.login(userNameTxt.getText(), passwordTxt.getText());
-            Main.loadView();
-            userNameTxt.getScene().getWindow().hide();
-    //            PreparedStatement ps = conn.prepareStatement("select * from users where UserName = ? and Password = ?" );
-    //            ps.setString(1, userNameTxt.getText().toString());           
-    //            ps.setString(2, passwordTxt.getText().toString());
-    //            ResultSet rs = ps.executeQuery();
-    //            if(!rs.next()) error.setText("kiểm tra lại thông tin đăng nhập");
-    //            else {
-    //                Main.loadView();
-    //                userNameTxt.getScene().getWindow().hide();
-    //            }
-
-                
+            if (user != null){
+                Main.loadView();
+                userNameTxt.getScene().getWindow().hide();
+            }
+            else{
+                error.setText("kiểm tra lại thông tin đăng nhập");
+            } 
         } catch (AppException e){
             error.setText(e.getMessage());
         } catch (Exception e){
