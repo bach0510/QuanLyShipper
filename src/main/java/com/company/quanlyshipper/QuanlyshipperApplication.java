@@ -33,7 +33,7 @@ public class QuanlyshipperApplication extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-        Login.loadView(stage); 
+        Login.loadView(); 
     }
     public static ConfigurableApplicationContext getApplicationContext() {
         return applicationContext;

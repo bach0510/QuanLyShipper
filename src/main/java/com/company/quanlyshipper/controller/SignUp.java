@@ -26,12 +26,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 /**
  * FXML Controller class
  *
  * @author Admin
  */
+@Controller
 public class SignUp implements Initializable {
 
     @Autowired

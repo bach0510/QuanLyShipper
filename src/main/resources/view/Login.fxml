@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#loginByEnter" prefHeight="337.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Login">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#loginByEnter" prefHeight="261.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Login">
    <children>
       <ImageView fitHeight="409.0" fitWidth="631.0" layoutX="1.0" layoutY="-12.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -28,12 +29,18 @@
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Label layoutX="121.0" layoutY="201.0" text="Or" textFill="WHITE" />
       <Button fx:id="signUpBtn" layoutX="128.0" layoutY="194.0" mnemonicParsing="false" onAction="#signUp" prefHeight="28.0" prefWidth="163.0" style="-fx-background-color: transform;" text="Create an account" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Separator layoutX="299.0" layoutY="82.0" orientation="VERTICAL" prefHeight="169.0" prefWidth="6.0" />
       <Label layoutX="312.0" layoutY="83.0" prefHeight="27.0" prefWidth="291.0" text="Sign in with another account" textFill="WHITE">

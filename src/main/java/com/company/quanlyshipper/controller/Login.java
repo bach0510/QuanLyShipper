@@ -63,7 +63,7 @@ public class Login implements Initializable{
     
     @FXML
     void login(){
-        Connection conn = ConnectDb();
+        //Connection conn = ConnectDb();
         try{
             user = service.login(userNameTxt.getText(), passwordTxt.getText());
             Main.loadView();
@@ -97,13 +97,14 @@ public class Login implements Initializable{
         SignUp.loadView();
     }
     
-    public static void loadView(Stage stage) {
+    public static void loadView() {
         try {
             //Parent view = FXMLLoader.load(QuanlyshipperApplication.class.getClassLoader().getResource("view/Login.fxml"));
             
-            FXMLLoader loader = new FXMLLoader(SignUp.class.getClassLoader().getResource("view/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(Login.class.getClassLoader().getResource("view/Login.fxml"));
             loader.setControllerFactory(QuanlyshipperApplication.getApplicationContext()::getBean);
             Parent view = loader.load();
+            Stage stage = new Stage();
             stage.setScene(new Scene(view));
             
             stage.show();

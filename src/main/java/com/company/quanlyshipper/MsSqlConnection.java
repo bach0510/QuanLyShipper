@@ -16,8 +16,8 @@ public class MsSqlConnection {
     Connection conn = null;
     public static Connection ConnectDb(){
         try {
-            String connectionUrl = "jdbc:sqlserver://shippers.mssql.somee.com:1433;"
-                    + "databaseName=shippers;user=Bach0510_SQLLogin_1;password=k6wghfyrsk";
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;"
+                    + "databaseName=shippers;user=admin;password=admin";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection conn = DriverManager.getConnection(connectionUrl);
 //            System.out.println("Kết nối thành công!");
