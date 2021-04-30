@@ -32,6 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -106,6 +107,9 @@ public class Login implements Initializable{
             Parent view = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(view));
+            
+            Image img = new Image("pictures/logo.png"); // set logo cho man hinh chinh
+            stage.getIcons().add(img);
             
             stage.show();
         }

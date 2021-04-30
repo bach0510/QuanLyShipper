@@ -17,9 +17,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 /**
@@ -95,6 +97,11 @@ public class Main implements Initializable {
             Stage stage = new Stage();
             Parent view = FXMLLoader.load(QuanlyshipperApplication.class.getClassLoader().getResource("view/Main.fxml"));
             stage.setScene(new Scene(view));
+//            stage.initStyle(StageStyle.UTILITY);
+            
+            Image img = new Image("pictures/logo.png"); // set logo cho man hinh chinh
+            stage.getIcons().add(img);
+            
             stage.show();
         }
         catch(IOException e){

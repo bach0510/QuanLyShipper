@@ -32,9 +32,9 @@ public class LoginService {
         }
         Users user = userRepo.findByNameAndPassword(userName,password);
                 //.orElseThrow(()-> new AppException("Vui lòng check lại thông tin đăng nhập"));
-        if(!password.equals(user.getPassword())){
-            throw new AppException("Mật khẩu bạn vừa nhập không đúng");
-        }  
+//        if(!password.equals(user.getPassword())){
+//            throw new AppException("Mật khẩu bạn vừa nhập không đúng");
+//        }  
         return user;
             //.orElseThrow(() -> new AppException("Vui lòng check lại thông tin đăng nhập"));
         
