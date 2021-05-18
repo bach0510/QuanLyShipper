@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="711.0">
+         <children>
+            <ImageView fitHeight="530.0" fitWidth="724.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/v.jpg" />
+               </image>
+            </ImageView>
+            <TextField layoutX="14.0" layoutY="14.0" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #FF99CC;" text="Quản lý đơn hàng">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </TextField>
+            <Label layoutX="25.0" layoutY="97.0" text="Mã đơn hàng">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField layoutX="115.0" layoutY="94.0" />
+            <Label layoutX="25.0" layoutY="135.0" text="Trạng thái đơn hàng">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField layoutX="165.0" layoutY="132.0" />
+            <Label layoutX="24.0" layoutY="175.0" text="Số điện thoại KH">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField layoutX="142.0" layoutY="174.0" />
+            <Button layoutX="561.0" layoutY="46.0" mnemonicParsing="false" text="Thêm đơn hàng mới" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

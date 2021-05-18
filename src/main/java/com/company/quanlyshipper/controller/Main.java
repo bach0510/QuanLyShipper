@@ -47,6 +47,7 @@ public class Main implements Initializable {
         // mac dinh hide menu
         MenuBar.setTranslateX(-196);
         //UserName.setText(User.getUserName());
+        
         showMenu();
     }
     
@@ -108,5 +109,5 @@ public class Main implements Initializable {
             e.printStackTrace();
         }
     }
-    
+  
 }

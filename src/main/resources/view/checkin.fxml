@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane prefHeight="362.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Công thường/Xoay ca">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="374.0" fitWidth="600.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/2.jpg" />
+                           </image>
+                        </ImageView>
+                        <AnchorPane layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="336.0" prefWidth="600.0">
+                           <children>
+                              <Button layoutX="195.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="2">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="147.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="1">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="245.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="3">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="294.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="4">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="343.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="5">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="389.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="6">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="434.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="7">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="147.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="8">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="195.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="9">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="245.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="10">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="294.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="11">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="343.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="12">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="389.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="13">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="434.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="14">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="147.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="15">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="195.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="16">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="245.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="17">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="294.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="18">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="343.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="19">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="389.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="20">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="434.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="21">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="147.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="22">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="195.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="23">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="245.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="24">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="294.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="25">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="343.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="26">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="389.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="27">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="434.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="28">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="147.0" layoutY="233.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="29">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="195.0" layoutY="233.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="30">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="245.0" layoutY="233.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="31">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <Label layoutX="234.0" layoutY="12.0" text="Tháng 5/2021">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutX="-4.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="608.0">
+                           <children>
+                              <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../pictures/left-arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="27.0" fitWidth="37.0" layoutX="567.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../pictures/right-arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Tăng ca">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="335.0" prefWidth="600.0">
+                           <children>
+                              <ImageView fitHeight="374.0" fitWidth="600.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../pictures/2.jpg" />
+                                 </image>
+                              </ImageView>
+                              <AnchorPane layoutY="12.0" minHeight="0.0" minWidth="0.0" prefHeight="336.0" prefWidth="600.0">
+                                 <children>
+                                    <Button layoutX="195.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="2">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="147.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="1">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="245.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="3">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="294.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="4">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="343.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="5">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="389.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="6">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="434.0" layoutY="55.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="7">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="147.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="8">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="195.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="9">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="245.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="10">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="294.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="11">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="343.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="12">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="389.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="13">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="434.0" layoutY="99.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="14">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="147.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="15">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="195.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="16">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="245.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="17">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="294.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="18">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="343.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="19">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="389.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="20">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="434.0" layoutY="145.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="21">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="147.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="22">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="195.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="23">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="245.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="24">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="294.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="25">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="343.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="26">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="389.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="27">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="434.0" layoutY="190.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="28">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="147.0" layoutY="233.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="29">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="195.0" layoutY="233.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="30">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="245.0" layoutY="233.0" mnemonicParsing="false" opacity="0.67" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 50px; -fx-background-color: #FF99CC;" text="31">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <AnchorPane layoutX="-10.0" layoutY="-5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="608.0">
+                                       <children>
+                                          <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../pictures/left-arrow.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="27.0" fitWidth="37.0" layoutX="567.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../pictures/right-arrow.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label layoutX="248.0" layoutY="8.0" text="Tháng 5/2021">
+                                             <font>
+                                                <Font name="System Bold" size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
