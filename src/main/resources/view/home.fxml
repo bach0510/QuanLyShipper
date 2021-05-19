@@ -4,9 +4,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="295.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="295.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Home">
    <children>
-      <ImageView fitHeight="343.0" fitWidth="452.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="608.0" fitWidth="811.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/ghtk.jpg" />
          </image>

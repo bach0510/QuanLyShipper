@@ -1,68 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="986.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Main">
    <children>
-      <Pane opacity="0.71" prefHeight="41.0" prefWidth="986.0" style="-fx-background-color: #FF99CC;">
+      <StackPane prefHeight="150.0" prefWidth="200.0" />
+      <Pane opacity="0.71" prefHeight="41.0" prefWidth="989.0" style="-fx-background-color: #FF99CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="945.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="946.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/logout.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <ImageView fitHeight="41.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="MenuBtn" fitHeight="41.0" fitWidth="46.0" onMouseClicked="#showMenu" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/menu.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <AnchorPane layoutX="-3.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.71" prefHeight="608.0" prefWidth="178.0" style="-fx-background-color: #FF99CC;">
+      <AnchorPane layoutX="-3.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.71" prefHeight="608.0" prefWidth="986.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="41.0">
          <children>
-            <Button layoutX="-1.0" layoutY="2.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="178.0" text="Home">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button layoutX="-1.0" layoutY="36.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="178.0" text="Tìm kiếm nhân viên">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button layoutX="-1.0" layoutY="69.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="178.0" text="Tra cứu mã vận đơn">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button layoutY="102.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="178.0" text="Chấm công">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button layoutX="-1.0" layoutY="170.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="178.0" text="Tính lương">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button layoutX="-1.0" layoutY="204.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="178.0" text="Báo cáo">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button layoutX="-1.0" layoutY="136.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="178.0" text="Quản lý đơn hàng">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
+            <VBox fx:id="MenuBar" onMouseClicked="#clickMenu" prefHeight="608.0" prefWidth="178.0" style="-fx-background-color: #FF99CC;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button id="home" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Home">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="timkiemttnv" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Tìm kiếm nhân viên">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="tracuumavandon" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Tra cứu mã vận đơn">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="quanlydonhang" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Quản lý đơn hàng">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="chamcong" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Chấm công">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Tính lương">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Báo cáo">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
+            <StackPane fx:id="ContentView" layoutX="178.0" prefHeight="608.0" prefWidth="811.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
-      <Pane layoutX="174.0" layoutY="41.0" prefHeight="608.0" prefWidth="811.0" />
    </children>
 </AnchorPane>

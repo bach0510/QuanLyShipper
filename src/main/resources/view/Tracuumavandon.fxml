@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="352.0" prefWidth="521.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller=".TracuumavandonController">
-    <stylesheets>
-        <URL value="@/styles/tracuumavandon.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="811.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Tracuumavandon">
    <children>
-      <AnchorPane layoutX="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="519.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="811.0">
          <children>
-            <ImageView fitHeight="391.0" fitWidth="546.0" layoutX="-1.0" layoutY="2.0" opacity="0.46" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="608.0" fitWidth="811.0" opacity="0.46" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.33331298828125" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@../pictures/1.jpg" />
                </image>
             </ImageView>
-            <TextField layoutX="148.0" layoutY="24.0" opacity="0.61" prefHeight="30.0" prefWidth="201.0" style="-fx-background-color: #FF99CC;" text="Tra cứu mã vận đơn">
+            <TextField layoutX="148.0" layoutY="24.0" opacity="0.61" prefHeight="30.0" prefWidth="201.0" promptText="Tra cứu mã vận đơn" style="-fx-background-color: #FF99CC;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -29,7 +25,7 @@
                   <Image url="@../pictures/find.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/logo.png" />
                </image>

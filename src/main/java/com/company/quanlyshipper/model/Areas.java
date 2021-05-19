@@ -15,20 +15,20 @@ import lombok.Data;
 
 /**
  *
- * @author Bach
+ * @author Admin
  */
 @Data
-@Entity(name = "Role")
-public class Role {
+@Entity(name = "Areas")
+public class Areas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int Id ;
     
     @Basic
-    @Column(name="role_name",columnDefinition = "nvarchar(50)")
-    private String RoleName;
-    
+    @Column(name="area_name",columnDefinition = "nvarchar(50)")
+    private String AreaName;
+
     public int getId() {
         return Id;
     }
@@ -36,17 +36,18 @@ public class Role {
     public void setId(int Id) {
         this.Id = Id;
     }
-    
-    public String getRoleName() {
-        return RoleName;
+
+    public void setAreaName(String AreaName) {
+        this.AreaName = AreaName;
     }
 
-    public void setRoleName(String RoleName) {
-        this.RoleName = RoleName;
+    public String getAreaName() {
+        return AreaName;
+    }
+    public Areas(int Id, String AreaName) {
+        this.Id = Id;
+        this.AreaName = AreaName;
     }
     
-    public Role(String roleName){
-        this.RoleName = roleName;        
-    }
-    public Role(){}
+    public Areas(){}
 }

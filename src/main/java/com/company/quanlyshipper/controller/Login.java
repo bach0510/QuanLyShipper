@@ -51,9 +51,11 @@ public class Login implements Initializable{
     
     @FXML
     private TextField userNameTxt;
-    
     @FXML
-    private PasswordField passwordTxt;
+    private TextField passwordTxt;
+    
+//    @FXML
+//    private PasswordField passwordTxt;
     
     @FXML
     private Button loginBtn;

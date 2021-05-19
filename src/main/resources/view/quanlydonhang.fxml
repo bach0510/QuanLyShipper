@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Quanlydonhang">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="711.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="811.0">
          <children>
-            <ImageView fitHeight="530.0" fitWidth="711.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="608.0" fitWidth="811.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/v.jpg" />
                </image>
@@ -27,7 +27,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField layoutX="115.0" layoutY="94.0" />
+            <TextField layoutX="164.0" layoutY="94.0" />
             <Label layoutX="25.0" layoutY="135.0" text="Trạng thái đơn hàng">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -39,7 +39,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField layoutX="142.0" layoutY="174.0" />
+            <TextField layoutX="165.0" layoutY="172.0" />
             <Button layoutX="561.0" layoutY="46.0" mnemonicParsing="false" text="Thêm đơn hàng mới" />
          </children>
       </AnchorPane>
