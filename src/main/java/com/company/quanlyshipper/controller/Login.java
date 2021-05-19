@@ -95,7 +95,7 @@ public class Login implements Initializable{
         try {
             //Parent view = FXMLLoader.load(QuanlyshipperApplication.class.getClassLoader().getResource("view/Login.fxml"));
             
-            FXMLLoader loader = new FXMLLoader(Login.class.getClassLoader().getResource("view/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(Login.class.getClassLoader().getResource("view/login.fxml"));
             loader.setControllerFactory(QuanlyshipperApplication.getApplicationContext()::getBean);
             Parent view = loader.load();
             Stage stage = new Stage();
