@@ -117,6 +117,7 @@ public class Chinhsuattnv implements Initializable {
         if(user == null){
             titleTxt.setText("Thêm mới nhân viên");
             this.user = new Users();
+            this.user.setRoleId(2);
         }
         else {
             titleTxt.setText("Chỉnh sửa nhân viên");
