@@ -17,7 +17,7 @@ import org.springframework.stereotype.Controller;
  * @author PC
  */
 @Controller
-public class Timkiemttnv implements Initializable {
+public class Chinhsuattnv implements Initializable {
 
     /**
      * Initializes the controller class.

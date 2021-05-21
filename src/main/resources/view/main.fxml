@@ -30,7 +30,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <AnchorPane layoutX="-3.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.71" prefHeight="608.0" prefWidth="986.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="41.0">
+      <AnchorPane layoutX="-3.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.71" prefHeight="608.0" prefWidth="986.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="41.0">
          <children>
             <VBox fx:id="MenuBar" onMouseClicked="#clickMenu" prefHeight="608.0" prefWidth="178.0" style="-fx-background-color: #FF99CC;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -42,7 +42,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="timkiemttnv" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Tìm kiếm nhân viên">
+                  <Button id="quanlyttnv" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Quản lý nhân viên">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -92,7 +92,7 @@
                   </Button>
                </children>
             </VBox>
-            <StackPane fx:id="ContentView" layoutX="178.0" prefHeight="608.0" prefWidth="811.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0" />
+            <StackPane fx:id="ContentView" layoutX="178.0" prefHeight="608.0" prefWidth="811.0" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>

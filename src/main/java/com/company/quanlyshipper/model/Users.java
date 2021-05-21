@@ -45,6 +45,13 @@ public class Users {
     @Column(name="tel",columnDefinition = "nvarchar(MAX)")
     
     private String Tel;
+    
+    @Column(name="code",columnDefinition = "nvarchar(MAX)")
+    
+    private String Code;
+    @Column(name="cmnd",columnDefinition = "nvarchar(MAX)")
+    
+    private String Cmnd;
 
     @Column(name="area_id")
     
