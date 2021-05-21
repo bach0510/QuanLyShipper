@@ -28,4 +28,8 @@ public class UserService {
         //List<Users> shippers = userRepo.findAll();
         return shippers;
     }
+    
+    public void save(Users user){
+        userRepo.save(user);
+    }
 }

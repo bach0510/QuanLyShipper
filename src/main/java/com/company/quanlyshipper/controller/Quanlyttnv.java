@@ -38,6 +38,9 @@ public class Quanlyttnv implements Initializable {
     private TableView<Users> tableView;
     
     @FXML
+    private Button addNewBtn;
+    
+    @FXML
     private Button refreshBtn;
 
     @FXML
@@ -90,6 +93,16 @@ public class Quanlyttnv implements Initializable {
         code.setCellValueFactory(new PropertyValueFactory<>("code"));
         cmnd.setCellValueFactory(new PropertyValueFactory<>("cmnd"));
         search();
+        
+        tableView.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2)
+            {
+                Users user = tableView.getSelectionModel().getSelectedItem();
+                if (user != null){
+                    Chinhsuattnv.editUser(user, this::save);
+                }
+            }
+        });
     }    
     
     @FXML
@@ -106,6 +119,16 @@ public class Quanlyttnv implements Initializable {
         codeTxt.setText("");
         emailTxt.setText("");
         telTxt.setText("");
+        search();
+    }
+    
+    @FXML
+    void addNewUser(){
+        Chinhsuattnv.addNew(this::save);
+    }
+    
+    private void save(Users user){
+        service.save(user);
         search();
     }
     
