@@ -10,6 +10,7 @@ import com.company.quanlyshipper.AppException;
 import static com.company.quanlyshipper.MsSqlConnection.ConnectDb;
 import com.company.quanlyshipper.QuanlyshipperApplication;
 import com.company.quanlyshipper.model.Users;
+import com.company.quanlyshipper.repo.UsersRepo;
 import com.company.quanlyshipper.service.LoginService;
 import java.io.IOException;
 import java.net.URL;
@@ -45,6 +46,9 @@ public class Login implements Initializable{
     private static Users user; 
     @Autowired
     private LoginService service;
+    
+    @Autowired
+    private UsersRepo userRepo;
     
     @FXML
     private Label error;
@@ -115,7 +119,15 @@ public class Login implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            
+        autoCreateLoginData();
+    }
+    
+    void autoCreateLoginData() {
+        Users user = new Users();
+        user.setRoleId(1);
+        user.setUserName("admin");
+        user.setPassword("admin");
+        userRepo.save(user);
     }
     
 }

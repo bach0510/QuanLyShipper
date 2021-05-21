@@ -86,7 +86,6 @@ public class Quanlyttnv implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));       
         tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));

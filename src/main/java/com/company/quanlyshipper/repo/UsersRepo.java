@@ -19,7 +19,7 @@ public interface UsersRepo extends JpaRepository<Users, Integer> {
     Users findByNameAndPassword(String username,String password);
     @Query(""
             + "SELECT u FROM Users u "
-            + "WHERE u.UserName LIKE %?1% "
+            + "WHERE u.FullName LIKE %?1% "
             + "AND u.Cmnd LIKE %?2%"            
             + "AND u.Tel LIKE %?3%"
             + "AND u.Code LIKE %?4%"            
