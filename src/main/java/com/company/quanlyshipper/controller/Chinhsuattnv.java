@@ -72,7 +72,7 @@ public class Chinhsuattnv implements Initializable {
     private void save() {
         try{
             user.setFullName(fullNameTxt.getText());            
-            user.setCode(codeTxt.getText());
+            user.setCode(codeTxt.getText().toUpperCase());
             user.setTel(telTxt.getText());
             user.setCmnd(cmndTxt.getText());
             user.setEmail(emailTxt.getText());

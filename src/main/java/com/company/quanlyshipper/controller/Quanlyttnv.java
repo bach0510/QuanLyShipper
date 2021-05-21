@@ -41,6 +41,9 @@ public class Quanlyttnv implements Initializable {
     private Button addNewBtn;
     
     @FXML
+    private Button deleteBtn;
+    
+    @FXML
     private Button refreshBtn;
 
     @FXML
@@ -81,6 +84,10 @@ public class Quanlyttnv implements Initializable {
 
     @FXML
     private TableColumn<Users, String> area;
+    
+    private Users user;
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -97,9 +104,15 @@ public class Quanlyttnv implements Initializable {
             if (e.getClickCount() == 2)
             {
                 Users user = tableView.getSelectionModel().getSelectedItem();
+                this.user = user;
                 if (user != null){
                     Chinhsuattnv.editUser(user, this::save);
                 }
+            }
+            if (e.getClickCount() >= 1)
+            {
+                Users user = tableView.getSelectionModel().getSelectedItem();
+                this.user = user;
             }
         });
     }    
@@ -109,6 +122,7 @@ public class Quanlyttnv implements Initializable {
         tableView.getItems().clear();
         List<Users> userList = service.getAllShipperInfo(fullNameTxt.getText().toString(), cmndTxt.getText().toString(), telTxt.getText().toString(), codeTxt.getText().toString(), emailTxt.getText().toString());
         tableView.getItems().addAll(userList);
+        this.user = null;
     }
     
     @FXML
@@ -129,6 +143,24 @@ public class Quanlyttnv implements Initializable {
     private void save(Users user){
         service.save(user);
         search();
+    }
+    @FXML
+    private void deleteUser(){
+        if (this.user == null){
+            Thongbao.ThongbaoBuilder.builder()
+                .title("Không thể tìm thấy thông tin")
+                .message("Vui lòng chọn 1 thông tin trong bảng để thực hiện thao tác")
+                .build().show();
+        } else {
+           Thongbao.ThongbaoBuilder.builder()
+                .title("Thông tin của nhân viên này sẽ bị xóa ra khỏi hệ thống")
+                .message("Việc làm này sẽ không thể hoàn tác , Bạn có chắc chắn muốn xóa thông tin này không ?")
+                .okAction(()-> {
+                    service.deleteUser(this.user);
+                    search();
+                }).build().show(); 
+        }
+        
     }
     
 }

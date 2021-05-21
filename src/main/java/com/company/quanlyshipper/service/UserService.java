@@ -32,4 +32,9 @@ public class UserService {
     public void save(Users user){
         userRepo.save(user);
     }
+    
+    public void deleteUser(Users user){
+        userRepo.delete(user);
+    }
+    
 }

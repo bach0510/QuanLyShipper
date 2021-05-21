@@ -109,6 +109,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="deleteBtn" layoutX="185.0" layoutY="199.0" mnemonicParsing="false" onAction="#deleteUser" opacity="0.66" prefHeight="30.0" prefWidth="132.0" style="-fx-background-color: #FF99CC;" text="Xóa nhân viên">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </children>
