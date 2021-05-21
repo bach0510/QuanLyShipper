@@ -1,0 +1,11 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    button{
+        width:150px;
+        height:150px;
+        border-radius:50%;
+    }
+}

@@ -13,7 +13,6 @@ import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.service.LoginService;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
@@ -52,9 +51,11 @@ public class Login implements Initializable{
     
     @FXML
     private TextField userNameTxt;
-    
     @FXML
-    private PasswordField passwordTxt;
+    private TextField passwordTxt;
+    
+//    @FXML
+//    private PasswordField passwordTxt;
     
     @FXML
     private Button loginBtn;
@@ -96,7 +97,7 @@ public class Login implements Initializable{
         try {
             //Parent view = FXMLLoader.load(QuanlyshipperApplication.class.getClassLoader().getResource("view/Login.fxml"));
             
-            FXMLLoader loader = new FXMLLoader(Login.class.getClassLoader().getResource("view/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(Login.class.getClassLoader().getResource("view/login.fxml"));
             loader.setControllerFactory(QuanlyshipperApplication.getApplicationContext()::getBean);
             Parent view = loader.load();
             Stage stage = new Stage();

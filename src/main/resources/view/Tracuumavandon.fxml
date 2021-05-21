@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="811.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Tracuumavandon">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="811.0">
+         <children>
+            <ImageView fitHeight="608.0" fitWidth="811.0" opacity="0.46" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.33331298828125" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../pictures/1.jpg" />
+               </image>
+            </ImageView>
+            <TextField layoutX="148.0" layoutY="24.0" opacity="0.61" prefHeight="30.0" prefWidth="201.0" promptText="Tra cứu mã vận đơn" style="-fx-background-color: #FF99CC;">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="363.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/find.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
