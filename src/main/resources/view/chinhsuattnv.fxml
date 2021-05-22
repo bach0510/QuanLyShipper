@@ -82,12 +82,12 @@
                </font>
             </Label>
             <ComboBox layoutX="397.0" layoutY="308.0" prefHeight="25.0" prefWidth="145.0" promptText="Chọn vị trí" />
-            <ImageView fitHeight="142.0" fitWidth="151.0" layoutX="400.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageView" fitHeight="142.0" fitWidth="151.0" layoutX="400.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/userIcon.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="saveBtn1" layoutX="431.0" layoutY="215.0" mnemonicParsing="false" onAction="#save" opacity="0.66" prefHeight="20.0" prefWidth="81.0" style="-fx-background-color: #FF99CC;" text="chọn ảnh">
+            <Button fx:id="browse" layoutX="431.0" layoutY="215.0" mnemonicParsing="false" onAction="#choosePicture" opacity="0.66" prefHeight="20.0" prefWidth="81.0" style="-fx-background-color: #FF99CC;" text="chọn ảnh">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

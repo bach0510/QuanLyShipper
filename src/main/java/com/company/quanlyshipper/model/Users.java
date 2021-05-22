@@ -5,6 +5,7 @@
  */
 package com.company.quanlyshipper.model;
 
+import java.io.FileInputStream;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,11 +26,19 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
      private int Id ;
+
+    
     
     //@Id
     @Column(name="user_name",columnDefinition = "nvarchar(MAX)")
     
-     private String UserName;
+    private String UserName;
+    @Column(name="image",columnDefinition = "image")
+    
+    private byte[] Image;
+    @Column(name="type")
+    
+    private int Type;
     @Basic
     @Column(name="password")
      private String Password;
@@ -122,6 +131,38 @@ public class Users {
     public int getRoleId() {
         return RoleId;
     }
+    
+    public void setCode(String Code) {
+        this.Code = Code;
+    }
+
+    public void setCmnd(String Cmnd) {
+        this.Cmnd = Cmnd;
+    }
+
+    public String getCode() {
+        return Code;
+    }
+
+    public String getCmnd() {
+        return Cmnd;
+    }
+
+    public void setImage(byte[] Image) {
+        this.Image = Image;
+    }
+
+    public void setType(int Type) {
+        this.Type = Type;
+    }
+
+    public byte[] getImage() {
+        return Image;
+    }
+
+    public int getType() {
+        return Type;
+    }
 
     @Override
     public String toString() {
@@ -140,4 +181,7 @@ public class Users {
         this.RoleId = RoleId;
     }
     public Users(){}
+
+    
+
 }

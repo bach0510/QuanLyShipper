@@ -7,7 +7,14 @@ package com.company.quanlyshipper.controller;
  */
 
 import com.company.quanlyshipper.model.Users;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import javafx.event.ActionEvent;
@@ -17,6 +24,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,7 +40,17 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class Chinhsuattnv implements Initializable {
 
-      @FXML
+    @FXML
+    private ImageView imageView;    
+    
+    private File file;
+    private FileInputStream fs;    
+
+
+    @FXML
+    private Button browse;
+    
+    @FXML
     private TextField titleTxt;
 
     @FXML
@@ -58,7 +78,10 @@ public class Chinhsuattnv implements Initializable {
     private TextField emailTxt;
 
     @FXML
-    private Button saveBtn1;
+    private Button saveBtn1;    
+    
+    private static Stage stage;
+
     
     @FXML
     private Consumer<Users> saveHandler;
@@ -89,7 +112,7 @@ public class Chinhsuattnv implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+            
     }    
     
     public static void editUser(Users user , Consumer<Users> saveHandler){
@@ -101,7 +124,7 @@ public class Chinhsuattnv implements Initializable {
             
             Chinhsuattnv controller = loader.getController();
             controller.init(user , saveHandler);
-            
+
             stage.show();
         } catch (Exception e){
             e.printStackTrace();
@@ -111,7 +134,7 @@ public class Chinhsuattnv implements Initializable {
         editUser(null,saveHandler);
     }
     
-    private void init(Users user , Consumer<Users> saveHandler){
+    private void init(Users user , Consumer<Users> saveHandler) throws FileNotFoundException, IOException{
         this.user = user;
         this.saveHandler = saveHandler;
         if(user == null){
@@ -127,10 +150,41 @@ public class Chinhsuattnv implements Initializable {
             telTxt.setText(user.getTel()); 
             cmndTxt.setText(user.getCmnd()); 
             emailTxt.setText(user.getEmail()); 
+            OutputStream os = new FileOutputStream(new File("photo.jpg"));
+            os.write(user.getImage());
+            os.close();
+            Image image = new Image("file:photo.jpg",151,142,true,true);
+            imageView.setImage(image);
+            imageView.setFitWidth(151);
+            imageView.setFitHeight(142);
             
+            imageView.setPreserveRatio(true);
         }
         
         
     }
+    @FXML
+    void choosePicture(ActionEvent event) {
+        Stage stage = (Stage)codeTxt.getScene().getWindow();
+        FileChooser fc = new FileChooser();
+        fc.setTitle("chọn ảnh");
+        this.file = fc.showOpenDialog(stage);
+        if(this.file != null){
+            Image image = new Image(this.file.toURI().toString(),151,142,true,true);
+            imageView.setImage(image);
+            imageView.setFitWidth(151);
+            imageView.setFitHeight(142);
+            
+            imageView.setPreserveRatio(true);
+            try {
+                byte[]img = Files.readAllBytes(file.toPath());
+                
+                this.user.setImage(img);
+            } catch (Exception e){
+                
+            }
+        }
+    }
+    
     
 }
