@@ -9,7 +9,9 @@ package com.company.quanlyshipper.controller;
 import com.company.quanlyshipper.AppException;
 import static com.company.quanlyshipper.MsSqlConnection.ConnectDb;
 import com.company.quanlyshipper.QuanlyshipperApplication;
+import com.company.quanlyshipper.model.Type;
 import com.company.quanlyshipper.model.Users;
+import com.company.quanlyshipper.repo.TypeRepo;
 import com.company.quanlyshipper.repo.UsersRepo;
 import com.company.quanlyshipper.service.LoginService;
 import java.io.IOException;
@@ -49,6 +51,9 @@ public class Login implements Initializable{
     
     @Autowired
     private UsersRepo userRepo;
+    
+    @Autowired
+    private TypeRepo typeRepo;
     
     @FXML
     private Label error;
@@ -128,6 +133,13 @@ public class Login implements Initializable{
         user.setUserName("admin");
         user.setPassword("admin");
         userRepo.save(user);
+        
+        Type type = new Type();
+        type.setTypeName("Ship lấy");
+        typeRepo.save(type);
+        type.setTypeName("Ship giao");
+        typeRepo.save(type);
+        
     }
     
 }

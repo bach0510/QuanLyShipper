@@ -81,7 +81,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox layoutX="397.0" layoutY="308.0" prefHeight="25.0" prefWidth="145.0" promptText="Chọn vị trí" />
+            <ComboBox fx:id="typeCbb" layoutX="397.0" layoutY="308.0" prefHeight="25.0" prefWidth="145.0" promptText="Chọn vị trí" />
             <ImageView fx:id="imageView" fitHeight="142.0" fitWidth="151.0" layoutX="400.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/userIcon.jpg" />

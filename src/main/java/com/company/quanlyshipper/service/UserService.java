@@ -23,8 +23,8 @@ public class UserService {
     @Autowired
     private UsersRepo userRepo;
        
-    public List<Users> getAllShipperInfo(String fullname,String cmnd,String tel,String code,String email){
-        List<Users> shippers = userRepo.findShipperByArgument(fullname, cmnd, tel, code, email);
+    public List<Users> getAllShipperInfo(String fullname,String cmnd,String tel,String code,String email,String type){
+        List<Users> shippers = userRepo.findShipperByArgument(fullname, cmnd, tel, code, email,type);
         //List<Users> shippers = userRepo.findAll();
         return shippers;
     }

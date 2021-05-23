@@ -36,9 +36,9 @@ public class Users {
     @Column(name="image",columnDefinition = "image")
     
     private byte[] Image;
-    @Column(name="type")
+    @Column(name="type",columnDefinition = "nvarchar(MAX)")
     
-    private int Type;
+    private String Type;
     @Basic
     @Column(name="password")
      private String Password;
@@ -152,7 +152,7 @@ public class Users {
         this.Image = Image;
     }
 
-    public void setType(int Type) {
+    public void setType(String Type) {
         this.Type = Type;
     }
 
@@ -160,7 +160,7 @@ public class Users {
         return Image;
     }
 
-    public int getType() {
+    public String getType() {
         return Type;
     }
 

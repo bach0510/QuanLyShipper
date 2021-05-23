@@ -5,7 +5,7 @@
  */
 package com.company.quanlyshipper.repo;
 
-import com.company.quanlyshipper.model.Areas;
+import com.company.quanlyshipper.model.Type;
 import com.company.quanlyshipper.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.Query;
  *
  * @author Admin
  */
-public interface AreasRepo extends JpaRepository<Areas, Integer> {
+public interface TypeRepo extends JpaRepository<Type, Integer> {
 //    @Query("SELECT u FROM Users u WHERE u.UserName = ?1 AND u.Password = ?2")
 //    Users findByNameAndPassword(String username,String password);
 }

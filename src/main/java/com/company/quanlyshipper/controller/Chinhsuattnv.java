@@ -17,12 +17,15 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -46,7 +49,8 @@ public class Chinhsuattnv implements Initializable {
     private File file;
     private FileInputStream fs;    
 
-
+     @FXML
+    private ComboBox typeCbb;
     @FXML
     private Button browse;
     
@@ -99,7 +103,8 @@ public class Chinhsuattnv implements Initializable {
             user.setTel(telTxt.getText());
             user.setCmnd(cmndTxt.getText());
             user.setEmail(emailTxt.getText());
-            
+            user.setType(typeCbb.getValue().toString());
+        
             saveHandler.accept(user);
             
             cancel();
@@ -112,7 +117,9 @@ public class Chinhsuattnv implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            
+        ObservableList<String> listCbb = FXCollections.observableArrayList("Ship lấy","Ship giao");
+        typeCbb.getItems().clear();
+        typeCbb.setItems(listCbb);
     }    
     
     public static void editUser(Users user , Consumer<Users> saveHandler){
@@ -141,6 +148,8 @@ public class Chinhsuattnv implements Initializable {
             titleTxt.setText("Thêm mới nhân viên");
             this.user = new Users();
             this.user.setRoleId(2);
+            this.user.setType("Ship lấy");
+            typeCbb.setValue(this.user.getType());
         }
         else {
             titleTxt.setText("Chỉnh sửa nhân viên");
@@ -150,15 +159,18 @@ public class Chinhsuattnv implements Initializable {
             telTxt.setText(user.getTel()); 
             cmndTxt.setText(user.getCmnd()); 
             emailTxt.setText(user.getEmail()); 
-            OutputStream os = new FileOutputStream(new File("photo.jpg"));
-            os.write(user.getImage());
-            os.close();
-            Image image = new Image("file:photo.jpg",151,142,true,true);
-            imageView.setImage(image);
-            imageView.setFitWidth(151);
-            imageView.setFitHeight(142);
-            
-            imageView.setPreserveRatio(true);
+            typeCbb.setValue(user.getType());
+            if(user.getImage() != null){
+                OutputStream os = new FileOutputStream(new File("photo.jpg"));
+                os.write(user.getImage());
+                os.close();
+                Image image = new Image("file:photo.jpg",151,142,true,true);
+                imageView.setImage(image);
+                imageView.setFitWidth(151);
+                imageView.setFitHeight(142);
+
+                imageView.setPreserveRatio(true);
+            }
         }
         
         

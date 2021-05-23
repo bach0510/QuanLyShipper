@@ -24,7 +24,8 @@ public interface UsersRepo extends JpaRepository<Users, Integer> {
             + "AND u.Tel LIKE %?3%"
             + "AND u.Code LIKE %?4%"            
             + "AND u.Email LIKE %?5%"
+            + "AND u.Type LIKE %?6%"
             + "AND u.RoleId = 2"
             + "")
-    List<Users> findShipperByArgument(String fullname,String cmnd,String tel,String code,String email);
+    List<Users> findShipperByArgument(String fullname,String cmnd,String tel,String code,String email,String type);
 }

@@ -12,9 +12,12 @@ import com.company.quanlyshipper.service.UserService;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -39,6 +42,9 @@ public class Quanlyttnv implements Initializable {
     
     @FXML
     private Button addNewBtn;
+    
+     @FXML
+    private ComboBox typeCbb;
     
     @FXML
     private Button deleteBtn;
@@ -84,6 +90,8 @@ public class Quanlyttnv implements Initializable {
 
     @FXML
     private TableColumn<Users, String> area;
+    @FXML
+    private TableColumn<Users, String> type;
     
     private Users user;
     
@@ -93,11 +101,17 @@ public class Quanlyttnv implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ObservableList<String> listCbb = FXCollections.observableArrayList("Tất cả","Ship lấy","Ship giao");
+        typeCbb.getItems().clear();
+        typeCbb.setItems(listCbb);
+        typeCbb.setValue("Tất cả");
         tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         code.setCellValueFactory(new PropertyValueFactory<>("code"));
         cmnd.setCellValueFactory(new PropertyValueFactory<>("cmnd"));
+        cmnd.setCellValueFactory(new PropertyValueFactory<>("cmnd"));
+        type.setCellValueFactory(new PropertyValueFactory<>("type"));
         search();
         
         tableView.setOnMouseClicked(e -> {
@@ -120,7 +134,8 @@ public class Quanlyttnv implements Initializable {
     @FXML
     void search(){
         tableView.getItems().clear();
-        List<Users> userList = service.getAllShipperInfo(fullNameTxt.getText().toString(), cmndTxt.getText().toString(), telTxt.getText().toString(), codeTxt.getText().toString(), emailTxt.getText().toString());
+        String typeValue = typeCbb.getValue().toString() == "Tất cả" ?  "" : typeCbb.getValue().toString();
+        List<Users> userList = service.getAllShipperInfo(fullNameTxt.getText().toString(), cmndTxt.getText().toString(), telTxt.getText().toString(), codeTxt.getText().toString(), emailTxt.getText().toString(),typeValue);
         tableView.getItems().addAll(userList);
         this.user = null;
     }
@@ -132,6 +147,7 @@ public class Quanlyttnv implements Initializable {
         codeTxt.setText("");
         emailTxt.setText("");
         telTxt.setText("");
+        typeCbb.setValue("Tất cả");
         search();
     }
     
