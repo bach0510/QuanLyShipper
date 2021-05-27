@@ -17,8 +17,8 @@ import lombok.Data;
  *
  * @author Admin
  */
-//@Data
-//@Entity(name = "OrderDetail")
+@Data
+@Entity(name = "OrderDetail")
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
