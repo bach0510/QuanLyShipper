@@ -17,8 +17,8 @@ import lombok.Data;
  *
  * @author Admin
  */
-//@Data
-//@Entity(name = "Orders")
+@Data
+@Entity(name = "Orders")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,11 @@ public class Orders {
     @Column(name="area_id")
     
     private int AreaId;
+
+    @Column(name="order_code",columnDefinition = "nvarchar(MAX)")
+    
+    private String OrderCode;
+    
     @Column(name="user_id")
     
     private int UserId;
@@ -67,7 +72,14 @@ public class Orders {
         this.DeliveryDate = DeliveryDate;
     }
     
+    public String getOrderCode() {
+        return OrderCode;
+    }
 
+    public void setOrderCode(String OrderCode) {
+        this.OrderCode = OrderCode;
+    }
+    
     public int getId() {
         return Id;
     }
