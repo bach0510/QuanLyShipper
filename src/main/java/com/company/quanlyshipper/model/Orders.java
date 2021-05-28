@@ -32,17 +32,21 @@ public class Orders {
     
     private String OrderCode;
     
+    @Column(name="cus_tel",columnDefinition = "nvarchar(MAX)")
+    
+    private String CusTel;
+    
     @Column(name="user_id")
     
     private int UserId;
-    @Column(name="status")
+    @Column(name="status",columnDefinition = "nvarchar(MAX)")
     
-    private int Status;
+    private String Status;
     @Column(name="delivery_date")
     
     private Date DeliveryDate; // ngay giao
 
-    public Orders(int Id, int AreaId, int UserId, int Status, Date DeliveryDate) {
+    public Orders(int Id, int AreaId, int UserId, String Status, Date DeliveryDate) {
         this.Id = Id;
         this.AreaId = AreaId;
         this.UserId = UserId;
@@ -64,7 +68,7 @@ public class Orders {
         this.UserId = UserId;
     }
 
-    public void setStatus(int Status) {
+    public void setStatus(String Status) {
         this.Status = Status;
     }
 
@@ -79,6 +83,10 @@ public class Orders {
     public void setOrderCode(String OrderCode) {
         this.OrderCode = OrderCode;
     }
+
+    public void setCusTel(String CusTel) {
+        this.CusTel = CusTel;
+    }
     
     public int getId() {
         return Id;
@@ -92,12 +100,16 @@ public class Orders {
         return UserId;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return Status;
     }
 
     public Date getDeliveryDate() {
         return DeliveryDate;
+    }
+
+    public String getCusTel() {
+        return CusTel;
     }
     
     

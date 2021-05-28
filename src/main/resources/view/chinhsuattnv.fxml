@@ -19,7 +19,7 @@
                   <Image url="@../pictures/1.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="titleTxt" layoutX="34.0" layoutY="14.0" style="-fx-background-color: #FF99CC;" text="Thông tin nhân viên ">
+            <TextField fx:id="titleTxt" editable="false" layoutX="34.0" layoutY="14.0" style="-fx-background-color: #FF99CC;" text="Thông tin nhân viên ">
                <font>
                   <Font name="Arial Bold" size="19.0" />
                </font>
