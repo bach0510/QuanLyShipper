@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="360.0" prefWidth="120.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Chinhsuadonhang">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="581.0">
+         <children>
+            <ImageView fitHeight="439.0" fitWidth="581.0" layoutX="-1.0" opacity="0.46" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-80.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-100.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../pictures/1.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="titleTxt" editable="false" layoutX="34.0" layoutY="14.0" style="-fx-background-color: #FF99CC;" text="Thông tin đơn hàng">
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+            </TextField>
+            <Button fx:id="saveBtn" layoutX="369.0" layoutY="386.0" mnemonicParsing="false" onAction="#save" opacity="0.66" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #FF99CC;" text="Lưu">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="cancelBtn" layoutX="468.0" layoutY="386.0" mnemonicParsing="false" onAction="#cancel" opacity="0.66" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #FF99CC;" text="Quay lại ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="32.0" layoutY="120.0" text="SĐT Người nhận">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cusTelTxt" layoutX="159.0" layoutY="117.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập họ tên" />
+            <Label layoutX="34.0" layoutY="77.0" text="Tên người nhận">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cusNameTxt" layoutX="159.0" layoutY="75.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập mã nhân viên" />
+            <Label layoutX="34.0" layoutY="161.0" text="Shipper nhận đơn">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="shipperNameTxt" editable="false" layoutX="301.0" layoutY="158.0" prefHeight="25.0" prefWidth="244.0" promptText="Tên Shipper" />
+            <Label layoutX="34.0" layoutY="249.0" text="Ngày giao ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="orderStatusCbb" layoutX="160.0" layoutY="292.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn trạng thái" />
+            <TextField fx:id="shipperTelTxt" editable="false" layoutX="159.0" layoutY="203.0" prefHeight="25.0" prefWidth="138.0" promptText="Số điện thoại shipper" />
+            <TextField fx:id="shipperEmailTxt" editable="false" layoutX="301.0" layoutY="203.0" prefHeight="25.0" prefWidth="244.0" promptText="Email Shipper" />
+            <DatePicker fx:id="deliveryDatepicker" layoutX="161.0" layoutY="247.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn ngày giao" />
+            <Label layoutX="33.0" layoutY="295.0" text="Trạng thái đơn">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="areaCbb" layoutX="160.0" layoutY="336.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn vị trí" />
+            <Label layoutX="33.0" layoutY="339.0" text="Khu vực giao">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="shipperCodeTxt" layoutX="159.0" layoutY="158.0" onInputMethodTextChanged="#searchShipperInfo" prefHeight="25.0" prefWidth="138.0" promptText="Mã Shipper" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

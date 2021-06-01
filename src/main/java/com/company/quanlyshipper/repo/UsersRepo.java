@@ -7,6 +7,7 @@ package com.company.quanlyshipper.repo;
 
 import com.company.quanlyshipper.model.Users;
 import java.util.List;
+import javafx.collections.ObservableList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,6 +18,13 @@ import org.springframework.data.jpa.repository.Query;
 public interface UsersRepo extends JpaRepository<Users, Integer> {
     @Query("SELECT u FROM Users u WHERE u.UserName = ?1 AND u.Password = ?2")
     Users findByNameAndPassword(String username,String password);
+    
+    @Query("SELECT u FROM Users u WHERE u.Code = ?1 AND u.RoleId = 2")
+    Users findShipperByCode(String code);
+    
+    @Query("SELECT u.Code FROM Users u WHERE u.RoleId = 2")
+    ObservableList<String> findAllShippersCode();
+    
     @Query(""
             + "SELECT u FROM Users u "
             + "WHERE u.FullName LIKE %?1% "

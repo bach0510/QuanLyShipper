@@ -35,7 +35,7 @@ public class OrderService {
         orderRepo.save(order);
     }
     
-    public void deleteUser(Orders order){
+    public void deleteOrder(Orders order){
         orderRepo.delete(order);
     }
     

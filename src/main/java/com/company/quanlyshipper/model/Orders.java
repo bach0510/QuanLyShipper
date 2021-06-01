@@ -35,6 +35,9 @@ public class Orders {
     @Column(name="cus_tel",columnDefinition = "nvarchar(MAX)")
     
     private String CusTel;
+    @Column(name="cus_name",columnDefinition = "nvarchar(MAX)")
+    
+    private String CusName;
     
     @Column(name="user_id")
     
@@ -45,55 +48,28 @@ public class Orders {
     @Column(name="delivery_date")
     
     private Date DeliveryDate; // ngay giao
-
-    public Orders(int Id, int AreaId, int UserId, String Status, Date DeliveryDate) {
-        this.Id = Id;
-        this.AreaId = AreaId;
-        this.UserId = UserId;
-        this.Status = Status;
-        this.DeliveryDate = DeliveryDate;
-    }
-
-    public Orders(){}
     
-    public void setId(int Id) {
-        this.Id = Id;
-    }
+    @Column(name="create_date")
+    private Date CreateDate; // ngay giao
 
-    public void setAreaId(int AreaId) {
-        this.AreaId = AreaId;
-    }
-
-    public void setUserId(int UserId) {
-        this.UserId = UserId;
-    }
-
-    public void setStatus(String Status) {
-        this.Status = Status;
-    }
-
-    public void setDeliveryDate(Date DeliveryDate) {
-        this.DeliveryDate = DeliveryDate;
-    }
-    
-    public String getOrderCode() {
-        return OrderCode;
-    }
-
-    public void setOrderCode(String OrderCode) {
-        this.OrderCode = OrderCode;
-    }
-
-    public void setCusTel(String CusTel) {
-        this.CusTel = CusTel;
-    }
-    
     public int getId() {
         return Id;
     }
 
     public int getAreaId() {
         return AreaId;
+    }
+
+    public String getOrderCode() {
+        return OrderCode;
+    }
+
+    public String getCusTel() {
+        return CusTel;
+    }
+
+    public String getCusName() {
+        return CusName;
     }
 
     public int getUserId() {
@@ -108,9 +84,60 @@ public class Orders {
         return DeliveryDate;
     }
 
-    public String getCusTel() {
-        return CusTel;
+    public Date getCreateDate() {
+        return CreateDate;
     }
-    
-    
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    public void setAreaId(int AreaId) {
+        this.AreaId = AreaId;
+    }
+
+    public void setOrderCode(String OrderCode) {
+        this.OrderCode = OrderCode;
+    }
+
+    public void setCusTel(String CusTel) {
+        this.CusTel = CusTel;
+    }
+
+    public void setCusName(String CusName) {
+        this.CusName = CusName;
+    }
+
+    public void setUserId(int UserId) {
+        this.UserId = UserId;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
+
+    public void setDeliveryDate(Date DeliveryDate) {
+        this.DeliveryDate = DeliveryDate;
+    }
+
+    public void setCreateDate(Date CreateDate) {
+        this.CreateDate = CreateDate;
+    }
+
+    public Orders() {
+    }
+
+    public Orders(int Id, int AreaId, String OrderCode, String CusTel, String CusName, int UserId, String Status, Date DeliveryDate, Date CreateDate) {
+        this.Id = Id;
+        this.AreaId = AreaId;
+        this.OrderCode = OrderCode;
+        this.CusTel = CusTel;
+        this.CusName = CusName;
+        this.UserId = UserId;
+        this.Status = Status;
+        this.DeliveryDate = DeliveryDate;
+        this.CreateDate = CreateDate;
+    }
+
+   
 }

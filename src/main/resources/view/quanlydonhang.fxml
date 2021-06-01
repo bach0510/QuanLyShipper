@@ -43,11 +43,11 @@
                </font>
             </Label>
             <TextField fx:id="cusTelTxt" layoutX="165.0" layoutY="172.0" />
-            <TableView layoutX="340.0" layoutY="94.0" prefHeight="142.0" prefWidth="446.0">
+            <TableView fx:id="orderTable" layoutX="340.0" layoutY="94.0" prefHeight="142.0" prefWidth="446.0">
               <columns>
-                <TableColumn prefWidth="149.0" text="Mã đơn " />
-                <TableColumn prefWidth="157.0" text="Ngày tạo " />
-                  <TableColumn prefWidth="139.0" text="Trạng thái" />
+                <TableColumn fx:id="orderCode" prefWidth="149.0" text="Mã đơn " />
+                <TableColumn fx:id="createDate" prefWidth="157.0" text="Ngày tạo " />
+                  <TableColumn fx:id="status" prefWidth="139.0" text="Trạng thái" />
               </columns>
             </TableView>
             <TextField editable="false" layoutX="16.0" layoutY="260.0" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #FF99CC;" text="Chi tiết đơn hàng">
@@ -63,7 +63,7 @@
                   <TableColumn prefWidth="194.0" text="Thành tiền" />
               </columns>
             </TableView>
-            <Button layoutX="455.0" layoutY="245.0" mnemonicParsing="false" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Thêm đơnn hàng ">
+            <Button fx:id="addOrderBtn" layoutX="455.0" layoutY="245.0" mnemonicParsing="false" onAction="#addOrder" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Thêm đơnn hàng ">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -71,7 +71,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="637.0" layoutY="245.0" mnemonicParsing="false" opacity="0.66" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #FF99CC;" text="xóa đơn ">
+            <Button layoutX="637.0" layoutY="245.0" mnemonicParsing="false" onAction="#deleteOrder" opacity="0.66" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #FF99CC;" text="xóa đơn ">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

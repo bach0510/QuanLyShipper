@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.company.quanlyshipper.repo.UsersRepo;
 import java.util.List;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -25,6 +26,18 @@ public class UserService {
        
     public List<Users> getAllShipperInfo(String fullname,String cmnd,String tel,String code,String email,String type){
         List<Users> shippers = userRepo.findShipperByArgument(fullname, cmnd, tel, code, email,type);
+        //List<Users> shippers = userRepo.findAll();
+        return shippers;
+    }
+    
+    public ObservableList<String> getAllShipperCode(){
+        ObservableList<String> shippersCode = userRepo.findAllShippersCode();
+        //List<Users> shippers = userRepo.findAll();
+        return shippersCode;
+    }
+    
+    public Users getShipperInfoByCode(String code){
+        Users shippers = userRepo.findShipperByCode(code);
         //List<Users> shippers = userRepo.findAll();
         return shippers;
     }
