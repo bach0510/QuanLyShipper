@@ -25,6 +25,9 @@ public class OrderDetail {
     @Column(name="id")
     private int Id ;
 
+    @Column(name="order_Id")
+    
+    private int OrderId;
     @Column(name="name",columnDefinition = "nvarchar(MAX)")
     
     private String Name;
@@ -66,13 +69,24 @@ public class OrderDetail {
     public double getPrice() {
         return Price;
     }
+
+    public int getOrderId() {
+        return OrderId;
+    }
+
+    public void setOrderId(int OrderId) {
+        this.OrderId = OrderId;
+    }
     
     public OrderDetail(){}
 
-    public OrderDetail(int Id, String Name, int Qty, double Price) {
+    public OrderDetail(int Id, int OrderId, String Name, int Qty, double Price) {
         this.Id = Id;
+        this.OrderId = OrderId;
         this.Name = Name;
         this.Qty = Qty;
         this.Price = Price;
     }
+
+    
 }

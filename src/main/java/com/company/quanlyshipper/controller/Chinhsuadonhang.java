@@ -90,6 +90,9 @@ public class Chinhsuadonhang implements Initializable {
 
     @FXML
     private ComboBox<?> areaCbb;
+    
+    @FXML
+    private TextField deliveryAddTxt;
 
     
     @FXML

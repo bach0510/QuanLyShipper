@@ -41,34 +41,34 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="32.0" layoutY="120.0" text="SĐT Người nhận">
+            <Label layoutX="32.0" layoutY="117.0" text="SĐT Người nhận">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusTelTxt" layoutX="159.0" layoutY="117.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập họ tên" />
+            <TextField fx:id="cusTelTxt" layoutX="159.0" layoutY="114.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập họ tên" />
             <Label layoutX="34.0" layoutY="77.0" text="Tên người nhận">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
             <TextField fx:id="cusNameTxt" layoutX="159.0" layoutY="75.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập mã nhân viên" />
-            <Label layoutX="34.0" layoutY="161.0" text="Shipper nhận đơn">
+            <Label layoutX="34.0" layoutY="188.0" text="Shipper nhận đơn">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="shipperNameTxt" editable="false" layoutX="301.0" layoutY="158.0" prefHeight="25.0" prefWidth="244.0" promptText="Tên Shipper" />
-            <Label layoutX="34.0" layoutY="249.0" text="Ngày giao ">
+            <TextField fx:id="shipperNameTxt" editable="false" layoutX="301.0" layoutY="184.0" prefHeight="25.0" prefWidth="244.0" promptText="Tên Shipper" />
+            <Label layoutX="34.0" layoutY="259.0" text="Ngày giao ">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="orderStatusCbb" layoutX="160.0" layoutY="292.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn trạng thái" />
-            <TextField fx:id="shipperTelTxt" editable="false" layoutX="159.0" layoutY="203.0" prefHeight="25.0" prefWidth="138.0" promptText="Số điện thoại shipper" />
-            <TextField fx:id="shipperEmailTxt" editable="false" layoutX="301.0" layoutY="203.0" prefHeight="25.0" prefWidth="244.0" promptText="Email Shipper" />
-            <DatePicker fx:id="deliveryDatepicker" layoutX="161.0" layoutY="247.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn ngày giao" />
-            <Label layoutX="33.0" layoutY="295.0" text="Trạng thái đơn">
+            <ComboBox fx:id="orderStatusCbb" layoutX="160.0" layoutY="296.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn trạng thái" />
+            <TextField fx:id="shipperTelTxt" editable="false" layoutX="159.0" layoutY="220.0" prefHeight="25.0" prefWidth="138.0" promptText="Số điện thoại shipper" />
+            <TextField fx:id="shipperEmailTxt" editable="false" layoutX="301.0" layoutY="220.0" prefHeight="25.0" prefWidth="244.0" promptText="Email Shipper" />
+            <DatePicker fx:id="deliveryDatepicker" layoutX="161.0" layoutY="257.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn ngày giao" />
+            <Label layoutX="33.0" layoutY="299.0" text="Trạng thái đơn">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -79,7 +79,13 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="shipperCodeTxt" layoutX="159.0" layoutY="158.0" onInputMethodTextChanged="#searchShipperInfo" prefHeight="25.0" prefWidth="138.0" promptText="Mã Shipper" />
+            <TextField fx:id="shipperCodeTxt" layoutX="159.0" layoutY="184.0" onInputMethodTextChanged="#searchShipperInfo" prefHeight="25.0" prefWidth="138.0" promptText="Mã Shipper" />
+            <Label layoutX="35.0" layoutY="152.0" text="Địa chỉ cụ thể">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="deliveryAddTxt" layoutX="159.0" layoutY="149.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập địa chỉ cụ thể" />
          </children>
       </AnchorPane>
    </children>

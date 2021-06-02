@@ -7,6 +7,7 @@ package com.company.quanlyshipper.controller;
  */
 
 import com.company.quanlyshipper.model.Users;
+import com.company.quanlyshipper.service.UserService;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,6 +34,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -49,7 +51,10 @@ public class Chinhsuattnv implements Initializable {
     private File file;
     private FileInputStream fs;    
 
-     @FXML
+    @Autowired
+    private UserService service;
+    
+    @FXML
     private ComboBox typeCbb;
     @FXML
     private Button browse;
@@ -98,6 +103,7 @@ public class Chinhsuattnv implements Initializable {
     @FXML
     private void save() {
         try{
+//            Users user = service.getShipperInfoByCode(code)
             user.setFullName(fullNameTxt.getText());            
             user.setCode(codeTxt.getText().toUpperCase());
             user.setTel(telTxt.getText());
