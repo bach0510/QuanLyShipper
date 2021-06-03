@@ -51,10 +51,10 @@ public class Orders {
     private String DeliveryAdd;
     @Column(name="delivery_date")
     
-    private Date DeliveryDate; // ngay giao
+    private String DeliveryDate; // ngay giao
     
     @Column(name="create_date")
-    private Date CreateDate; // ngay giao
+    private String CreateDate; // ngay giao
 
     public int getId() {
         return Id;
@@ -84,11 +84,11 @@ public class Orders {
         return Status;
     }
 
-    public Date getDeliveryDate() {
+    public String getDeliveryDate() {
         return DeliveryDate;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return CreateDate;
     }
 
@@ -120,11 +120,11 @@ public class Orders {
         this.Status = Status;
     }
 
-    public void setDeliveryDate(Date DeliveryDate) {
+    public void setDeliveryDate(String DeliveryDate) {
         this.DeliveryDate = DeliveryDate;
     }
 
-    public void setCreateDate(Date CreateDate) {
+    public void setCreateDate(String CreateDate) {
         this.CreateDate = CreateDate;
     }
 
@@ -139,7 +139,7 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(int Id, int AreaId, String OrderCode, String CusTel, String CusName, int UserId, String Status, String DeliveryAdd, Date DeliveryDate, Date CreateDate) {
+    public Orders(int Id, int AreaId, String OrderCode, String CusTel, String CusName, int UserId, String Status, String DeliveryAdd, String DeliveryDate, String CreateDate) {
         this.Id = Id;
         this.AreaId = AreaId;
         this.OrderCode = OrderCode;

@@ -46,13 +46,13 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusTelTxt" layoutX="159.0" layoutY="114.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập họ tên" />
+            <TextField fx:id="cusTelTxt" layoutX="159.0" layoutY="114.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập số điện thoại" />
             <Label layoutX="34.0" layoutY="77.0" text="Tên người nhận">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusNameTxt" layoutX="159.0" layoutY="75.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập mã nhân viên" />
+            <TextField fx:id="cusNameTxt" layoutX="159.0" layoutY="75.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập tên người nhận" />
             <Label layoutX="34.0" layoutY="188.0" text="Shipper nhận đơn">
                <font>
                   <Font name="System Bold" size="14.0" />

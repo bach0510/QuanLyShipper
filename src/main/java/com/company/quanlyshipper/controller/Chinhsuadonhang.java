@@ -17,6 +17,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import javafx.collections.FXCollections;
@@ -106,13 +110,12 @@ public class Chinhsuadonhang implements Initializable {
     @FXML
     private void save() {
         try{
-//            user.setFullName(fullNameTxt.getText());            
-//            user.setCode(codeTxt.getText().toUpperCase());
-//            user.setTel(telTxt.getText());
-//            user.setCmnd(cmndTxt.getText());
-//            user.setEmail(emailTxt.getText());
-//            user.setType(typeCbb.getValue().toString());
-        
+            order.setCusName(cusNameTxt.getText());
+            order.setCusTel(cusTelTxt.getText());
+            order.setDeliveryAdd(deliveryAddTxt.getText());
+            order.setDeliveryDate(((TextField)deliveryDatepicker.getEditor()).getText());
+//            order.setCreateDate(CreateDate);
+                    
             saveHandler.accept(order);
             
             cancel();
@@ -164,7 +167,7 @@ public class Chinhsuadonhang implements Initializable {
         this.saveHandler = saveHandler;
         if(order == null){
             titleTxt.setText("Thêm mới đơn hàng");
-//            this.order = new Orders();
+            this.order = new Orders();
 //            this.user.setRoleId(2);
 //            this.user.setType("Ship lấy");
 //            typeCbb.setValue(this.user.getType());
@@ -172,12 +175,10 @@ public class Chinhsuadonhang implements Initializable {
         else {
             titleTxt.setText("Chỉnh sửa đơn hàng");
             this.order = order;
-//            fullNameTxt.setText(user.getFullName());     
-//            codeTxt.setText(user.getCode()); 
-//            telTxt.setText(user.getTel()); 
-//            cmndTxt.setText(user.getCmnd()); 
-//            emailTxt.setText(user.getEmail()); 
-//            typeCbb.setValue(user.getType());
+            cusNameTxt.setText(order.getCusName());     
+            cusTelTxt.setText(order.getCusTel()); 
+            deliveryAddTxt.setText(order.getDeliveryAdd()); 
+            deliveryDatepicker.setValue(LocalDate.parse(order.getDeliveryDate())); 
             
         }
         
