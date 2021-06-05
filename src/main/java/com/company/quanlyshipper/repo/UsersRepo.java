@@ -5,6 +5,7 @@
  */
 package com.company.quanlyshipper.repo;
 
+import com.company.quanlyshipper.BaseRepository;
 import com.company.quanlyshipper.model.Areas;
 import com.company.quanlyshipper.model.Users;
 import java.util.List;
@@ -17,7 +18,7 @@ import org.springframework.data.repository.query.Param;
  *
  * @author Admin
  */
-public interface UsersRepo extends JpaRepository<Users, Integer> {
+public interface UsersRepo extends BaseRepository<Users, Integer> {
     @Query("SELECT u FROM Users u WHERE u.UserName = ?1 AND u.Password = ?2")
     Users findByNameAndPassword(String username,String password);
     
@@ -35,7 +36,7 @@ public interface UsersRepo extends JpaRepository<Users, Integer> {
             + "AND u.Code LIKE %?4%"            
             + "AND u.Email LIKE %?5%"
             + "AND u.Type LIKE %?6%"            
-            + "AND u.Area LIKE %?7%"
+            + "AND u.Area = ?7"
             + "AND u.RoleId = 2"
             + "")
     List<Users> findShipperByArgument(String fullname,String cmnd,String tel,String code,String email,String type, Areas areaId);

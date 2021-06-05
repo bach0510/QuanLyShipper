@@ -166,6 +166,8 @@ public class Quanlyttnv implements Initializable {
         emailTxt.setText("");
         telTxt.setText("");
         typeCbb.setValue("Tất cả");
+        areaCbb.getItems().clear();
+        areaCbb.getItems().addAll(areaService.getAllArea());
         search();
     }
     
