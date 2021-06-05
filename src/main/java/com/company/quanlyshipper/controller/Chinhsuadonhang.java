@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import javafx.collections.FXCollections;
@@ -102,6 +103,10 @@ public class Chinhsuadonhang implements Initializable {
     @FXML
     private Consumer<Orders> saveHandler;
 
+    private SimpleDateFormat dateFormat;
+    
+    private Date currentDate;
+    
     @FXML
     void cancel() {
         cancelBtn.getScene().getWindow().hide();
@@ -110,10 +115,13 @@ public class Chinhsuadonhang implements Initializable {
     @FXML
     private void save() {
         try{
+            currentDate = new Date();
+            dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             order.setCusName(cusNameTxt.getText());
             order.setCusTel(cusTelTxt.getText());
             order.setDeliveryAdd(deliveryAddTxt.getText());
             order.setDeliveryDate(((TextField)deliveryDatepicker.getEditor()).getText());
+            order.setCreateDate(dateFormat.format(currentDate));
 //            order.setCreateDate(CreateDate);
                     
             saveHandler.accept(order);
@@ -178,7 +186,7 @@ public class Chinhsuadonhang implements Initializable {
             cusNameTxt.setText(order.getCusName());     
             cusTelTxt.setText(order.getCusTel()); 
             deliveryAddTxt.setText(order.getDeliveryAdd()); 
-            deliveryDatepicker.setValue(LocalDate.parse(order.getDeliveryDate())); 
+            ((TextField)deliveryDatepicker.getEditor()).setText(order.getDeliveryDate()); 
             
         }
         
