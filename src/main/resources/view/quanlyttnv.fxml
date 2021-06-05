@@ -55,7 +55,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox layoutX="226.0" layoutY="161.0" prefHeight="25.0" prefWidth="132.0" promptText="Chọn khu vực" />
+            <ComboBox fx:id="areaCbb" layoutX="226.0" layoutY="161.0" prefHeight="25.0" prefWidth="132.0" promptText="Chọn khu vực" />
             <Label layoutX="14.0" layoutY="136.0" text="Email ghtk">
                <font>
                   <Font name="System Bold" size="14.0" />

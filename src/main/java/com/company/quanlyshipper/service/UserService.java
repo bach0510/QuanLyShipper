@@ -6,6 +6,7 @@
 package com.company.quanlyshipper.service;
 
 import com.company.quanlyshipper.AppException;
+import com.company.quanlyshipper.model.Areas;
 import com.company.quanlyshipper.model.Users;
 import com.microsoft.sqlserver.jdbc.StringUtils;
 import java.util.Optional;
@@ -24,8 +25,8 @@ public class UserService {
     @Autowired
     private UsersRepo userRepo;
        
-    public List<Users> getAllShipperInfo(String fullname,String cmnd,String tel,String code,String email,String type){
-        List<Users> shippers = userRepo.findShipperByArgument(fullname, cmnd, tel, code, email,type);
+    public List<Users> getAllShipperInfo(String fullname,String cmnd,String tel,String code,String email,String type,Areas areaId){
+        List<Users> shippers = userRepo.findShipperByArgument(fullname, cmnd, tel, code, email,type,areaId);
         //List<Users> shippers = userRepo.findAll();
         return shippers;
     }

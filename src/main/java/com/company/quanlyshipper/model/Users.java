@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Data;
 import org.springframework.data.annotation.PersistenceConstructor;
 //import javax.persistence.Table;
@@ -62,9 +63,9 @@ public class Users {
     
     private String Cmnd;
 
-    @Column(name="area_id")
-    
-    private int AreaId;
+//    @Column(name="area_id")
+    @ManyToOne
+    private Areas Area;
     @Column(name="role_id")
     private int RoleId ;
 
@@ -104,8 +105,8 @@ public class Users {
         this.Tel = Tel;
     }
 
-    public void setAreaId(int AreaId) {
-        this.AreaId = AreaId;
+    public void setAreaId(Areas Area) {
+        this.Area = Area;
     }
 
     public void setRoleId(int RoleId) {
@@ -124,8 +125,8 @@ public class Users {
         return Tel;
     }
 
-    public int getAreaId() {
-        return AreaId;
+    public Areas getAreaId() {
+        return Area;
     }
 
     public int getRoleId() {
@@ -170,14 +171,14 @@ public class Users {
     }
     
     @PersistenceConstructor
-    public Users(int Id, String UserName, String Password, String FullName, String Email, String Tel, int AreaId, int RoleId) {
+    public Users(int Id, String UserName, String Password, String FullName, String Email, String Tel, Areas Area, int RoleId) {
         this.Id = Id;
         this.UserName = UserName;
         this.Password = Password;
         this.FullName = FullName;
         this.Email = Email;
         this.Tel = Tel;
-        this.AreaId = AreaId;
+        this.Area = Area;
         this.RoleId = RoleId;
     }
     public Users(){}

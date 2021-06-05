@@ -75,7 +75,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox layoutX="154.0" layoutY="306.0" prefHeight="25.0" prefWidth="120.0" promptText="Chọn khu vực" />
+            <ComboBox fx:id="areaCbb" layoutX="154.0" layoutY="306.0" prefHeight="25.0" prefWidth="120.0" promptText="Chọn khu vực" />
             <Label layoutX="292.0" layoutY="310.0" text="Vị trí làm việc">
                <font>
                   <Font name="System Bold" size="14.0" />

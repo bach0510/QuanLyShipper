@@ -5,6 +5,7 @@
  */
 package com.company.quanlyshipper.model;
 
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -50,4 +51,24 @@ public class Areas {
     }
     
     public Areas(){}
+    
+    @Override
+    public String toString(){
+        return AreaName;
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this == o)return true;
+        if(!(o instanceof Areas )) return false;
+        Areas area = (Areas)o;
+        return Id == area.Id;
+    }
+    
+    @Override 
+    public int hashCode() {
+        return Objects.hash(Id);
+    }
+    
+    
 }
