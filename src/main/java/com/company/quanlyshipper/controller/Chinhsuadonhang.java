@@ -6,8 +6,10 @@ package com.company.quanlyshipper.controller;
  * and open the template in the editor.
  */
 
+import com.company.quanlyshipper.model.Areas;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Users;
+import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.UserService;
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,8 +24,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -60,6 +64,9 @@ public class Chinhsuadonhang implements Initializable {
     @Autowired
     private UserService userService;
     
+    @Autowired
+    private AreaService areaService;
+    
     @FXML
     private Button saveBtn;
     
@@ -82,7 +89,7 @@ public class Chinhsuadonhang implements Initializable {
     private TextField shipperCodeTxt;
 
     @FXML
-    private ComboBox<?> orderStatusCbb;
+    private ComboBox orderStatusCbb;
 
     @FXML
     private TextField shipperTelTxt;
@@ -94,7 +101,7 @@ public class Chinhsuadonhang implements Initializable {
     private DatePicker deliveryDatepicker;
 
     @FXML
-    private ComboBox<?> areaCbb;
+    private ComboBox<Areas> areaCbb;
     
     @FXML
     private TextField deliveryAddTxt;
@@ -116,14 +123,24 @@ public class Chinhsuadonhang implements Initializable {
     private void save() {
         try{
             currentDate = new Date();
-            dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");            
+            SimpleDateFormat dateFormat2 = new SimpleDateFormat("ddMMyy");
+
             order.setCusName(cusNameTxt.getText());
             order.setCusTel(cusTelTxt.getText());
             order.setDeliveryAdd(deliveryAddTxt.getText());
             order.setDeliveryDate(((TextField)deliveryDatepicker.getEditor()).getText());
             order.setCreateDate(dateFormat.format(currentDate));
-//            order.setCreateDate(CreateDate);
-                    
+            order.setStatus(orderStatusCbb.getValue().toString());
+            order.setArea(areaCbb.getValue());
+            
+            saveHandler.accept(order);
+            
+            String orderCode = "HN." 
+                    + areaCbb.getValue().getAreaCode() + "."
+                    + order.getId() +"."
+                    + dateFormat2.format(currentDate);
+            order.setOrderCode(orderCode);
             saveHandler.accept(order);
             
             cancel();
@@ -136,16 +153,12 @@ public class Chinhsuadonhang implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        typeCbb.getItems().clear();
-//        typeCbb.setItems(listCbb);
-//        shipperCodeTxt.setOnInputMethodTextChanged(eh -> {
-//            Users user = userService.getShipperInfoByCode(shipperCodeTxt.getText().toString());
-//        
-//            shipperNameTxt.setText("1");
-//        });
+        ObservableList<String> listCbb = FXCollections.observableArrayList("Mới tạo","Đang giao","Đã giao","Hoàn trả");
+        orderStatusCbb.getItems().clear();
+        orderStatusCbb.setItems(listCbb);
     }    
     
-    public static void editOrder(Orders order , Consumer<Orders> saveHandler){
+    public static void editOrder(Orders order , Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList){
         try{
             Stage stage = new Stage(StageStyle.UNDECORATED);
             FXMLLoader loader = new FXMLLoader(Chinhsuadonhang.class.getClassLoader().getResource("view/chinhsuadonhang.fxml"));
@@ -153,15 +166,15 @@ public class Chinhsuadonhang implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             
             Chinhsuadonhang controller = loader.getController();
-            controller.init(order , saveHandler);
+            controller.init(order , saveHandler,areaList);
 
             stage.show();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
-    public static void addNew(Consumer<Orders> saveHandler){
-        editOrder(null,saveHandler);
+    public static void addNew(Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList){
+        editOrder(null,saveHandler,areaList);
     }
     
     @FXML
@@ -170,15 +183,23 @@ public class Chinhsuadonhang implements Initializable {
         
     }
     
-    private void init(Orders order , Consumer<Orders> saveHandler) throws FileNotFoundException, IOException{
+    private void init(Orders order , Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList) throws FileNotFoundException, IOException{
         this.order = order;
+        areaCbb.getItems().clear();
+        areaCbb.getItems().addAll(areaList.get());
         this.saveHandler = saveHandler;
+        
         if(order == null){
             titleTxt.setText("Thêm mới đơn hàng");
             this.order = new Orders();
-//            this.user.setRoleId(2);
-//            this.user.setType("Ship lấy");
-//            typeCbb.setValue(this.user.getType());
+            //set value cho combobox khu vuc
+            Areas area = new Areas();
+            area.setAreaName("Thanh Xuân");
+            area.setAreaCode("TX");
+            area.setId(1);
+            areaCbb.setValue(area);
+            //set value cho combobox trang thai
+            orderStatusCbb.setValue("Mới tạo");
         }
         else {
             titleTxt.setText("Chỉnh sửa đơn hàng");
@@ -187,7 +208,8 @@ public class Chinhsuadonhang implements Initializable {
             cusTelTxt.setText(order.getCusTel()); 
             deliveryAddTxt.setText(order.getDeliveryAdd()); 
             ((TextField)deliveryDatepicker.getEditor()).setText(order.getDeliveryDate()); 
-            
+            areaCbb.setValue(order.getArea());
+            orderStatusCbb.setValue(order.getStatus().toString());
         }
         
         

@@ -122,7 +122,7 @@ public class Chinhsuattnv implements Initializable {
             user.setCmnd(cmndTxt.getText());
             user.setEmail(emailTxt.getText());
             user.setType(typeCbb.getValue().toString());
-            user.setAreaId(areaCbb.getValue());
+            user.setArea(areaCbb.getValue());
         
             saveHandler.accept(user);
             
@@ -182,7 +182,7 @@ public class Chinhsuattnv implements Initializable {
             cmndTxt.setText(user.getCmnd());  
             emailTxt.setText(user.getEmail()); 
             typeCbb.setValue(user.getType());
-            areaCbb.setValue(user.getAreaId());
+            areaCbb.setValue(user.getArea());
             if(user.getImage() != null){
                 OutputStream os = new FileOutputStream(new File("photo.jpg"));
                 os.write(user.getImage());

@@ -105,7 +105,7 @@ public class Users {
         this.Tel = Tel;
     }
 
-    public void setAreaId(Areas Area) {
+    public void setArea(Areas Area) {
         this.Area = Area;
     }
 
@@ -125,7 +125,7 @@ public class Users {
         return Tel;
     }
 
-    public Areas getAreaId() {
+    public Areas getArea() {
         return Area;
     }
 

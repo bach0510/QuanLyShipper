@@ -148,18 +148,23 @@ public class Login implements Initializable{
         
         Areas area = new Areas();
         area.setAreaName("Thanh Xuân");
+        area.setAreaCode("TX");
         areaRepo.save(area);
         Areas area2 = new Areas();
         area2.setAreaName("Hoàng Mai");
+        area2.setAreaCode("HM");
         areaRepo.save(area2);
         Areas area3 = new Areas();
         area3.setAreaName("Ba Đình");
+        area3.setAreaCode("BĐ");
         areaRepo.save(area3);
         Areas area4 = new Areas();
         area4.setAreaName("Hà Đông");
+        area4.setAreaCode("HĐ");
         areaRepo.save(area4);
         Areas area5 = new Areas();
         area5.setAreaName("Hai Bà Trưng");
+        area.setAreaCode("HBT");
         areaRepo.save(area5);
         
         

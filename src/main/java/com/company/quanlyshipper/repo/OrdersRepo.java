@@ -5,6 +5,7 @@
  */
 package com.company.quanlyshipper.repo;
 
+import com.company.quanlyshipper.BaseRepository;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,6 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Admin
  */
-public interface OrdersRepo extends JpaRepository<Orders, Integer> {
+public interface OrdersRepo extends BaseRepository<Orders, Integer> {
     
 }

@@ -43,18 +43,18 @@ public class UserService {
                 || !StringUtils.isEmpty(code)
                 || !StringUtils.isEmpty(email)
                 || !StringUtils.isEmpty(type)){
-            sb.append(" and u.FullName LIKE :fullname"
-                    + " and u.Cmnd LIKE :cmnd"
-                    + " and u.Email LIKE :email"
-                    + " and u.Type LIKE :type"
-                    + " and u.Tel LIKE :tel"
-                    + " and u.Code LIKE :code");
-            params.put("fullname", fullname.concat("%"));
-            params.put("email", email.concat("%"));
-            params.put("tel", tel.concat("%"));
-            params.put("code", code.concat("%"));
-            params.put("type", type.concat("%"));
-            params.put("cmnd", cmnd.concat("%"));
+            sb.append(" and u.FullName like concat('%',:fullname,'%')"
+                    + " and u.Cmnd like concat('%',:cmnd,'%')"
+                    + " and u.Email like concat('%',:email,'%')"
+                    + " and u.Type like concat('%',:type,'%')"
+                    + " and u.Tel like concat('%',:tel,'%')"
+                    + " and u.Code like concat('%',:code,'%')");
+            params.put("fullname", fullname);
+            params.put("email", email);
+            params.put("tel", tel);
+            params.put("code", code);
+            params.put("type", type);
+            params.put("cmnd", cmnd);
         }
         
         

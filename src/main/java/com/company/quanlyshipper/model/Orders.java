@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Data;
 
 /**
@@ -24,9 +25,9 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int Id ;
-    @Column(name="area_id")
     
-    private int AreaId;
+    @ManyToOne
+    private Areas Area;
 
     @Column(name="order_code",columnDefinition = "nvarchar(MAX)")
     
@@ -60,8 +61,8 @@ public class Orders {
         return Id;
     }
 
-    public int getAreaId() {
-        return AreaId;
+    public Areas getArea() {
+        return Area;
     }
 
     public String getOrderCode() {
@@ -96,8 +97,8 @@ public class Orders {
         this.Id = Id;
     }
 
-    public void setAreaId(int AreaId) {
-        this.AreaId = AreaId;
+    public void setArea(Areas Area) {
+        this.Area = Area;
     }
 
     public void setOrderCode(String OrderCode) {
@@ -139,9 +140,9 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(int Id, int AreaId, String OrderCode, String CusTel, String CusName, int UserId, String Status, String DeliveryAdd, String DeliveryDate, String CreateDate) {
+    public Orders(int Id, Areas Area, String OrderCode, String CusTel, String CusName, int UserId, String Status, String DeliveryAdd, String DeliveryDate, String CreateDate) {
         this.Id = Id;
-        this.AreaId = AreaId;
+        this.Area = Area;
         this.OrderCode = OrderCode;
         this.CusTel = CusTel;
         this.CusName = CusName;

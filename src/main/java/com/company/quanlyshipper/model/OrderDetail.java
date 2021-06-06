@@ -37,6 +37,9 @@ public class OrderDetail {
     @Column(name="price")
     
     private double Price;
+    @Column(name="sum_rice")
+    
+    private double SumPrice;
 
     public void setId(int Id) {
         this.Id = Id;
@@ -77,16 +80,26 @@ public class OrderDetail {
     public void setOrderId(int OrderId) {
         this.OrderId = OrderId;
     }
-    
-    public OrderDetail(){}
 
-    public OrderDetail(int Id, int OrderId, String Name, int Qty, double Price) {
+    public double getSumPrice() {
+        return SumPrice;
+    }
+
+    public void setSumPrice(double SumPrice) {
+        this.SumPrice = SumPrice;
+    }
+
+    public OrderDetail(int Id, int OrderId, String Name, int Qty, double Price, double SumPrice) {
         this.Id = Id;
         this.OrderId = OrderId;
         this.Name = Name;
         this.Qty = Qty;
         this.Price = Price;
+        this.SumPrice = SumPrice;
     }
+    
+    
+    public OrderDetail(){}
 
     
 }

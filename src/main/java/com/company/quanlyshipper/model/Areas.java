@@ -30,6 +30,9 @@ public class Areas {
     @Column(name="area_name",columnDefinition = "nvarchar(50)")
     private String AreaName;
 
+    @Column(name="area_code",columnDefinition = "nvarchar(50)")
+    private String AreaCode;
+    
     public int getId() {
         return Id;
     }
@@ -45,11 +48,21 @@ public class Areas {
     public String getAreaName() {
         return AreaName;
     }
-    public Areas(int Id, String AreaName) {
+
+    public String getAreaCode() {
+        return AreaCode;
+    }
+
+    public void setAreaCode(String AreaCode) {
+        this.AreaCode = AreaCode;
+    }
+
+    public Areas(int Id, String AreaName, String AreaCode) {
         this.Id = Id;
         this.AreaName = AreaName;
+        this.AreaCode = AreaCode;
     }
-    
+
     public Areas(){}
     
     @Override
