@@ -123,6 +123,8 @@ public class Chinhsuattnv implements Initializable {
             user.setEmail(emailTxt.getText());
             user.setType(typeCbb.getValue().toString());
             user.setArea(areaCbb.getValue());
+            user.setUserName(codeTxt.getText());
+            user.setPassword("1");
         
             saveHandler.accept(user);
             

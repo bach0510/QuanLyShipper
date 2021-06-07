@@ -15,10 +15,13 @@
       <StackPane prefHeight="150.0" prefWidth="200.0" />
       <Pane opacity="0.71" prefHeight="41.0" prefWidth="989.0" style="-fx-background-color: #FF99CC;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="946.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="946.0" layoutY="3.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/logout.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </children>
       </Pane>
