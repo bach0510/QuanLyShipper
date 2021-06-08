@@ -82,13 +82,21 @@ public class Tracuumavandon implements Initializable {
     @FXML
     private TextField deliveryAddTxt;
     
-    @Autowired
-    private OrderService service;
+    @FXML
+    private TextField orderStatusTxt;
 
     @FXML
-    void search(MouseEvent event) {
+    private TextField areaTxt;
 
-    }
+    @FXML
+    private TextField sumPriceTxt;
+    
+    @FXML
+    private double orderSumPrice;
+    
+    @Autowired
+    private OrderService service;
+    
 
     @FXML
     void searchOrderInfo() {
@@ -102,16 +110,20 @@ public class Tracuumavandon implements Initializable {
         deliveryAddTxt.setText(order.getDeliveryAdd()); 
 
         deliveryDatepicker.setValue(order.getDeliveryDate());
-        areaCbb.setValue(order.getArea());
-        orderStatusCbb.setValue(order.getStatus().toString());
+        areaTxt.setText(order.getArea().getAreaCode() + "-" + order.getArea().getAreaName());
+        orderStatusTxt.setText(order.getStatus().toString());
 
         shipperCodeTxt.setText(order.getUser().getCode());
         shipperNameTxt.setText(order.getUser().getFullName());
         shipperTelTxt.setText(order.getUser().getTel());
         shipperEmailTxt.setText(order.getUser().getEmail());
         
+        orderSumPrice = 0;
+        orderDetailList.forEach(e ->{
+            orderSumPrice = orderSumPrice + e.getSumPrice();
+        });
         
-        
+        sumPriceTxt.setText(String.valueOf(orderSumPrice));
     }
     
     @Override
