@@ -5,6 +5,7 @@
  */
 package com.company.quanlyshipper.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,10 +53,10 @@ public class Orders {
     private String DeliveryAdd;
     @Column(name="delivery_date")
     
-    private String DeliveryDate; // ngay giao
+    private LocalDate DeliveryDate; // ngay giao
     
     @Column(name="create_date")
-    private String CreateDate; // ngay giao
+    private LocalDate CreateDate; // ngay giao
 
     public int getId() {
         return Id;
@@ -85,11 +86,11 @@ public class Orders {
         return Status;
     }
 
-    public String getDeliveryDate() {
+    public LocalDate getDeliveryDate() {
         return DeliveryDate;
     }
 
-    public String getCreateDate() {
+    public LocalDate getCreateDate() {
         return CreateDate;
     }
 
@@ -121,11 +122,11 @@ public class Orders {
         this.Status = Status;
     }
 
-    public void setDeliveryDate(String DeliveryDate) {
+    public void setDeliveryDate(LocalDate DeliveryDate) {
         this.DeliveryDate = DeliveryDate;
     }
 
-    public void setCreateDate(String CreateDate) {
+    public void setCreateDate(LocalDate CreateDate) {
         this.CreateDate = CreateDate;
     }
 
@@ -140,7 +141,7 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(int Id, Areas Area, String OrderCode, String CusTel, String CusName, int UserId, String Status, String DeliveryAdd, String DeliveryDate, String CreateDate) {
+    public Orders(int Id, Areas Area, String OrderCode, String CusTel, String CusName, int UserId, String Status, String DeliveryAdd, LocalDate DeliveryDate, LocalDate CreateDate) {
         this.Id = Id;
         this.Area = Area;
         this.OrderCode = OrderCode;

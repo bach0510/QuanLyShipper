@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
@@ -112,7 +113,7 @@ public class Chinhsuadonhang implements Initializable {
 
     private SimpleDateFormat dateFormat;
     
-    private Date currentDate;
+    private LocalDate currentDate;
     
     @FXML
     void cancel() {
@@ -122,15 +123,18 @@ public class Chinhsuadonhang implements Initializable {
     @FXML
     private void save() {
         try{
-            currentDate = new Date();
-            dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");            
-            SimpleDateFormat dateFormat2 = new SimpleDateFormat("ddMMyy");
+//            ZoneId defaultZoneId = ZoneId.systemDefault();
+//            currentDate = new Date().toInstant().atZone(defaultZoneId).toLocalDate();
+            currentDate = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyy");
+//            dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");            
+//            SimpleDateFormat dateFormat2 = new SimpleDateFormat("ddMMyy");
 
             order.setCusName(cusNameTxt.getText());
             order.setCusTel(cusTelTxt.getText());
             order.setDeliveryAdd(deliveryAddTxt.getText());
-            order.setDeliveryDate(((TextField)deliveryDatepicker.getEditor()).getText());
-            order.setCreateDate(dateFormat.format(currentDate));
+            order.setDeliveryDate(deliveryDatepicker.getValue());
+            order.setCreateDate(currentDate);
             order.setStatus(orderStatusCbb.getValue().toString());
             order.setArea(areaCbb.getValue());
             
@@ -139,7 +143,7 @@ public class Chinhsuadonhang implements Initializable {
             String orderCode = "HN." 
                     + areaCbb.getValue().getAreaCode() + "."
                     + order.getId() +"."
-                    + dateFormat2.format(currentDate);
+                    + currentDate.format(formatter);
             order.setOrderCode(orderCode);
             saveHandler.accept(order);
             
@@ -207,7 +211,8 @@ public class Chinhsuadonhang implements Initializable {
             cusNameTxt.setText(order.getCusName());     
             cusTelTxt.setText(order.getCusTel()); 
             deliveryAddTxt.setText(order.getDeliveryAdd()); 
-            ((TextField)deliveryDatepicker.getEditor()).setText(order.getDeliveryDate()); 
+            //((TextField)deliveryDatepicker.getEditor()).setText(order.getDeliveryDate()); 
+            deliveryDatepicker.setValue(order.getDeliveryDate());
             areaCbb.setValue(order.getArea());
             orderStatusCbb.setValue(order.getStatus().toString());
         }
