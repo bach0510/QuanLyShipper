@@ -16,5 +16,8 @@ import org.springframework.data.repository.NoRepositoryBean;
  */
 @NoRepositoryBean
 public interface BaseRepository<E,ID> extends JpaRepository<E,ID>{
-    List<E> findByQuery(String jpql,Map<String,Object> params);
+    List<E> findByQuery(String jpql,Map<String,Object> params);    
+    
+    E findObjByQuery(String jpql,Map<String,Object> params);
+
 }

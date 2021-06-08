@@ -103,7 +103,7 @@ public class Quanlydonhang implements Initializable {
     
      @FXML 
     void addOrder() {
-        Chinhsuadonhang.addNew(this::save,areaService::getAllArea);
+        Chinhsuadonhang.addNew(this::save,areaService::getAllArea,userService::getAllShipper);
     }
     
     private void save(Orders order){
@@ -179,7 +179,7 @@ public class Quanlydonhang implements Initializable {
                 Orders order = orderTable.getSelectionModel().getSelectedItem();
                 this.order = order;
                 if (order != null){
-                    Chinhsuadonhang.editOrder(order, this::save,areaService::getAllArea);
+                    Chinhsuadonhang.editOrder(order, this::save,areaService::getAllArea,userService::getAllShipper);
                 }
             }
             if (e.getClickCount() >= 1)

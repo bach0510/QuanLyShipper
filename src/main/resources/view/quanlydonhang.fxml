@@ -51,7 +51,7 @@
                   <TableColumn fx:id="sumPrice" prefWidth="194.0" text="Thành tiền" />
               </columns>
             </TableView>
-            <Button fx:id="addOrderBtn" layoutX="448.0" layoutY="260.0" mnemonicParsing="false" onAction="#addOrder" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Thêm đơnn hàng ">
+            <Button fx:id="addOrderBtn" layoutX="448.0" layoutY="260.0" mnemonicParsing="false" onAction="#addOrder" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Thêm đơn hàng ">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

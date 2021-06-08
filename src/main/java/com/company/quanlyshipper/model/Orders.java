@@ -41,9 +41,9 @@ public class Orders {
     
     private String CusName;
     
-    @Column(name="user_id")
+    @ManyToOne
+    private Users User;
     
-    private int UserId;
     @Column(name="status",columnDefinition = "nvarchar(MAX)")
     
     private String Status;
@@ -78,8 +78,8 @@ public class Orders {
         return CusName;
     }
 
-    public int getUserId() {
-        return UserId;
+    public Users getUser() {
+        return User;
     }
 
     public String getStatus() {
@@ -114,8 +114,8 @@ public class Orders {
         this.CusName = CusName;
     }
 
-    public void setUserId(int UserId) {
-        this.UserId = UserId;
+    public void setUser(Users User) {
+        this.User = User;
     }
 
     public void setStatus(String Status) {
@@ -141,13 +141,13 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(int Id, Areas Area, String OrderCode, String CusTel, String CusName, int UserId, String Status, String DeliveryAdd, LocalDate DeliveryDate, LocalDate CreateDate) {
+    public Orders(int Id, Areas Area, String OrderCode, String CusTel, String CusName, Users User, String Status, String DeliveryAdd, LocalDate DeliveryDate, LocalDate CreateDate) {
         this.Id = Id;
         this.Area = Area;
         this.OrderCode = OrderCode;
         this.CusTel = CusTel;
         this.CusName = CusName;
-        this.UserId = UserId;
+        this.User = User;
         this.Status = Status;
         this.DeliveryAdd = DeliveryAdd;
         this.DeliveryDate = DeliveryDate;

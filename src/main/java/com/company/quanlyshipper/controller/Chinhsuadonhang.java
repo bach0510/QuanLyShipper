@@ -105,6 +105,9 @@ public class Chinhsuadonhang implements Initializable {
     private ComboBox<Areas> areaCbb;
     
     @FXML
+    private ComboBox<Users> userCbb;
+    
+    @FXML
     private TextField deliveryAddTxt;
 
     
@@ -114,6 +117,8 @@ public class Chinhsuadonhang implements Initializable {
     private SimpleDateFormat dateFormat;
     
     private LocalDate currentDate;
+    
+    private List<Users> shipperList;
     
     @FXML
     void cancel() {
@@ -137,6 +142,7 @@ public class Chinhsuadonhang implements Initializable {
             order.setCreateDate(currentDate);
             order.setStatus(orderStatusCbb.getValue().toString());
             order.setArea(areaCbb.getValue());
+            order.setUser(userCbb.getValue());
             
             saveHandler.accept(order);
             
@@ -152,6 +158,8 @@ public class Chinhsuadonhang implements Initializable {
             e.printStackTrace();
         }
     }
+    
+
     /**
      * Initializes the controller class.
      */
@@ -160,9 +168,30 @@ public class Chinhsuadonhang implements Initializable {
         ObservableList<String> listCbb = FXCollections.observableArrayList("Mới tạo","Đang giao","Đã giao","Hoàn trả");
         orderStatusCbb.getItems().clear();
         orderStatusCbb.setItems(listCbb);
+        
+        areaCbb.setOnAction(e -> {
+            Areas area = areaCbb.getSelectionModel().getSelectedItem();
+            userCbb.getItems().clear();
+            shipperNameTxt.clear();
+            shipperTelTxt.clear();
+            shipperEmailTxt.clear();
+            for (Users u : this.shipperList){
+                if (u.getArea().getId() == area.getId()){
+                    userCbb.getItems().add(u);
+                }
+            }
+        });
+        
+        userCbb.setOnAction(e -> {
+            Users user = userCbb.getSelectionModel().getSelectedItem();
+            shipperNameTxt.setText(user.getFullName());
+            shipperTelTxt.setText(user.getTel());
+            shipperEmailTxt.setText(user.getEmail());
+        });
+        
     }    
     
-    public static void editOrder(Orders order , Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList){
+    public static void editOrder(Orders order , Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Users>> userList){
         try{
             Stage stage = new Stage(StageStyle.UNDECORATED);
             FXMLLoader loader = new FXMLLoader(Chinhsuadonhang.class.getClassLoader().getResource("view/chinhsuadonhang.fxml"));
@@ -170,27 +199,24 @@ public class Chinhsuadonhang implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             
             Chinhsuadonhang controller = loader.getController();
-            controller.init(order , saveHandler,areaList);
+            controller.init(order , saveHandler,areaList,userList);
 
             stage.show();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
-    public static void addNew(Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList){
-        editOrder(null,saveHandler,areaList);
+    public static void addNew(Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Users>> userList ){
+        editOrder(null,saveHandler,areaList,userList);
     }
     
-    @FXML
-    void searchShipperInfo(InputMethodEvent event) {
-        
-        
-    }
-    
-    private void init(Orders order , Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList) throws FileNotFoundException, IOException{
+    private void init(Orders order , Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList, Supplier<List<Users>> userList) throws FileNotFoundException, IOException{
         this.order = order;
         areaCbb.getItems().clear();
         areaCbb.getItems().addAll(areaList.get());
+        userCbb.getItems().clear();
+        userCbb.getItems().addAll(userList.get());
+        this.shipperList = userList.get();
         this.saveHandler = saveHandler;
         
         if(order == null){
@@ -202,8 +228,19 @@ public class Chinhsuadonhang implements Initializable {
             area.setAreaCode("TX");
             area.setId(1);
             areaCbb.setValue(area);
+            
             //set value cho combobox trang thai
             orderStatusCbb.setValue("Mới tạo");
+            
+            userCbb.getItems().clear();
+            shipperNameTxt.clear();
+            shipperTelTxt.clear();
+            shipperEmailTxt.clear();
+            for (Users u : this.shipperList){
+                if (u.getArea().getId() == area.getId()){
+                    userCbb.getItems().add(u);
+                }
+            }
         }
         else {
             titleTxt.setText("Chỉnh sửa đơn hàng");
@@ -211,10 +248,15 @@ public class Chinhsuadonhang implements Initializable {
             cusNameTxt.setText(order.getCusName());     
             cusTelTxt.setText(order.getCusTel()); 
             deliveryAddTxt.setText(order.getDeliveryAdd()); 
-            //((TextField)deliveryDatepicker.getEditor()).setText(order.getDeliveryDate()); 
+            
             deliveryDatepicker.setValue(order.getDeliveryDate());
             areaCbb.setValue(order.getArea());
             orderStatusCbb.setValue(order.getStatus().toString());
+            
+            userCbb.setValue(order.getUser());
+            shipperNameTxt.setText(order.getUser().getFullName());
+            shipperTelTxt.setText(order.getUser().getTel());
+            shipperEmailTxt.setText(order.getUser().getEmail());
         }
         
         

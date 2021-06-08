@@ -37,4 +37,16 @@ public class BaseRepositoryImpl<E,ID> extends SimpleJpaRepository<E,ID> implemen
         return query.getResultList();
     }
     
+    @Override
+    public E findObjByQuery(String jpql, Map<String, Object> params) {
+        TypedQuery<E> query = em.createQuery(jpql, getDomainClass());
+        
+        if (params != null ){
+            for(String key : params.keySet()) {
+                query.setParameter(key,params.get(key));
+            }
+        }
+        return query.getSingleResult();
+    }
+    
 }

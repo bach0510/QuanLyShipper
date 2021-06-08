@@ -51,6 +51,14 @@ public class OrderService {
         return orderDetailRepo.findByQuery(sb.toString(), params);
     }
     
+    public Orders searchOrderByCode (String orderCode){
+        StringBuffer sb = new StringBuffer(" select o from Orders o where 1=1");
+        Map<String,Object> params = new HashMap<>();
+        sb.append("and o.OrderCode = :orderCode");
+        params.put("orderCode", orderCode);
+        return orderRepo.findObjByQuery(sb.toString(), params);
+    }
+    
     public void save(Orders order){
         orderRepo.save(order);
     }

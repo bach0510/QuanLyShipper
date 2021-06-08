@@ -27,6 +27,12 @@ public class UserService {
     @Autowired
     private UsersRepo userRepo;
        
+    public List<Users> getAllShipper(){
+        StringBuffer sb = new StringBuffer(" select u from Users u where u.RoleId = 2");
+        Map<String,Object> params = new HashMap<>();
+        return userRepo.findByQuery(sb.toString(), params);
+
+    }
     public List<Users> getAllShipperInfo(String fullname,String cmnd,String tel,String code,String email,String type,Areas area){
 //        List<Users> shippers = userRepo.findShipperByArgument(fullname, cmnd, tel, code, email,type,areaId);
 //        //List<Users> shippers = userRepo.findAll();

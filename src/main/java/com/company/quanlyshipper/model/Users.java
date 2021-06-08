@@ -6,6 +6,7 @@
 package com.company.quanlyshipper.model;
 
 import java.io.FileInputStream;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -164,11 +165,6 @@ public class Users {
     public String getType() {
         return Type;
     }
-
-    @Override
-    public String toString() {
-        return ""+UserName+"";
-    }
     
     @PersistenceConstructor
     public Users(int Id, String UserName, String Password, String FullName, String Email, String Tel, Areas Area, int RoleId) {
@@ -183,6 +179,23 @@ public class Users {
     }
     public Users(){}
 
+     @Override
+    public String toString(){
+        return Code;
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this == o)return true;
+        if(!(o instanceof Users )) return false;
+        Users user = (Users)o;
+        return Id == user.Id;
+    }
+    
+    @Override 
+    public int hashCode() {
+        return Objects.hash(Id);
+    }
     
 
 }
