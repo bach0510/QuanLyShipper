@@ -39,10 +39,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -70,6 +72,9 @@ public class Chinhsuadonhang implements Initializable {
     
     @FXML
     private Button saveBtn;
+    
+    @FXML
+    private TextField orderCodeLabel;
     
     @FXML
     private Orders order;
@@ -236,6 +241,7 @@ public class Chinhsuadonhang implements Initializable {
             shipperNameTxt.clear();
             shipperTelTxt.clear();
             shipperEmailTxt.clear();
+            orderCodeLabel.setVisible(false);
             for (Users u : this.shipperList){
                 if (u.getArea().getId() == area.getId()){
                     userCbb.getItems().add(u);
@@ -257,6 +263,8 @@ public class Chinhsuadonhang implements Initializable {
             shipperNameTxt.setText(order.getUser().getFullName());
             shipperTelTxt.setText(order.getUser().getTel());
             shipperEmailTxt.setText(order.getUser().getEmail());
+            
+            orderCodeLabel.setText(order.getOrderCode());
         }
         
         

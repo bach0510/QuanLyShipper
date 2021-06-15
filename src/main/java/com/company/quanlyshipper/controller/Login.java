@@ -84,7 +84,7 @@ public class Login implements Initializable{
         try{
             user = service.login(userNameTxt.getText(), passwordTxt.getText());
             if (user != null){
-                Main.loadView();
+                Main.loadView(user);
                 userNameTxt.getScene().getWindow().hide();
             }
             else{

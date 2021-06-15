@@ -43,6 +43,22 @@ public class OrderService {
         return orderRepo.findByQuery(sb.toString(), params);
     }
     
+    public List<Orders> getAllAssignedOrder(String status, Users user){
+        StringBuffer sb = new StringBuffer(" select o from Orders o where 1=1");
+        Map<String,Object> params = new HashMap<>();
+        
+        if(user != null){
+            sb.append("and o.User = :user");
+            params.put("user", user);
+        }
+        if(!StringUtils.isEmpty(status)){
+            sb.append(" and o.Status like concat('%',:status,'%')");
+            params.put("status", status);
+        }
+        
+        
+        return orderRepo.findByQuery(sb.toString(), params);
+    }
     public List<OrderDetail> getAllOrderDetail(int orderId){
         StringBuffer sb = new StringBuffer(" select od from OrderDetail od where 1=1");
         Map<String,Object> params = new HashMap<>();

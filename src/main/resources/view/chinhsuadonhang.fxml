@@ -86,6 +86,11 @@
             </Label>
             <TextField fx:id="deliveryAddTxt" layoutX="159.0" layoutY="149.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập địa chỉ cụ thể" />
             <ComboBox fx:id="userCbb" layoutX="160.0" layoutY="184.0" prefHeight="25.0" prefWidth="138.0" promptText="Mã shipper" />
+            <TextField fx:id="orderCodeLabel" alignment="CENTER_RIGHT" editable="false" layoutX="293.0" layoutY="11.0" prefHeight="41.0" prefWidth="274.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </children>

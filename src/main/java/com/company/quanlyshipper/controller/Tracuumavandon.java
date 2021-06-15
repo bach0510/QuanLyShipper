@@ -9,12 +9,17 @@ package com.company.quanlyshipper.controller;
 import com.company.quanlyshipper.model.Areas;
 import com.company.quanlyshipper.model.OrderDetail;
 import com.company.quanlyshipper.model.Orders;
+import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.service.OrderService;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -23,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -101,6 +107,34 @@ public class Tracuumavandon implements Initializable {
     @FXML
     void searchOrderInfo() {
         Orders order = service.searchOrderByCode(orderCodeTxt.getText());
+        orderDetailTable.getItems().clear();
+        List<OrderDetail> orderDetailList = service.getAllOrderDetail(order.getId());
+        orderDetailTable.getItems().addAll(orderDetailList);
+        
+        cusNameTxt.setText(order.getCusName());     
+        cusTelTxt.setText(order.getCusTel()); 
+        deliveryAddTxt.setText(order.getDeliveryAdd()); 
+
+        deliveryDatepicker.setValue(order.getDeliveryDate());
+        areaTxt.setText(order.getArea().getAreaCode() + "-" + order.getArea().getAreaName());
+        orderStatusTxt.setText(order.getStatus().toString());
+
+        shipperCodeTxt.setText(order.getUser().getCode());
+        shipperNameTxt.setText(order.getUser().getFullName());
+        shipperTelTxt.setText(order.getUser().getTel());
+        shipperEmailTxt.setText(order.getUser().getEmail());
+        
+        orderSumPrice = 0;
+        orderDetailList.forEach(e ->{
+            orderSumPrice = orderSumPrice + e.getSumPrice();
+        });
+        
+        sumPriceTxt.setText(String.valueOf(orderSumPrice));
+    }
+    
+    //search khi có thông tin order đc chọn từ màn khác
+    void searchFromOtherView(String orderCode) {
+        Orders order = service.searchOrderByCode(orderCode);
         orderDetailTable.getItems().clear();
         List<OrderDetail> orderDetailList = service.getAllOrderDetail(order.getId());
         orderDetailTable.getItems().addAll(orderDetailList);
