@@ -5,6 +5,7 @@
  */
 package com.company.quanlyshipper.model;
 
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +30,9 @@ public class Areas {
     @Column(name="area_name",columnDefinition = "nvarchar(50)")
     private String AreaName;
 
+    @Column(name="area_code",columnDefinition = "nvarchar(50)")
+    private String AreaCode;
+    
     public int getId() {
         return Id;
     }
@@ -44,10 +48,40 @@ public class Areas {
     public String getAreaName() {
         return AreaName;
     }
-    public Areas(int Id, String AreaName) {
+
+    public String getAreaCode() {
+        return AreaCode;
+    }
+
+    public void setAreaCode(String AreaCode) {
+        this.AreaCode = AreaCode;
+    }
+
+    public Areas(int Id, String AreaName, String AreaCode) {
         this.Id = Id;
         this.AreaName = AreaName;
+        this.AreaCode = AreaCode;
+    }
+
+    public Areas(){}
+    
+    @Override
+    public String toString(){
+        return AreaName;
     }
     
-    public Areas(){}
+    @Override
+    public boolean equals(Object o){
+        if(this == o)return true;
+        if(!(o instanceof Areas )) return false;
+        Areas area = (Areas)o;
+        return Id == area.Id;
+    }
+    
+    @Override 
+    public int hashCode() {
+        return Objects.hash(Id);
+    }
+    
+    
 }

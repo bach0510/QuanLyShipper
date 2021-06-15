@@ -66,7 +66,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Label fx:id="error" layoutX="65.0" layoutY="232.0" prefHeight="17.0" prefWidth="179.0" textFill="RED" />
+            <Label fx:id="error" alignment="CENTER" layoutX="28.0" layoutY="232.0" prefHeight="17.0" prefWidth="258.0" textAlignment="CENTER" textFill="RED" />
          </children>
       </Pane>
    </children>

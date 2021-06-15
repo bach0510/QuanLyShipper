@@ -5,88 +5,156 @@
  */
 package com.company.quanlyshipper.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Data;
 
 /**
  *
  * @author Admin
  */
-//@Data
-//@Entity(name = "Orders")
+@Data
+@Entity(name = "Orders")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int Id ;
-    @Column(name="area_id")
     
-    private int AreaId;
-    @Column(name="user_id")
+    @ManyToOne
+    private Areas Area;
+
+    @Column(name="order_code",columnDefinition = "nvarchar(MAX)")
     
-    private int UserId;
-    @Column(name="status")
+    private String OrderCode;
     
-    private int Status;
+    @Column(name="cus_tel",columnDefinition = "nvarchar(MAX)")
+    
+    private String CusTel;
+    @Column(name="cus_name",columnDefinition = "nvarchar(MAX)")
+    
+    private String CusName;
+    
+    @ManyToOne
+    private Users User;
+    
+    @Column(name="status",columnDefinition = "nvarchar(MAX)")
+    
+    private String Status;
+    
+    @Column(name="delivery_add",columnDefinition = "nvarchar(MAX)")
+    
+    private String DeliveryAdd;
     @Column(name="delivery_date")
     
-    private Date DeliveryDate; // ngay giao
-
-    public Orders(int Id, int AreaId, int UserId, int Status, Date DeliveryDate) {
-        this.Id = Id;
-        this.AreaId = AreaId;
-        this.UserId = UserId;
-        this.Status = Status;
-        this.DeliveryDate = DeliveryDate;
-    }
-
-    public Orders(){}
+    private LocalDate DeliveryDate; // ngay giao
     
-    public void setId(int Id) {
-        this.Id = Id;
-    }
-
-    public void setAreaId(int AreaId) {
-        this.AreaId = AreaId;
-    }
-
-    public void setUserId(int UserId) {
-        this.UserId = UserId;
-    }
-
-    public void setStatus(int Status) {
-        this.Status = Status;
-    }
-
-    public void setDeliveryDate(Date DeliveryDate) {
-        this.DeliveryDate = DeliveryDate;
-    }
-    
+    @Column(name="create_date")
+    private LocalDate CreateDate; // ngay giao
 
     public int getId() {
         return Id;
     }
 
-    public int getAreaId() {
-        return AreaId;
+    public Areas getArea() {
+        return Area;
     }
 
-    public int getUserId() {
-        return UserId;
+    public String getOrderCode() {
+        return OrderCode;
     }
 
-    public int getStatus() {
+    public String getCusTel() {
+        return CusTel;
+    }
+
+    public String getCusName() {
+        return CusName;
+    }
+
+    public Users getUser() {
+        return User;
+    }
+
+    public String getStatus() {
         return Status;
     }
 
-    public Date getDeliveryDate() {
+    public LocalDate getDeliveryDate() {
         return DeliveryDate;
     }
+
+    public LocalDate getCreateDate() {
+        return CreateDate;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    public void setArea(Areas Area) {
+        this.Area = Area;
+    }
+
+    public void setOrderCode(String OrderCode) {
+        this.OrderCode = OrderCode;
+    }
+
+    public void setCusTel(String CusTel) {
+        this.CusTel = CusTel;
+    }
+
+    public void setCusName(String CusName) {
+        this.CusName = CusName;
+    }
+
+    public void setUser(Users User) {
+        this.User = User;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
+
+    public void setDeliveryDate(LocalDate DeliveryDate) {
+        this.DeliveryDate = DeliveryDate;
+    }
+
+    public void setCreateDate(LocalDate CreateDate) {
+        this.CreateDate = CreateDate;
+    }
+
+    public String getDeliveryAdd() {
+        return DeliveryAdd;
+    }
+
+    public void setDeliveryAdd(String DeliveryAdd) {
+        this.DeliveryAdd = DeliveryAdd;
+    }
+
+    public Orders() {
+    }
+
+    public Orders(int Id, Areas Area, String OrderCode, String CusTel, String CusName, Users User, String Status, String DeliveryAdd, LocalDate DeliveryDate, LocalDate CreateDate) {
+        this.Id = Id;
+        this.Area = Area;
+        this.OrderCode = OrderCode;
+        this.CusTel = CusTel;
+        this.CusName = CusName;
+        this.User = User;
+        this.Status = Status;
+        this.DeliveryAdd = DeliveryAdd;
+        this.DeliveryDate = DeliveryDate;
+        this.CreateDate = CreateDate;
+    }
+
     
-    
+
+   
 }

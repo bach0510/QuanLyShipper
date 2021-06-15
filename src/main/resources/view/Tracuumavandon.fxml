@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,21 +20,83 @@
                   <Image url="@../pictures/1.jpg" />
                </image>
             </ImageView>
-            <TextField layoutX="148.0" layoutY="24.0" opacity="0.61" prefHeight="30.0" prefWidth="201.0" promptText="Tra cứu mã vận đơn" style="-fx-background-color: #FF99CC;">
+            <TextField fx:id="orderCodeTxt" layoutX="148.0" layoutY="24.0" opacity="0.61" prefHeight="30.0" prefWidth="201.0" promptText="Tra cứu mã vận đơn" style="-fx-background-color: #FF99CC;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </TextField>
-            <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="363.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="363.0" layoutY="24.0" onMouseClicked="#searchOrderInfo" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/find.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="629.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/logo.png" />
                </image>
             </ImageView>
+            <TableView fx:id="orderDetailTable" layoutX="26.0" layoutY="389.0" prefHeight="169.0" prefWidth="761.0">
+               <columns>
+                  <TableColumn fx:id="orderDetailName" prefWidth="253.0" text="Tên hàng" />
+                  <TableColumn fx:id="qty" prefWidth="90.0" text="Số Lượng " />
+                  <TableColumn fx:id="price" prefWidth="223.0" text="Đơn giá " />
+                  <TableColumn fx:id="sumPrice" prefWidth="194.0" text="Thành tiền" />
+               </columns>
+            </TableView>
+            <Label layoutX="42.0" layoutY="127.0" text="SĐT Người nhận">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cusTelTxt" editable="false" layoutX="169.0" layoutY="124.0" prefHeight="25.0" prefWidth="474.0" promptText="Số điện thoại" />
+            <Label layoutX="44.0" layoutY="87.0" text="Tên người nhận">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cusNameTxt" editable="false" layoutX="169.0" layoutY="85.0" prefHeight="25.0" prefWidth="474.0" promptText="Tên người nhận" />
+            <Label layoutX="44.0" layoutY="198.0" text="Shipper nhận đơn">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="shipperNameTxt" editable="false" layoutX="317.0" layoutY="194.0" prefHeight="25.0" prefWidth="474.0" promptText="Tên Shipper" />
+            <Label layoutX="44.0" layoutY="269.0" text="Ngày giao ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="shipperTelTxt" editable="false" layoutX="169.0" layoutY="230.0" prefHeight="25.0" prefWidth="138.0" promptText="Số điện thoại shipper" />
+            <TextField fx:id="shipperEmailTxt" editable="false" layoutX="316.0" layoutY="230.0" prefHeight="25.0" prefWidth="474.0" promptText="Email Shipper" />
+            <DatePicker fx:id="deliveryDatepicker" editable="false" layoutX="171.0" layoutY="267.0" prefHeight="25.0" prefWidth="618.0" promptText="Ngày giao" />
+            <Label layoutX="43.0" layoutY="309.0" text="Trạng thái đơn">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="349.0" text="Khu vực giao">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="shipperCodeTxt" editable="false" layoutX="169.0" layoutY="194.0" prefHeight="25.0" prefWidth="138.0" promptText="Mã Shipper" />
+            <Label layoutX="45.0" layoutY="162.0" text="Địa chỉ cụ thể">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="deliveryAddTxt" editable="false" layoutX="169.0" layoutY="159.0" prefHeight="25.0" prefWidth="624.0" promptText="Địa chỉ cụ thể" />
+            <TextField fx:id="orderStatusTxt" editable="false" layoutX="171.0" layoutY="307.0" prefHeight="25.0" prefWidth="618.0" promptText="Trạng thái đơn" />
+            <TextField fx:id="areaTxt" editable="false" layoutX="171.0" layoutY="347.0" prefHeight="25.0" prefWidth="618.0" promptText="Vị trí / Khu vực " />
+            <Label layoutX="522.0" layoutY="573.0" text="Tổng tiền">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="sumPriceTxt" editable="false" layoutX="603.0" layoutY="569.0" prefHeight="25.0" prefWidth="183.0" promptText="Tổng tiền đơn hàng" />
          </children>
       </AnchorPane>
    </children>

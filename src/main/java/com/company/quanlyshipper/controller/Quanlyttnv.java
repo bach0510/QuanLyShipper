@@ -6,7 +6,10 @@ package com.company.quanlyshipper.controller;
  * and open the template in the editor.
  */
 
+import com.company.quanlyshipper.model.Areas;
 import com.company.quanlyshipper.model.Users;
+import com.company.quanlyshipper.repo.AreasRepo;
+import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.LoginService;
 import com.company.quanlyshipper.service.UserService;
 import java.net.URL;
@@ -37,6 +40,9 @@ public class Quanlyttnv implements Initializable {
     @Autowired
     private UserService service;
     
+    @Autowired
+    private AreaService areaService;
+    
     @FXML
     private TableView<Users> tableView;
     
@@ -45,6 +51,8 @@ public class Quanlyttnv implements Initializable {
     
      @FXML
     private ComboBox typeCbb;
+    @FXML
+    private ComboBox<Areas> areaCbb;
     
     @FXML
     private Button deleteBtn;
@@ -101,6 +109,8 @@ public class Quanlyttnv implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        areaCbb.getItems().clear();
+        areaCbb.getItems().addAll(areaService.getAllArea());
         ObservableList<String> listCbb = FXCollections.observableArrayList("Tất cả","Ship lấy","Ship giao");
         typeCbb.getItems().clear();
         typeCbb.setItems(listCbb);
@@ -112,6 +122,7 @@ public class Quanlyttnv implements Initializable {
         cmnd.setCellValueFactory(new PropertyValueFactory<>("cmnd"));
         cmnd.setCellValueFactory(new PropertyValueFactory<>("cmnd"));
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
+        area.setCellValueFactory(new PropertyValueFactory<>("area"));
         search();
         
         tableView.setOnMouseClicked(e -> {
@@ -120,7 +131,7 @@ public class Quanlyttnv implements Initializable {
                 Users user = tableView.getSelectionModel().getSelectedItem();
                 this.user = user;
                 if (user != null){
-                    Chinhsuattnv.editUser(user, this::save);
+                    Chinhsuattnv.editUser(user, this::save,areaService::getAllArea);
                 }
             }
             if (e.getClickCount() >= 1)
@@ -135,7 +146,14 @@ public class Quanlyttnv implements Initializable {
     void search(){
         tableView.getItems().clear();
         String typeValue = typeCbb.getValue().toString() == "Tất cả" ?  "" : typeCbb.getValue().toString();
-        List<Users> userList = service.getAllShipperInfo(fullNameTxt.getText().toString(), cmndTxt.getText().toString(), telTxt.getText().toString(), codeTxt.getText().toString(), emailTxt.getText().toString(),typeValue);
+        List<Users> userList = service.getAllShipperInfo(
+                fullNameTxt.getText().toString(), 
+                cmndTxt.getText().toString(), 
+                telTxt.getText().toString(), 
+                codeTxt.getText().toString(), 
+                emailTxt.getText().toString(),
+                typeValue,
+                areaCbb.getValue());
         tableView.getItems().addAll(userList);
         this.user = null;
     }
@@ -148,12 +166,14 @@ public class Quanlyttnv implements Initializable {
         emailTxt.setText("");
         telTxt.setText("");
         typeCbb.setValue("Tất cả");
+        areaCbb.getItems().clear();
+        areaCbb.getItems().addAll(areaService.getAllArea());
         search();
     }
     
     @FXML
     void addNewUser(){
-        Chinhsuattnv.addNew(this::save);
+        Chinhsuattnv.addNew(this::save,areaService::getAllArea);
     }
     
     private void save(Users user){

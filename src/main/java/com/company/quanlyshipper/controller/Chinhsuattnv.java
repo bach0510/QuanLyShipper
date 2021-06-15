@@ -6,7 +6,10 @@ package com.company.quanlyshipper.controller;
  * and open the template in the editor.
  */
 
+import com.company.quanlyshipper.model.Areas;
 import com.company.quanlyshipper.model.Users;
+import com.company.quanlyshipper.service.AreaService;
+import com.company.quanlyshipper.service.UserService;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,8 +18,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,6 +38,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -49,8 +55,18 @@ public class Chinhsuattnv implements Initializable {
     private File file;
     private FileInputStream fs;    
 
-     @FXML
+    @Autowired
+    private UserService service;
+    
+    @Autowired
+    private AreaService areaService;
+    
+    @FXML
     private ComboBox typeCbb;
+    
+    @FXML
+    private  ComboBox<Areas> areaCbb;
+    
     @FXML
     private Button browse;
     
@@ -90,6 +106,7 @@ public class Chinhsuattnv implements Initializable {
     @FXML
     private Consumer<Users> saveHandler;
 
+    private Supplier<List<Areas>> areaList;
     @FXML
     void cancel() {
         cancelBtn.getScene().getWindow().hide();
@@ -98,12 +115,16 @@ public class Chinhsuattnv implements Initializable {
     @FXML
     private void save() {
         try{
+//            Users user = service.getShipperInfoByCode(code)
             user.setFullName(fullNameTxt.getText());            
             user.setCode(codeTxt.getText().toUpperCase());
             user.setTel(telTxt.getText());
             user.setCmnd(cmndTxt.getText());
             user.setEmail(emailTxt.getText());
             user.setType(typeCbb.getValue().toString());
+            user.setArea(areaCbb.getValue());
+            user.setUserName(codeTxt.getText());
+            user.setPassword("1");
         
             saveHandler.accept(user);
             
@@ -122,7 +143,8 @@ public class Chinhsuattnv implements Initializable {
         typeCbb.setItems(listCbb);
     }    
     
-    public static void editUser(Users user , Consumer<Users> saveHandler){
+    public static void editUser(Users user , Consumer<Users> saveHandler,Supplier<List<Areas>> areaList){
+        
         try{
             Stage stage = new Stage(StageStyle.UNDECORATED);
             FXMLLoader loader = new FXMLLoader(Chinhsuattnv.class.getClassLoader().getResource("view/chinhsuattnv.fxml"));
@@ -130,20 +152,22 @@ public class Chinhsuattnv implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             
             Chinhsuattnv controller = loader.getController();
-            controller.init(user , saveHandler);
+            controller.init(user , saveHandler,areaList);
 
             stage.show();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
-    public static void addNew(Consumer<Users> saveHandler){
-        editUser(null,saveHandler);
+    public static void addNew(Consumer<Users> saveHandler,Supplier<List<Areas>> areaList){
+        editUser(null,saveHandler,areaList);
     }
     
-    private void init(Users user , Consumer<Users> saveHandler) throws FileNotFoundException, IOException{
+    private void init(Users user , Consumer<Users> saveHandler,Supplier<List<Areas>> areaList) throws FileNotFoundException, IOException{
         this.user = user;
         this.saveHandler = saveHandler;
+        areaCbb.getItems().clear();
+        areaCbb.getItems().addAll(areaList.get());
         if(user == null){
             titleTxt.setText("Thêm mới nhân viên");
             this.user = new Users();
@@ -157,9 +181,10 @@ public class Chinhsuattnv implements Initializable {
             fullNameTxt.setText(user.getFullName());     
             codeTxt.setText(user.getCode()); 
             telTxt.setText(user.getTel()); 
-            cmndTxt.setText(user.getCmnd()); 
+            cmndTxt.setText(user.getCmnd());  
             emailTxt.setText(user.getEmail()); 
             typeCbb.setValue(user.getType());
+            areaCbb.setValue(user.getArea());
             if(user.getImage() != null){
                 OutputStream os = new FileOutputStream(new File("photo.jpg"));
                 os.write(user.getImage());

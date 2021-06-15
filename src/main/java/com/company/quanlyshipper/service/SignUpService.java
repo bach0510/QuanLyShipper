@@ -24,9 +24,6 @@ public class SignUpService {
     
     public List<Role> getAllRole(){
         List<Role> roles = roleRepo.findAll();
-//        roles.forEach(c->{
-//            System.out.print(c);
-//        });
         return roles;
     }
        

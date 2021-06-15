@@ -9,8 +9,10 @@ package com.company.quanlyshipper.controller;
 import com.company.quanlyshipper.AppException;
 import static com.company.quanlyshipper.MsSqlConnection.ConnectDb;
 import com.company.quanlyshipper.QuanlyshipperApplication;
+import com.company.quanlyshipper.model.Areas;
 import com.company.quanlyshipper.model.Type;
 import com.company.quanlyshipper.model.Users;
+import com.company.quanlyshipper.repo.AreasRepo;
 import com.company.quanlyshipper.repo.TypeRepo;
 import com.company.quanlyshipper.repo.UsersRepo;
 import com.company.quanlyshipper.service.LoginService;
@@ -45,12 +47,16 @@ public class Login implements Initializable{
 
     private JdbcTemplate jdbcTemplate;
     
-    private static Users user; 
+    private static Users user;     
+    
     @Autowired
     private LoginService service;
     
     @Autowired
     private UsersRepo userRepo;
+    
+    @Autowired
+    private AreasRepo areaRepo;
     
     @Autowired
     private TypeRepo typeRepo;
@@ -78,7 +84,7 @@ public class Login implements Initializable{
         try{
             user = service.login(userNameTxt.getText(), passwordTxt.getText());
             if (user != null){
-                Main.loadView();
+                Main.loadView(user);
                 userNameTxt.getScene().getWindow().hide();
             }
             else{
@@ -124,7 +130,7 @@ public class Login implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        autoCreateLoginData();
+        //autoCreateLoginData();
     }
     
     void autoCreateLoginData() {
@@ -139,6 +145,30 @@ public class Login implements Initializable{
         typeRepo.save(type);
         type.setTypeName("Ship giao");
         typeRepo.save(type);
+        
+        Areas area = new Areas();
+        area.setAreaName("Thanh Xuân");
+        area.setAreaCode("TX");
+        areaRepo.save(area);
+        Areas area2 = new Areas();
+        area2.setAreaName("Hoàng Mai");
+        area2.setAreaCode("HM");
+        areaRepo.save(area2);
+        Areas area3 = new Areas();
+        area3.setAreaName("Ba Đình");
+        area3.setAreaCode("BĐ");
+        areaRepo.save(area3);
+        Areas area4 = new Areas();
+        area4.setAreaName("Hà Đông");
+        area4.setAreaCode("HĐ");
+        areaRepo.save(area4);
+        Areas area5 = new Areas();
+        area5.setAreaName("Hai Bà Trưng");
+        area.setAreaCode("HBT");
+        areaRepo.save(area5);
+        
+        
+        
         
     }
     

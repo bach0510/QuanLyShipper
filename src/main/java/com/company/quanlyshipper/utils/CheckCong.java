@@ -9,18 +9,13 @@ package com.company.quanlyshipper.utils;
  *
  * @author Admin
  */
-public enum Menu {
-    home("home"),
-    tracuumavandon("tracuumavandon"),    
-    chamcong("chamcong"),    
-    quanlydonhang("quanlydonhang"),
-    quanlyttnv("quanlyttnv"),    
-    tinhluong("tinhluong"),
-    donhangduocgiao("donhangduocgiao");
+public enum CheckCong {
+    checkin("checkin"),
+    checkout("checkout");
     
     private String title;
 
-    Menu(String title){
+    CheckCong(String title){
         this.title = title;
     }
     

@@ -8,6 +8,7 @@ package com.company.quanlyshipper.controller;
 import com.company.quanlyshipper.QuanlyshipperApplication;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.utils.Menu;
+import java.io.FileNotFoundException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
@@ -37,7 +40,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 public class Main implements Initializable {
     
     @FXML
-    private StackPane ContentView;
+    public StackPane ContentView;
     @FXML
     private VBox MenuBar;
 
@@ -47,16 +50,35 @@ public class Main implements Initializable {
     @FXML
     private Label UserName;
     
+    @FXML
+    private Text currentNameText;
+    
+    @FXML
+    private Button donHangShipperTab;
+    
+    @FXML
+    private Button chamCongTab;
+    
+    @FXML
+    private Button tinhLuongTab;
+    
+    @FXML
+    private Button donHangQuanlyTab; 
+    
+    @FXML
+    private Button nhanVienTab;
+    
+    @FXML
+    private Button baoCaoTab;
+    
     private static int UserId;
+    
+    public static Users currentUser;
 
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // mac dinh hide menu
-//        MenuBar.setTranslateX(-196);       
-//        ContentView.setTranslateX(-196);
-
-        //UserName.setText(User.getUserName());
         try{
             ContentView.getChildren().clear();
 
@@ -141,15 +163,20 @@ public class Main implements Initializable {
     @FXML
     void logOut(){
         MenuBtn.getScene().getWindow().hide();
+        this.currentUser = new Users();
         Login.loadView();
     }
     
-    public static void loadView() {
+    public static void loadView(Users user) {
         try {
             Stage stage = new Stage();
-            Parent view = FXMLLoader.load(QuanlyshipperApplication.class.getClassLoader().getResource("view/Main.fxml"));
-            stage.setScene(new Scene(view));
+//            Parent view = FXMLLoader.load(QuanlyshipperApplication.class.getClassLoader().getResource("view/Main.fxml"));
+//            stage.setScene(new Scene(view));
+            FXMLLoader loader = new FXMLLoader(Chinhsuadonhang.class.getClassLoader().getResource("view/Main.fxml"));
+            stage.setScene(new Scene(loader.load()));
 //            stage.initStyle(StageStyle.UTILITY);
+            Main controller = loader.getController();
+            controller.init(user);
             
             Image img = new Image("pictures/logo.png"); // set logo cho man hinh chinh
             stage.getIcons().add(img);
@@ -158,6 +185,36 @@ public class Main implements Initializable {
         }
         catch(IOException e){
             e.printStackTrace();
+        }
+    }
+    
+    private void init(Users user) throws FileNotFoundException, IOException{
+        this.currentUser = user;
+        currentNameText.setText(currentUser.getFullName());
+        phanQuyenChucNang();
+        
+    }
+    
+    private void phanQuyenChucNang(){
+        if (currentUser.getRoleId() == 1 ){
+            donHangShipperTab.setVisible(false);
+            donHangShipperTab.setManaged(false);
+        }
+        else if (currentUser.getRoleId() == 2){
+            donHangShipperTab.setVisible(true);
+            donHangShipperTab.setManaged(true);
+            
+            // hide các chức năng của admin đối với shipper
+            donHangQuanlyTab.setVisible(false);
+            donHangQuanlyTab.setManaged(false);
+            nhanVienTab.setVisible(false);
+            nhanVienTab.setManaged(false);
+            tinhLuongTab.setVisible(false);
+            tinhLuongTab.setManaged(false);
+            baoCaoTab.setVisible(false);
+            baoCaoTab.setManaged(false);
+            chamCongTab.setVisible(false);
+            chamCongTab.setManaged(false);
         }
     }
   
