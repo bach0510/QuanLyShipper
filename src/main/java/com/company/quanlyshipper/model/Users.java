@@ -18,9 +18,6 @@ import lombok.Data;
 import org.springframework.data.annotation.PersistenceConstructor;
 //import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "user")
-
 @Entity(name = "Users")
 @Data
 public class Users {
@@ -29,8 +26,6 @@ public class Users {
     @Column(name="id")
      private int Id ;
 
-    
-    
     //@Id
     @Column(name="user_name",columnDefinition = "nvarchar(MAX)")
     
@@ -63,6 +58,10 @@ public class Users {
     @Column(name="cmnd",columnDefinition = "nvarchar(MAX)")
     
     private String Cmnd;
+    
+    @Column(name="register_no",columnDefinition = "nvarchar(MAX)")
+    
+    private String RegisterNo;
 
 //    @Column(name="area_id")
     @ManyToOne

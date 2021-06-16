@@ -29,6 +29,9 @@ public class Orders {
     
     @ManyToOne
     private Areas Area;
+    
+    @ManyToOne
+    private Customer Customer;
 
     @Column(name="order_code",columnDefinition = "nvarchar(MAX)")
     
@@ -51,9 +54,9 @@ public class Orders {
     @Column(name="delivery_add",columnDefinition = "nvarchar(MAX)")
     
     private String DeliveryAdd;
-    @Column(name="delivery_date")
+    @Column(name="receive_date")
     
-    private LocalDate DeliveryDate; // ngay giao
+    private LocalDate ReceiveDate; // ngay giao
     
     @Column(name="create_date")
     private LocalDate CreateDate; // ngay giao
@@ -86,8 +89,8 @@ public class Orders {
         return Status;
     }
 
-    public LocalDate getDeliveryDate() {
-        return DeliveryDate;
+    public LocalDate getReceiveDate() {
+        return ReceiveDate;
     }
 
     public LocalDate getCreateDate() {
@@ -122,8 +125,8 @@ public class Orders {
         this.Status = Status;
     }
 
-    public void setDeliveryDate(LocalDate DeliveryDate) {
-        this.DeliveryDate = DeliveryDate;
+    public void setReceiveDate(LocalDate ReceiveDate) {
+        this.ReceiveDate = ReceiveDate;
     }
 
     public void setCreateDate(LocalDate CreateDate) {
@@ -138,21 +141,33 @@ public class Orders {
         this.DeliveryAdd = DeliveryAdd;
     }
 
+    public Customer getCustomer() {
+        return Customer;
+    }
+
+    public void setCustomer(Customer Customer) {
+        this.Customer = Customer;
+    }
+
+    
     public Orders() {
     }
 
-    public Orders(int Id, Areas Area, String OrderCode, String CusTel, String CusName, Users User, String Status, String DeliveryAdd, LocalDate DeliveryDate, LocalDate CreateDate) {
+    public Orders(int Id, Areas Area, Customer Customer, String OrderCode, String CusTel, String CusName, Users User, String Status, String DeliveryAdd, LocalDate ReceiveDate, LocalDate CreateDate) {
         this.Id = Id;
         this.Area = Area;
+        this.Customer = Customer;
         this.OrderCode = OrderCode;
         this.CusTel = CusTel;
         this.CusName = CusName;
         this.User = User;
         this.Status = Status;
         this.DeliveryAdd = DeliveryAdd;
-        this.DeliveryDate = DeliveryDate;
+        this.ReceiveDate = ReceiveDate;
         this.CreateDate = CreateDate;
     }
+
+    
 
     
 
