@@ -140,10 +140,8 @@ public class Chinhsuadonhang implements Initializable {
 //            dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");            
 //            SimpleDateFormat dateFormat2 = new SimpleDateFormat("ddMMyy");
 
-            order.setCusName(cusNameTxt.getText());
-            order.setCusTel(cusTelTxt.getText());
             order.setDeliveryAdd(deliveryAddTxt.getText());
-            order.setDeliveryDate(deliveryDatepicker.getValue());
+            order.setReceiveDate(deliveryDatepicker.getValue());
             order.setCreateDate(currentDate);
             order.setStatus(orderStatusCbb.getValue().toString());
             order.setArea(areaCbb.getValue());
@@ -251,11 +249,9 @@ public class Chinhsuadonhang implements Initializable {
         else {
             titleTxt.setText("Chỉnh sửa đơn hàng");
             this.order = order;
-            cusNameTxt.setText(order.getCusName());     
-            cusTelTxt.setText(order.getCusTel()); 
             deliveryAddTxt.setText(order.getDeliveryAdd()); 
             
-            deliveryDatepicker.setValue(order.getDeliveryDate());
+            deliveryDatepicker.setValue(order.getReceiveDate());
             areaCbb.setValue(order.getArea());
             orderStatusCbb.setValue(order.getStatus().toString());
             

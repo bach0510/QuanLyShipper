@@ -37,12 +37,9 @@ public class Orders {
     
     private String OrderCode;
     
-    @Column(name="cus_tel",columnDefinition = "nvarchar(MAX)")
+    @Column(name="order_name",columnDefinition = "nvarchar(MAX)")
     
-    private String CusTel;
-    @Column(name="cus_name",columnDefinition = "nvarchar(MAX)")
-    
-    private String CusName;
+    private String OrderName;
     
     @ManyToOne
     private Users User;
@@ -51,15 +48,25 @@ public class Orders {
     
     private String Status;
     
+    @Column(name="err_status",columnDefinition = "nvarchar(MAX)")
+    
+    private String ErrStatus;
+    
     @Column(name="delivery_add",columnDefinition = "nvarchar(MAX)")
     
     private String DeliveryAdd;
     @Column(name="receive_date")
     
-    private LocalDate ReceiveDate; // ngay giao
+    private LocalDate ReceiveDate; 
     
     @Column(name="create_date")
-    private LocalDate CreateDate; // ngay giao
+    private LocalDate CreateDate; 
+    
+    @Column(name="price")
+    private double Price;
+    
+    @Column(name="weight")
+    private double Weight;
 
     public int getId() {
         return Id;
@@ -71,14 +78,6 @@ public class Orders {
 
     public String getOrderCode() {
         return OrderCode;
-    }
-
-    public String getCusTel() {
-        return CusTel;
-    }
-
-    public String getCusName() {
-        return CusName;
     }
 
     public Users getUser() {
@@ -107,14 +106,6 @@ public class Orders {
 
     public void setOrderCode(String OrderCode) {
         this.OrderCode = OrderCode;
-    }
-
-    public void setCusTel(String CusTel) {
-        this.CusTel = CusTel;
-    }
-
-    public void setCusName(String CusName) {
-        this.CusName = CusName;
     }
 
     public void setUser(Users User) {
@@ -149,23 +140,61 @@ public class Orders {
         this.Customer = Customer;
     }
 
-    
-    public Orders() {
+    public double getPrice() {
+        return Price;
     }
 
-    public Orders(int Id, Areas Area, Customer Customer, String OrderCode, String CusTel, String CusName, Users User, String Status, String DeliveryAdd, LocalDate ReceiveDate, LocalDate CreateDate) {
+    public double getWeight() {
+        return Weight;
+    }
+
+    public void setPrice(double Price) {
+        this.Price = Price;
+    }
+
+    public void setWeight(double Weight) {
+        this.Weight = Weight;
+    }
+
+    public String getErrStatus() {
+        return ErrStatus;
+    }
+
+    public void setErrStatus(String ErrStatus) {
+        this.ErrStatus = ErrStatus;
+    }
+
+    public String getOrderName() {
+        return OrderName;
+    }
+
+    public void setOrderName(String OrderName) {
+        this.OrderName = OrderName;
+    }
+
+    public Orders(int Id, Areas Area, Customer Customer, String OrderCode, String OrderName, Users User, String Status, String ErrStatus, String DeliveryAdd, LocalDate ReceiveDate, LocalDate CreateDate, double Price, double Weight) {
         this.Id = Id;
         this.Area = Area;
         this.Customer = Customer;
         this.OrderCode = OrderCode;
-        this.CusTel = CusTel;
-        this.CusName = CusName;
+        this.OrderName = OrderName;
         this.User = User;
         this.Status = Status;
+        this.ErrStatus = ErrStatus;
         this.DeliveryAdd = DeliveryAdd;
         this.ReceiveDate = ReceiveDate;
         this.CreateDate = CreateDate;
+        this.Price = Price;
+        this.Weight = Weight;
     }
+
+
+    
+    
+    public Orders() {
+    }
+
+    
 
     
 

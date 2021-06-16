@@ -130,14 +130,16 @@ public class Login implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //autoCreateLoginData();
+        autoCreateLoginData();
     }
     
     void autoCreateLoginData() {
         Users user = new Users();
         user.setRoleId(1);
         user.setUserName("admin");
-        user.setPassword("admin");
+        user.setPassword("admin");        
+        user.setFullName("ADMIN");
+
         userRepo.save(user);
         
         Type type = new Type();

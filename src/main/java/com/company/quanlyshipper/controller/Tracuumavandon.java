@@ -111,11 +111,9 @@ public class Tracuumavandon implements Initializable {
         List<OrderDetail> orderDetailList = service.getAllOrderDetail(order.getId());
         orderDetailTable.getItems().addAll(orderDetailList);
         
-        cusNameTxt.setText(order.getCusName());     
-        cusTelTxt.setText(order.getCusTel()); 
         deliveryAddTxt.setText(order.getDeliveryAdd()); 
 
-        deliveryDatepicker.setValue(order.getDeliveryDate());
+        deliveryDatepicker.setValue(order.getReceiveDate());
         areaTxt.setText(order.getArea().getAreaCode() + "-" + order.getArea().getAreaName());
         orderStatusTxt.setText(order.getStatus().toString());
 
@@ -139,11 +137,9 @@ public class Tracuumavandon implements Initializable {
         List<OrderDetail> orderDetailList = service.getAllOrderDetail(order.getId());
         orderDetailTable.getItems().addAll(orderDetailList);
         
-        cusNameTxt.setText(order.getCusName());     
-        cusTelTxt.setText(order.getCusTel()); 
         deliveryAddTxt.setText(order.getDeliveryAdd()); 
 
-        deliveryDatepicker.setValue(order.getDeliveryDate());
+        deliveryDatepicker.setValue(order.getReceiveDate());
         areaTxt.setText(order.getArea().getAreaCode() + "-" + order.getArea().getAreaName());
         orderStatusTxt.setText(order.getStatus().toString());
 
