@@ -11,8 +11,7 @@ package com.company.quanlyshipper.utils;
  */
 public enum Menu {
     home("home"),
-    tracuumavandon("tracuumavandon"),    
-    chamcong("chamcong"),    
+    khachhang("khachhang"),    
     quanlydonhang("quanlydonhang"),
     quanlyttnv("quanlyttnv"),    
     tinhluong("tinhluong"),

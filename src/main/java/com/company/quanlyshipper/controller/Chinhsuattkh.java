@@ -47,7 +47,7 @@ import org.springframework.stereotype.Controller;
  * @author PC
  */
 @Controller
-public class Chinhsuattnv implements Initializable {
+public class Chinhsuattkh implements Initializable {
 
     @FXML
     private ImageView imageView;    
@@ -151,11 +151,11 @@ public class Chinhsuattnv implements Initializable {
         
         try{
             Stage stage = new Stage(StageStyle.UNDECORATED);
-            FXMLLoader loader = new FXMLLoader(Chinhsuattnv.class.getClassLoader().getResource("view/chinhsuattnv.fxml"));
+            FXMLLoader loader = new FXMLLoader(Chinhsuattkh.class.getClassLoader().getResource("view/chinhsuattnv.fxml"));
             stage.setScene(new Scene(loader.load()));
             stage.initModality(Modality.APPLICATION_MODAL);
             
-            Chinhsuattnv controller = loader.getController();
+            Chinhsuattkh controller = loader.getController();
             controller.init(user , saveHandler,areaList);
 
             stage.show();

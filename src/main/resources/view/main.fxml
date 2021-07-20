@@ -80,7 +80,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="quanlydonhang" fx:id="donHangQuanlyTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Quản lý đơn hàng">
+                  <Button id="khachhang" fx:id="khachHangTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Khách hàng">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -88,7 +88,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="chamcong" fx:id="chamCongTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Chấm công">
+                  <Button id="quanlydonhang" fx:id="donHangQuanlyTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Quản lý đơn hàng">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

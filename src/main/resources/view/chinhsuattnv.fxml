@@ -64,24 +64,24 @@
                </font>
             </Label>
             <TextField fx:id="telTxt" layoutX="153.0" layoutY="161.0" prefHeight="25.0" prefWidth="209.0" promptText="Nhập số điện thoại" />
-            <Label layoutX="36.0" layoutY="257.0" text="Email ghtk">
+            <Label layoutX="37.0" layoutY="254.0" text="Email ghtk">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="emailTxt" layoutX="153.0" layoutY="255.0" prefHeight="25.0" prefWidth="391.0" promptText="Email" />
-            <Label layoutX="38.0" layoutY="308.0" text="Khu vực">
+            <TextField fx:id="emailTxt" layoutX="154.0" layoutY="252.0" prefHeight="25.0" prefWidth="391.0" promptText="Email" />
+            <Label layoutX="38.0" layoutY="334.0" text="Khu vực">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="areaCbb" layoutX="154.0" layoutY="306.0" prefHeight="25.0" prefWidth="120.0" promptText="Chọn khu vực" />
-            <Label layoutX="292.0" layoutY="310.0" text="Vị trí làm việc">
+            <ComboBox fx:id="areaCbb" layoutX="154.0" layoutY="332.0" prefHeight="25.0" prefWidth="120.0" promptText="Chọn khu vực" />
+            <Label layoutX="292.0" layoutY="336.0" text="Vị trí làm việc">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="typeCbb" layoutX="397.0" layoutY="308.0" prefHeight="25.0" prefWidth="145.0" promptText="Chọn vị trí" />
+            <ComboBox fx:id="typeCbb" layoutX="397.0" layoutY="334.0" prefHeight="25.0" prefWidth="145.0" promptText="Chọn vị trí" />
             <ImageView fx:id="imageView" fitHeight="142.0" fitWidth="151.0" layoutX="400.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/userIcon.jpg" />
@@ -95,6 +95,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Label layoutX="36.0" layoutY="294.0" text="Biển số">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="registerNoTxt" layoutX="153.0" layoutY="292.0" prefHeight="25.0" prefWidth="391.0" promptText="Biển số hiệu" />
          </children>
       </AnchorPane>
    </children>
