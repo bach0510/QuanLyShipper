@@ -31,13 +31,17 @@ public class OrderService {
     @Autowired
     private OrderDetailRepo orderDetailRepo;
        
-    public List<Orders> getAllOrder(String status){
+    public List<Orders> getAllOrder(String status , String code){
         StringBuffer sb = new StringBuffer(" select o from Orders o where 1=1");
         Map<String,Object> params = new HashMap<>();
         if(!StringUtils.isEmpty(status)){
             sb.append(" and o.Status like concat('%',:status,'%')");
             params.put("status", status);
         }
+        if(!StringUtils.isEmpty(code)){
+            sb.append(" and o.OrderCode like concat('%',:orderCode,'%')");
+            params.put("orderCode", code);
+        };
         
         
         return orderRepo.findByQuery(sb.toString(), params);

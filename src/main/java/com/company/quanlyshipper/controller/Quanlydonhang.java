@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,11 +54,15 @@ public class Quanlydonhang implements Initializable {
     private AreaService areaService;
     
     @FXML
+    private TextField orderCodeTxt;
+    @FXML
     private TableView<Orders> orderTable;
     @FXML
     private TableView<OrderDetail> orderDetailTable;
     @FXML
     private TableColumn<Orders, String> orderCode;
+    @FXML
+    private TableColumn<Orders, String> orderName;
     @FXML
     private TableColumn<Orders, String> createDate;
     @FXML
@@ -153,7 +158,7 @@ public class Quanlydonhang implements Initializable {
     void search(){
         orderTable.getItems().clear();
         String statusValue = statusCbb.getValue().toString() == "Tất cả" ? "" : statusCbb.getValue().toString();
-        List<Orders> orderList = service.getAllOrder(statusValue);
+        List<Orders> orderList = service.getAllOrder(statusValue,orderCodeTxt.getText().toString() );
         orderTable.getItems().addAll(orderList);
         this.order = null;
     }
@@ -164,14 +169,10 @@ public class Quanlydonhang implements Initializable {
         statusCbb.getItems().clear();
         statusCbb.setItems(listCbb);
         statusCbb.setValue("Tất cả");
-        orderCode.setCellValueFactory(new PropertyValueFactory<>("orderCode"));
+        orderCode.setCellValueFactory(new PropertyValueFactory<>("orderCode"));        
+        orderName.setCellValueFactory(new PropertyValueFactory<>("orderName"));
         createDate.setCellValueFactory(new PropertyValueFactory<>("createDate"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        
-        orderDetailName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        qty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        sumPrice.setCellValueFactory(new PropertyValueFactory<>("sumPrice"));
         
         orderTable.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2)
@@ -189,21 +190,6 @@ public class Quanlydonhang implements Initializable {
                 orderDetailTable.getItems().clear();
                 List<OrderDetail> orderDetailList = service.getAllOrderDetail(this.order.getId());
                 orderDetailTable.getItems().addAll(orderDetailList);
-            }
-        });
-        orderDetailTable.setOnMouseClicked(e -> {
-            if (e.getClickCount() == 2)
-            {
-                OrderDetail orderDetail = orderDetailTable.getSelectionModel().getSelectedItem();
-                this.orderDetail = orderDetail;
-                if (orderDetail != null){
-                   Chinhsuachitietdonhang.editOrderDetail(this.order.getId(),this.orderDetail,this::saveOrderDetail);
-                }
-            }
-            if (e.getClickCount() >= 1)
-            {
-                OrderDetail orderDetail = orderDetailTable.getSelectionModel().getSelectedItem();
-                this.orderDetail = orderDetail;
             }
         });
         search();

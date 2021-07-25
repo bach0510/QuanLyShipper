@@ -70,7 +70,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="registerNoTxt" layoutX="155.0" layoutY="249.0" prefHeight="25.0" prefWidth="391.0" promptText="Địa chỉ" />
+            <TextField fx:id="addressTxt" layoutX="155.0" layoutY="249.0" prefHeight="25.0" prefWidth="391.0" promptText="Địa chỉ" />
+            <TextField layoutX="27.0" layoutY="14.0" prefHeight="34.0" prefWidth="151.0" style="-fx-background-color: #FF99CC;" text="KHÁCH HÀNG">
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </children>

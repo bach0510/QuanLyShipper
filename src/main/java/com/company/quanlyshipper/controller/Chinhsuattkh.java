@@ -7,6 +7,7 @@ package com.company.quanlyshipper.controller;
  */
 
 import com.company.quanlyshipper.model.Areas;
+import com.company.quanlyshipper.model.Customer;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.UserService;
@@ -77,7 +78,7 @@ public class Chinhsuattkh implements Initializable {
     private Button saveBtn;
     
     @FXML
-    private Users user;
+    private Customer cus;
 
     @FXML
     private Button cancelBtn;
@@ -86,7 +87,7 @@ public class Chinhsuattkh implements Initializable {
     private TextField fullNameTxt;
     
     @FXML
-    private TextField registerNoTxt;
+    private TextField addressTxt;
 
     @FXML
     private TextField cmndTxt;
@@ -107,7 +108,7 @@ public class Chinhsuattkh implements Initializable {
 
     
     @FXML
-    private Consumer<Users> saveHandler;
+    private Consumer<Customer> saveHandler;
 
     private Supplier<List<Areas>> areaList;
     @FXML
@@ -119,18 +120,13 @@ public class Chinhsuattkh implements Initializable {
     private void save() {
         try{
 //            Users user = service.getShipperInfoByCode(code)
-            user.setFullName(fullNameTxt.getText());            
-            user.setCode(codeTxt.getText().toUpperCase());
-            user.setTel(telTxt.getText());
-            user.setCmnd(cmndTxt.getText());
-            user.setEmail(emailTxt.getText());
-            user.setType(typeCbb.getValue().toString());
-            user.setArea(areaCbb.getValue());
-            user.setRegisterNo(registerNoTxt.getText());
-            user.setUserName(codeTxt.getText());
-            user.setPassword("1");
+            cus.setCusName(fullNameTxt.getText());            
+            cus.setCusTel(telTxt.getText());
+            cus.setCusCmnd(cmndTxt.getText());
+            cus.setCusEmail(emailTxt.getText());
+            cus.setArea(areaCbb.getValue());
         
-            saveHandler.accept(user);
+            saveHandler.accept(cus);
             
             cancel();
         } catch (Exception e){
@@ -142,91 +138,78 @@ public class Chinhsuattkh implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> listCbb = FXCollections.observableArrayList("Ship lấy","Ship giao");
-        typeCbb.getItems().clear();
-        typeCbb.setItems(listCbb);
+//        ObservableList<String> listCbb = FXCollections.observableArrayList("Ship lấy","Ship giao");
+//        typeCbb.getItems().clear();
+//        typeCbb.setItems(listCbb);
     }    
     
-    public static void editUser(Users user , Consumer<Users> saveHandler,Supplier<List<Areas>> areaList){
+    public static void editUser(Customer cus , Consumer<Customer> saveHandler,Supplier<List<Areas>> areaList){
         
         try{
             Stage stage = new Stage(StageStyle.UNDECORATED);
-            FXMLLoader loader = new FXMLLoader(Chinhsuattkh.class.getClassLoader().getResource("view/chinhsuattnv.fxml"));
+            FXMLLoader loader = new FXMLLoader(Chinhsuattkh.class.getClassLoader().getResource("view/chinhsuattkh.fxml"));
             stage.setScene(new Scene(loader.load()));
             stage.initModality(Modality.APPLICATION_MODAL);
             
             Chinhsuattkh controller = loader.getController();
-            controller.init(user , saveHandler,areaList);
+            controller.init(cus , saveHandler,areaList);
 
             stage.show();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
-    public static void addNew(Consumer<Users> saveHandler,Supplier<List<Areas>> areaList){
+    public static void addNew(Consumer<Customer> saveHandler,Supplier<List<Areas>> areaList){
         editUser(null,saveHandler,areaList);
     }
     
-    private void init(Users user , Consumer<Users> saveHandler,Supplier<List<Areas>> areaList) throws FileNotFoundException, IOException{
-        this.user = user;
+    private void init(Customer cus , Consumer<Customer> saveHandler,Supplier<List<Areas>> areaList) throws FileNotFoundException, IOException{
+        this.cus = cus;
         this.saveHandler = saveHandler;
         areaCbb.getItems().clear();
         areaCbb.getItems().addAll(areaList.get());
-        if(user == null){
-            titleTxt.setText("Thêm mới nhân viên");
-            this.user = new Users();
-            this.user.setRoleId(2);
-            this.user.setType("Ship lấy");
-            typeCbb.setValue(this.user.getType());
+        if(cus == null){
+            //titleTxt.setText("Thêm mới nhân viên");
+            this.cus = new Customer();
+//            this.cus.setRoleId(2);
+//            this.cus.setType("Ship lấy");
+//            typeCbb.setValue(this.cus.getType());
         }
         else {
-            titleTxt.setText("Chỉnh sửa nhân viên");
-            this.user = user;
-            fullNameTxt.setText(user.getFullName());     
-            codeTxt.setText(user.getCode()); 
-            telTxt.setText(user.getTel()); 
-            cmndTxt.setText(user.getCmnd());  
-            emailTxt.setText(user.getEmail()); 
-            typeCbb.setValue(user.getType());            
-            registerNoTxt.setText(user.getRegisterNo());
-            areaCbb.setValue(user.getArea());
-            if(user.getImage() != null){
-                OutputStream os = new FileOutputStream(new File("photo.jpg"));
-                os.write(user.getImage());
-                os.close();
-                Image image = new Image("file:photo.jpg",151,142,true,true);
-                imageView.setImage(image);
-                imageView.setFitWidth(151);
-                imageView.setFitHeight(142);
-
-                imageView.setPreserveRatio(true);
-            }
+            //titleTxt.setText("Chỉnh sửa nhân viên");
+            this.cus = cus;
+            fullNameTxt.setText(cus.getCusName());     
+            telTxt.setText(cus.getCusTel()); 
+            cmndTxt.setText(cus.getCusCmnd());  
+            emailTxt.setText(cus.getCusEmail());            
+            addressTxt.setText(cus.getCusAdd()); 
+            areaCbb.setValue(cus.getArea());
         }
         
         
     }
-    @FXML
-    void choosePicture(ActionEvent event) {
-        Stage stage = (Stage)codeTxt.getScene().getWindow();
-        FileChooser fc = new FileChooser();
-        fc.setTitle("chọn ảnh");
-        this.file = fc.showOpenDialog(stage);
-        if(this.file != null){
-            Image image = new Image(this.file.toURI().toString(),151,142,true,true);
-            imageView.setImage(image);
-            imageView.setFitWidth(151);
-            imageView.setFitHeight(142);
-            
-            imageView.setPreserveRatio(true);
-            try {
-                byte[]img = Files.readAllBytes(file.toPath());
-                
-                this.user.setImage(img);
-            } catch (Exception e){
-                
-            }
-        }
-    }
+//    @FXML
+//    void choosePicture(ActionEvent event) {
+//        Stage stage = (Stage)codeTxt.getScene().getWindow();
+//        FileChooser fc = new FileChooser();
+//        fc.setTitle("chọn ảnh");
+//        this.file = fc.showOpenDialog(stage);
+//        if(this.file != null){
+//            Image image = new Image(this.file.toURI().toString(),151,142,true,true);
+//            imageView.setImage(image);
+//            imageView.setFitWidth(151);
+//            imageView.setFitHeight(142);
+//            
+//            imageView.setPreserveRatio(true);
+//            try {
+//                byte[]img = Files.readAllBytes(file.toPath());
+//                
+//                this.user.setImage(img);
+//            } catch (Exception e){
+//                
+//            }
+//        }
+//    }
     
     
 }

@@ -7,9 +7,11 @@ package com.company.quanlyshipper.controller;
  */
 
 import com.company.quanlyshipper.model.Areas;
+import com.company.quanlyshipper.model.Customer;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.repo.AreasRepo;
 import com.company.quanlyshipper.service.AreaService;
+import com.company.quanlyshipper.service.CustomerService;
 import com.company.quanlyshipper.service.LoginService;
 import com.company.quanlyshipper.service.UserService;
 import java.net.URL;
@@ -38,19 +40,17 @@ import org.springframework.stereotype.Controller;
 public class Khachhang implements Initializable {
 
     @Autowired
-    private UserService service;
+    private CustomerService service;
     
     @Autowired
     private AreaService areaService;
     
     @FXML
-    private TableView<Users> tableView;
+    private TableView<Customer> tableView;
     
     @FXML
     private Button addNewBtn;
     
-     @FXML
-    private ComboBox typeCbb;
     @FXML
     private ComboBox<Areas> areaCbb;
     
@@ -79,29 +79,24 @@ public class Khachhang implements Initializable {
     private TextField emailTxt;
     
      @FXML
-    private TableColumn<Users, Integer> id;
+    private TableColumn<Customer, Integer> id;
 
     @FXML
-    private TableColumn<Users, String> code;
+    private TableColumn<Customer, String> cusName;
 
     @FXML
-    private TableColumn<Users, String> fullname;
+    private TableColumn<Customer, String> cusCmnd;
 
     @FXML
-    private TableColumn<Users, String> cmnd;
+    private TableColumn<Customer, String> cusTel;
 
     @FXML
-    private TableColumn<Users, String> tel;
+    private TableColumn<Customer, String> cusEmail;
 
     @FXML
-    private TableColumn<Users, String> email;
-
-    @FXML
-    private TableColumn<Users, String> address;
-    @FXML
-    private TableColumn<Users, String> type;
+    private TableColumn<Customer, String> cusAdd;
     
-    private Users user;
+    private Customer cus;
     
     
     /**
@@ -111,26 +106,26 @@ public class Khachhang implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         areaCbb.getItems().clear();
         areaCbb.getItems().addAll(areaService.getAllArea());
-        tel.setCellValueFactory(new PropertyValueFactory<>("cusTel"));
-        fullname.setCellValueFactory(new PropertyValueFactory<>("cusName"));
-        email.setCellValueFactory(new PropertyValueFactory<>("cusEmail"));
-        cmnd.setCellValueFactory(new PropertyValueFactory<>("cusCmnd"));
-        address.setCellValueFactory(new PropertyValueFactory<>("cusAdd"));
+        cusTel.setCellValueFactory(new PropertyValueFactory<>("cusTel"));
+        cusName.setCellValueFactory(new PropertyValueFactory<>("cusName"));
+        cusEmail.setCellValueFactory(new PropertyValueFactory<>("cusEmail"));
+        cusCmnd.setCellValueFactory(new PropertyValueFactory<>("cusCmnd"));
+        cusAdd.setCellValueFactory(new PropertyValueFactory<>("cusAdd"));
         search();
         
         tableView.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2)
             {
-                Users user = tableView.getSelectionModel().getSelectedItem();
-                this.user = user;
-                if (user != null){
-                    Chinhsuattkh.editUser(user, this::save,areaService::getAllArea);
+                Customer cus = tableView.getSelectionModel().getSelectedItem();
+                this.cus = cus;
+                if (cus != null){
+                    Chinhsuattkh.editUser(cus, this::save,areaService::getAllArea);
                 }
             }
             if (e.getClickCount() >= 1)
             {
-                Users user = tableView.getSelectionModel().getSelectedItem();
-                this.user = user;
+                Customer cus = tableView.getSelectionModel().getSelectedItem();
+                this.cus = cus;
             }
         });
     }    
@@ -138,16 +133,14 @@ public class Khachhang implements Initializable {
     @FXML
     void search(){
         tableView.getItems().clear();
-        List<Users> userList = service.getAllShipperInfo(
+        List<Customer> cusList = service.getAllCustomerInfo(
                 fullNameTxt.getText().toString(), 
                 cmndTxt.getText().toString(), 
                 telTxt.getText().toString(), 
-                "", 
                 emailTxt.getText().toString(),
-                "",
                 areaCbb.getValue());
-        tableView.getItems().addAll(userList);
-        this.user = null;
+        tableView.getItems().addAll(cusList);
+        this.cus = null;
     }
     
     @FXML
@@ -167,23 +160,23 @@ public class Khachhang implements Initializable {
         Chinhsuattkh.addNew(this::save,areaService::getAllArea);
     }
     
-    private void save(Users user){
-        service.save(user);
+    private void save(Customer cus){
+        service.save(cus);
         search();
     }
     @FXML
     private void deleteUser(){
-        if (this.user == null){
+        if (this.cus == null){
             Thongbao.ThongbaoBuilder.builder()
                 .title("Không thể tìm thấy thông tin")
                 .message("Vui lòng chọn 1 thông tin trong bảng để thực hiện thao tác")
                 .build().show();
         } else {
            Thongbao.ThongbaoBuilder.builder()
-                .title("Thông tin của nhân viên này sẽ bị xóa ra khỏi hệ thống")
+                .title("Thông tin của khách này sẽ bị xóa ra khỏi hệ thống")
                 .message("Việc làm này sẽ không thể hoàn tác , Bạn có chắc chắn muốn xóa thông tin này không ?")
                 .okAction(()-> {
-                    service.deleteUser(this.user);
+                    service.deleteCus(this.cus);
                     search();
                 }).build().show(); 
         }

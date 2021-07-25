@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="360.0" prefWidth="120.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Chinhsuadonhang">
+<AnchorPane id="AnchorPane" prefHeight="648.0" prefWidth="581.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Chinhsuadonhang">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="581.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="581.0">
          <children>
-            <ImageView fitHeight="439.0" fitWidth="581.0" layoutX="-1.0" opacity="0.46" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-80.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-100.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="685.0" fitWidth="934.0" layoutX="-1.0" opacity="0.46" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-37.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-352.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@../pictures/1.jpg" />
                </image>
@@ -25,7 +25,7 @@
                   <Font name="Arial Bold" size="19.0" />
                </font>
             </TextField>
-            <Button fx:id="saveBtn" layoutX="369.0" layoutY="386.0" mnemonicParsing="false" onAction="#save" opacity="0.66" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #FF99CC;" text="Lưu">
+            <Button fx:id="saveBtn" layoutX="369.0" layoutY="597.0" mnemonicParsing="false" onAction="#save" opacity="0.66" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #FF99CC;" text="Lưu">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -33,7 +33,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="cancelBtn" layoutX="468.0" layoutY="386.0" mnemonicParsing="false" onAction="#cancel" opacity="0.66" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #FF99CC;" text="Quay lại ">
+            <Button fx:id="cancelBtn" layoutX="468.0" layoutY="597.0" mnemonicParsing="false" onAction="#cancel" opacity="0.66" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #FF99CC;" text="Quay lại ">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -41,56 +41,91 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="32.0" layoutY="117.0" text="SĐT Người nhận">
+            <Label layoutX="37.0" layoutY="370.0" text="Tên người nhận">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusTelTxt" layoutX="159.0" layoutY="114.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập số điện thoại" />
-            <Label layoutX="34.0" layoutY="77.0" text="Tên người nhận">
+            <TextField fx:id="cusNameTxt" layoutX="162.0" layoutY="368.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập tên người nhận" />
+            <Label layoutX="36.0" layoutY="527.0" text="Shipper nhận đơn">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusNameTxt" layoutX="159.0" layoutY="75.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập tên người nhận" />
-            <Label layoutX="34.0" layoutY="188.0" text="Shipper nhận đơn">
+            <TextField fx:id="shipperNameTxt" editable="false" layoutX="303.0" layoutY="523.0" prefHeight="25.0" prefWidth="244.0" promptText="Tên Shipper" />
+            <Label layoutX="34.0" layoutY="210.0" text="Ngày nhận">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="shipperNameTxt" editable="false" layoutX="301.0" layoutY="184.0" prefHeight="25.0" prefWidth="244.0" promptText="Tên Shipper" />
-            <Label layoutX="34.0" layoutY="259.0" text="Ngày giao ">
+            <ComboBox fx:id="orderStatusCbb" layoutX="160.0" layoutY="247.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn trạng thái" />
+            <TextField fx:id="shipperTelTxt" editable="false" layoutX="161.0" layoutY="559.0" prefHeight="25.0" prefWidth="138.0" promptText="Số điện thoại shipper" />
+            <TextField fx:id="shipperEmailTxt" editable="false" layoutX="303.0" layoutY="559.0" prefHeight="25.0" prefWidth="244.0" promptText="Email Shipper" />
+            <DatePicker fx:id="deliveryDatepicker" layoutX="161.0" layoutY="208.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn ngày nhận" />
+            <Label layoutX="33.0" layoutY="250.0" text="Trạng thái đơn">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="orderStatusCbb" layoutX="160.0" layoutY="296.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn trạng thái" />
-            <TextField fx:id="shipperTelTxt" editable="false" layoutX="159.0" layoutY="220.0" prefHeight="25.0" prefWidth="138.0" promptText="Số điện thoại shipper" />
-            <TextField fx:id="shipperEmailTxt" editable="false" layoutX="301.0" layoutY="220.0" prefHeight="25.0" prefWidth="244.0" promptText="Email Shipper" />
-            <DatePicker fx:id="deliveryDatepicker" layoutX="161.0" layoutY="257.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn ngày giao" />
-            <Label layoutX="33.0" layoutY="299.0" text="Trạng thái đơn">
+            <ComboBox fx:id="areaCbb" layoutX="161.0" layoutY="487.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn vị trí" />
+            <Label layoutX="34.0" layoutY="490.0" text="Khu vực">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="areaCbb" layoutX="160.0" layoutY="336.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn vị trí" />
-            <Label layoutX="33.0" layoutY="339.0" text="Khu vực giao">
+            <Label layoutX="38.0" layoutY="409.0" text="Email">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="152.0" text="Địa chỉ cụ thể">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="deliveryAddTxt" layoutX="159.0" layoutY="149.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập địa chỉ cụ thể" />
-            <ComboBox fx:id="userCbb" layoutX="160.0" layoutY="184.0" prefHeight="25.0" prefWidth="138.0" promptText="Mã shipper" />
+            <TextField fx:id="cusEmailTxt" layoutX="162.0" layoutY="406.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập địa chỉ cụ thể" />
+            <ComboBox fx:id="userCbb" layoutX="162.0" layoutY="523.0" prefHeight="25.0" prefWidth="138.0" promptText="Mã shipper" />
             <TextField fx:id="orderCodeLabel" alignment="CENTER_RIGHT" editable="false" layoutX="293.0" layoutY="11.0" prefHeight="41.0" prefWidth="274.0">
                <font>
                   <Font size="24.0" />
                </font>
             </TextField>
+            <Label layoutX="36.0" layoutY="92.0" text="Tên đơn">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cusNameTxt1" layoutX="161.0" layoutY="90.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập tên người nhận" />
+            <Label layoutX="36.0" layoutY="132.0" text="Đơn giá">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cusNameTxt11" layoutX="161.0" layoutY="130.0" prefHeight="25.0" prefWidth="138.0" promptText="Nhập tên người nhận" />
+            <Label layoutX="321.0" layoutY="132.0" text="Cân nặng">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cusNameTxt111" layoutX="405.0" layoutY="130.0" prefHeight="25.0" prefWidth="138.0" promptText="Nhập tên người nhận" />
+            <Label layoutX="33.0" layoutY="170.0" text="Ngày tạo đơn">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="createDatepicker" disable="true" editable="false" layoutX="160.0" layoutY="168.0" prefHeight="25.0" prefWidth="385.0" />
+            <TextField fx:id="titleTxt1" editable="false" layoutX="35.0" layoutY="285.0" style="-fx-background-color: #FF99CC;" text="Thông tin người nhận">
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+            </TextField>
+            <Label layoutX="36.0" layoutY="445.0" text="Địa chỉ cụ thể">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cusAddTxt" layoutX="160.0" layoutY="442.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập địa chỉ cụ thể" />
+            <Label layoutX="35.0" layoutY="333.0" text="SĐT Người nhận">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cusTelTxt" layoutX="162.0" layoutY="330.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập số điện thoại" />
          </children>
       </AnchorPane>
    </children>

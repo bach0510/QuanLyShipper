@@ -31,27 +31,15 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TableView fx:id="orderTable" layoutX="15.0" layoutY="114.0" prefHeight="131.0" prefWidth="761.0">
+            <TableView fx:id="orderTable" layoutX="15.0" layoutY="114.0" prefHeight="416.0" prefWidth="766.0">
               <columns>
-                <TableColumn fx:id="orderCode" prefWidth="219.0" text="Mã đơn " />
-                <TableColumn fx:id="createDate" prefWidth="265.0" text="Ngày tạo " />
-                  <TableColumn fx:id="status" prefWidth="276.0" text="Trạng thái" />
+                <TableColumn fx:id="orderCode" prefWidth="115.0" text="Mã đơn " />
+                  <TableColumn fx:id="orderName" prefWidth="236.0" text="Tên đơn " />
+                <TableColumn fx:id="createDate" minWidth="0.0" prefWidth="167.0" text="Ngày tạo " />
+                  <TableColumn fx:id="status" minWidth="2.0" prefWidth="246.0" text="Trạng thái" />
               </columns>
             </TableView>
-            <TextField editable="false" layoutX="14.0" layoutY="304.0" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #FF99CC;" text="Chi tiết đơn hàng">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </TextField>
-            <TableView fx:id="orderDetailTable" layoutX="16.0" layoutY="365.0" prefHeight="169.0" prefWidth="761.0">
-              <columns>
-                <TableColumn fx:id="orderDetailName" prefWidth="253.0" text="Tên hàng" />
-                <TableColumn fx:id="qty" prefWidth="90.0" text="Số Lượng " />
-                  <TableColumn fx:id="price" prefWidth="223.0" text="Đơn giá " />
-                  <TableColumn fx:id="sumPrice" prefWidth="194.0" text="Thành tiền" />
-              </columns>
-            </TableView>
-            <Button fx:id="addOrderBtn" layoutX="448.0" layoutY="260.0" mnemonicParsing="false" onAction="#addOrder" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Thêm đơn hàng ">
+            <Button fx:id="addOrderBtn" layoutX="448.0" layoutY="544.0" mnemonicParsing="false" onAction="#addOrder" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Thêm đơn hàng ">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -59,23 +47,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="628.0" layoutY="260.0" mnemonicParsing="false" onAction="#deleteOrder" opacity="0.66" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #FF99CC;" text="xóa đơn ">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="addOrderDetailBtn" layoutX="532.0" layoutY="544.0" mnemonicParsing="false" onAction="#addOrderDetail" opacity="0.66" prefHeight="30.0" prefWidth="117.0" style="-fx-background-color: #FF99CC;" text="Thêm hàng">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="673.0" layoutY="544.0" mnemonicParsing="false" onAction="#deleteOrderDetail" opacity="0.66" prefHeight="30.0" prefWidth="103.0" style="-fx-background-color: #FF99CC;" text="Xóa hàng">
+            <Button layoutX="628.0" layoutY="544.0" mnemonicParsing="false" onAction="#deleteOrder" opacity="0.66" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #FF99CC;" text="xóa đơn ">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -84,7 +56,7 @@
                </cursor>
             </Button>
             <ComboBox fx:id="statusCbb" layoutX="154.0" layoutY="78.0" prefWidth="150.0" />
-            <Button fx:id="searchBtn" layoutX="322.0" layoutY="76.0" mnemonicParsing="false" onAction="#search" opacity="0.66" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #FF99CC;" text="Tìm kiếm">
+            <Button fx:id="searchBtn" layoutX="532.0" layoutY="76.0" mnemonicParsing="false" onAction="#search" opacity="0.66" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #FF99CC;" text="Tìm kiếm">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -92,6 +64,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Label layoutX="316.0" layoutY="81.0" text="Mã đơn">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="orderCodeTxt" layoutX="373.0" layoutY="78.0" prefHeight="25.0" prefWidth="151.0" promptText="Nhập mã đơn" />
          </children>
       </AnchorPane>
    </children>

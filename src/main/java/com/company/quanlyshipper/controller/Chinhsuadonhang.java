@@ -10,6 +10,7 @@ import com.company.quanlyshipper.model.Areas;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.service.AreaService;
+import com.company.quanlyshipper.service.CustomerService;
 import com.company.quanlyshipper.service.UserService;
 import java.io.File;
 import java.io.FileInputStream;
@@ -68,6 +69,9 @@ public class Chinhsuadonhang implements Initializable {
     private UserService userService;
     
     @Autowired
+    private CustomerService cusService;
+    
+    @Autowired
     private AreaService areaService;
     
     @FXML
@@ -87,6 +91,12 @@ public class Chinhsuadonhang implements Initializable {
 
     @FXML
     private TextField cusNameTxt;
+    
+    @FXML
+    private TextField cusAddTxt;
+    
+    @FXML
+    private TextField cusEmailTxt;
 
     @FXML
     private TextField shipperNameTxt;

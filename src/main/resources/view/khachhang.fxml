@@ -69,11 +69,11 @@
             </Button>
             <TableView fx:id="tableView" layoutX="14.0" layoutY="239.0" prefHeight="351.0" prefWidth="775.0">
               <columns>
-                  <TableColumn fx:id="fullname" prefWidth="159.0" text="Tên KH" />
-                  <TableColumn fx:id="cmnd" prefWidth="106.0" text="CMND" />
-                  <TableColumn fx:id="tel" minWidth="0.0" prefWidth="101.0" text="Sđt" />
-                  <TableColumn fx:id="email" minWidth="9.0" prefWidth="134.0" text="Email" />
-                  <TableColumn fx:id="address" prefWidth="274.0" text="Địa chỉ" />
+                  <TableColumn fx:id="cusName" prefWidth="159.0" text="Tên KH" />
+                  <TableColumn fx:id="cusCmnd" prefWidth="106.0" text="CMND" />
+                  <TableColumn fx:id="cusTel" minWidth="0.0" prefWidth="101.0" text="Sđt" />
+                  <TableColumn fx:id="cusEmail" minWidth="9.0" prefWidth="134.0" text="Email" />
+                  <TableColumn fx:id="cusAdd" prefWidth="274.0" text="Địa chỉ" />
               </columns>
             </TableView>
             <Button fx:id="addNewBtn" layoutX="14.0" layoutY="199.0" mnemonicParsing="false" onAction="#addNewUser" opacity="0.66" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #FF99CC;" text="Thêm mới nhân viên">
@@ -92,6 +92,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <TextField layoutX="14.0" layoutY="24.0" prefHeight="34.0" prefWidth="151.0" style="-fx-background-color: #FF99CC;" text="KHÁCH HÀNG">
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </children>
