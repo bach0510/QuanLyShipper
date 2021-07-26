@@ -5,6 +5,7 @@
  */
 package com.company.quanlyshipper.model;
 
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +30,16 @@ public class Bonus {
     @Column(name="bonus_name",columnDefinition = "nvarchar(50)")
     private String BonusName;
     
+        @Column(name="price")
+    private double Price;
+    
+    public double getPrice() {
+        return Price;
+    }
+
+    public void setPrice(double Price) {
+        this.Price = Price;
+    }
     public int getId() {
         return Id;
     }
@@ -45,11 +56,30 @@ public class Bonus {
         this.BonusName = BonusName;
     }
 
-    public Bonus(int Id, String BonusName) {
+    public Bonus(int Id, String BonusName ,double Price) {
         this.Id = Id;
         this.BonusName = BonusName;
+        this.Price = Price;
     }
     
 
     public Bonus(){}
+    
+    @Override
+    public String toString(){
+        return BonusName;
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this == o)return true;
+        if(!(o instanceof Bonus )) return false;
+        Bonus b = (Bonus)o;
+        return Id == b.Id;
+    }
+    
+    @Override 
+    public int hashCode() {
+        return Objects.hash(Id);
+    }
 }

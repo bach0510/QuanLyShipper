@@ -76,6 +76,9 @@ public class Chinhsuathuongphat implements Initializable {
     private TextField titleTxt;
     
     @FXML
+    private TextField priceTxt;
+    
+    @FXML
     private Button saveBtn;  
     @FXML
     private Button cancelBtn; 
@@ -105,13 +108,15 @@ public class Chinhsuathuongphat implements Initializable {
         try{
 //            Users user = service.getShipperInfoByCode(code)
             if (type == 1){
-                bonus.setBonusName(payoffNameTxt.getText());           
+                bonus.setBonusName(payoffNameTxt.getText());    
+                bonus.setPrice(Double.parseDouble(priceTxt.getText())); 
         
                 saveHandlerBonus.accept(bonus);
             }
             if (type == 2){
                 String punishName = payoffNameTxt.getText();
-                punish.setPunishName(punishName);           
+                punish.setPunishName(punishName); 
+                punish.setPrice(Double.parseDouble(priceTxt.getText()));   
         
                 saveHandlerPunish.accept(punish);
             }
@@ -165,7 +170,7 @@ public class Chinhsuathuongphat implements Initializable {
             titleTxt.setText("Chỉnh sửa thưởng");
             this.bonus = bonus;
             payoffNameTxt.setText(bonus.getBonusName());     
-            
+            priceTxt.setText(String.valueOf(bonus.getPrice()));
         }
         
         
@@ -182,7 +187,7 @@ public class Chinhsuathuongphat implements Initializable {
             titleTxt.setText("Chỉnh sửa phạt");
             this.punish = punish;
             payoffNameTxt.setText(punish.getPunishName());     
-            
+            priceTxt.setText(String.valueOf(punish.getPrice()));
         }
         
         
