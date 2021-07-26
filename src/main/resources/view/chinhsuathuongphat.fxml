@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="294.0" prefWidth="574.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Chinhsuachitietdonhang">
+<AnchorPane id="AnchorPane" prefHeight="294.0" prefWidth="574.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Chinhsuathuongphat">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="316.0" prefWidth="574.0">
          <children>
@@ -18,7 +18,7 @@
                   <Image url="@../pictures/1.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="titleTxt" editable="false" layoutX="34.0" layoutY="14.0" style="-fx-background-color: #FF99CC;" text="Thông tin đơn hàng">
+            <TextField fx:id="titleTxt" editable="false" layoutX="34.0" layoutY="14.0" style="-fx-background-color: #FF99CC;" text="Thông tin thưởng phạt">
                <font>
                   <Font name="Arial Bold" size="19.0" />
                </font>
@@ -39,24 +39,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="32.0" layoutY="117.0" text="Số lượng">
+            <Label layoutX="34.0" layoutY="77.0" text="Nội dung">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="qtyTxt" layoutX="159.0" layoutY="114.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập số lượng" />
-            <Label layoutX="34.0" layoutY="77.0" text="Tên mặt hàng">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="nameTxt" layoutX="159.0" layoutY="75.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập tên mặt hàng" />
-            <Label layoutX="35.0" layoutY="152.0" text="Đơn giá">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="priceTxt" layoutX="159.0" layoutY="149.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập giá tiền" />
+            <TextField fx:id="payoffNameTxt" layoutX="34.0" layoutY="109.0" prefHeight="20.0" prefWidth="514.0" promptText="Nhập nội dung" />
          </children>
       </AnchorPane>
    </children>

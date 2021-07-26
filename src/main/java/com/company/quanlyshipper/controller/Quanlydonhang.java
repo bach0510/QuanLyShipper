@@ -10,6 +10,7 @@ import static com.company.quanlyshipper.controller.Chinhsuachitietdonhang.editOr
 import com.company.quanlyshipper.model.OrderDetail;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.service.AreaService;
+import com.company.quanlyshipper.service.CustomerService;
 import com.company.quanlyshipper.service.OrderService;
 import com.company.quanlyshipper.service.UserService;
 import java.net.URL;
@@ -52,7 +53,8 @@ public class Quanlydonhang implements Initializable {
     private UserService userService;
     @Autowired
     private AreaService areaService;
-    
+    @Autowired
+    private CustomerService cusService;
     @FXML
     private TextField orderCodeTxt;
     @FXML
@@ -108,7 +110,7 @@ public class Quanlydonhang implements Initializable {
     
      @FXML 
     void addOrder() {
-        Chinhsuadonhang.addNew(this::save,areaService::getAllArea,userService::getAllShipper);
+        Chinhsuadonhang.addNew(this::save,areaService::getAllArea,userService::getAllShipper,cusService::getAllCus);
     }
     
     private void save(Orders order){
@@ -180,16 +182,8 @@ public class Quanlydonhang implements Initializable {
                 Orders order = orderTable.getSelectionModel().getSelectedItem();
                 this.order = order;
                 if (order != null){
-                    Chinhsuadonhang.editOrder(order, this::save,areaService::getAllArea,userService::getAllShipper);
+                    Chinhsuadonhang.editOrder(order, this::save,areaService::getAllArea,userService::getAllShipper,cusService::getAllCus);
                 }
-            }
-            if (e.getClickCount() >= 1)
-            {
-                Orders order = orderTable.getSelectionModel().getSelectedItem();
-                this.order = order;
-                orderDetailTable.getItems().clear();
-                List<OrderDetail> orderDetailList = service.getAllOrderDetail(this.order.getId());
-                orderDetailTable.getItems().addAll(orderDetailList);
             }
         });
         search();

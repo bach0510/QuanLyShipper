@@ -68,6 +68,12 @@ public class CustomerService {
         //List<Users> shippers = userRepo.findAll();
         return cus;
     }
+    public List<Customer> getAllCus(){
+        StringBuffer sb = new StringBuffer(" select c from Customer c where 1= 1");
+        Map<String,Object> params = new HashMap<>();
+        return cusRepo.findByQuery(sb.toString(), params);
+
+    }
     
     public void save(Customer cus){
         cusRepo.save(cus);

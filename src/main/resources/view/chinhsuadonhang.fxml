@@ -78,7 +78,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusEmailTxt" layoutX="162.0" layoutY="406.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập địa chỉ cụ thể" />
+            <TextField fx:id="cusEmailTxt" layoutX="162.0" layoutY="406.0" prefHeight="25.0" prefWidth="385.0" promptText="Email người nhận" />
             <ComboBox fx:id="userCbb" layoutX="162.0" layoutY="523.0" prefHeight="25.0" prefWidth="138.0" promptText="Mã shipper" />
             <TextField fx:id="orderCodeLabel" alignment="CENTER_RIGHT" editable="false" layoutX="293.0" layoutY="11.0" prefHeight="41.0" prefWidth="274.0">
                <font>
@@ -90,19 +90,19 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusNameTxt1" layoutX="161.0" layoutY="90.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập tên người nhận" />
+            <TextField fx:id="orderNameTxt" layoutX="161.0" layoutY="90.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập tên người nhận" />
             <Label layoutX="36.0" layoutY="132.0" text="Đơn giá">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusNameTxt11" layoutX="161.0" layoutY="130.0" prefHeight="25.0" prefWidth="138.0" promptText="Nhập tên người nhận" />
+            <TextField fx:id="priceTxt" layoutX="161.0" layoutY="130.0" prefHeight="25.0" prefWidth="138.0" promptText="Nhập tên người nhận" />
             <Label layoutX="321.0" layoutY="132.0" text="Cân nặng">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusNameTxt111" layoutX="405.0" layoutY="130.0" prefHeight="25.0" prefWidth="138.0" promptText="Nhập tên người nhận" />
+            <TextField fx:id="weightTxt" layoutX="405.0" layoutY="130.0" prefHeight="25.0" prefWidth="138.0" promptText="Nhập tên người nhận" />
             <Label layoutX="33.0" layoutY="170.0" text="Ngày tạo đơn">
                <font>
                   <Font name="System Bold" size="14.0" />

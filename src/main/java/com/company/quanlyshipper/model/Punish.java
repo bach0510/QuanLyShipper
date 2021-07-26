@@ -41,7 +41,7 @@ public class Punish {
         return PunishName;
     }
 
-    public void setPunishName(String BonusName) {
+    public void setPunishName(String PunishName) {
         this.PunishName = PunishName;
     }
 
