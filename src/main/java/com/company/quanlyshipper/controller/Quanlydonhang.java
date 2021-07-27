@@ -212,7 +212,7 @@ public class Quanlydonhang implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> listCbb = FXCollections.observableArrayList("Tất cả","Mới tạo","Đang giao","Đã giao","Hoàn trả");
+        ObservableList<String> listCbb = FXCollections.observableArrayList("Tất cả","Mới tạo","Đang giao","Thành công","Không thành công");
         statusCbb.getItems().clear();
         statusCbb.setItems(listCbb);
         statusCbb.setValue("Tất cả");
@@ -231,6 +231,11 @@ public class Quanlydonhang implements Initializable {
                 if (order != null){
                     Chinhsuadonhang.editOrder(order, this::save,areaService::getAllArea,userService::getAllShipper,cusService::getAllCus);
                 }
+            }
+            if (e.getClickCount() >= 1)
+            {
+                Orders order = orderTable.getSelectionModel().getSelectedItem();
+                this.order = order;
             }
         });
         search();

@@ -182,16 +182,24 @@ public class Chinhsuadonhang implements Initializable {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyy");
 //            dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");            
 //            SimpleDateFormat dateFormat2 = new SimpleDateFormat("ddMMyy");
-
-//            order.setDeliveryAdd(deliveryAddTxt.getText());
+            String address = cusAddTxt.getText() != null ? cusAddTxt.getText() : "";
+            order.setDeliveryAdd(address);
             order.setOrderName(orderNameTxt.getText());
             order.setReceiveDate(deliveryDatepicker.getValue());
             order.setCreateDate(currentDate);
             order.setPrice(Double.parseDouble(priceTxt.getText()));
             order.setWeight(Double.parseDouble(weightTxt.getText()));
             order.setStatus(orderStatusCbb.getValue().toString());
+            
             order.setArea(areaCbb.getValue());
             order.setUser(userCbb.getValue());
+            
+            if (userCbb.getValue() !=  null){
+                order.setStatus("Đang giao");
+            }
+            if (deliveryDatepicker.getValue() != null){
+                order.setStatus("Thành công");
+            }
             if (cus != null){
                 order.setCustomer(cus);
             }
@@ -223,7 +231,7 @@ public class Chinhsuadonhang implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> listCbb = FXCollections.observableArrayList("Mới tạo","Đang giao","Đã giao","Hoàn trả");
+        ObservableList<String> listCbb = FXCollections.observableArrayList("Mới tạo","Đang giao","Thành công","Không thành công");
         orderStatusCbb.getItems().clear();
         orderStatusCbb.setItems(listCbb);
         
@@ -345,10 +353,12 @@ public class Chinhsuadonhang implements Initializable {
             orderNameTxt.setText(order.getOrderName().toString());
             priceTxt.setText(String.valueOf(order.getPrice()));
             weightTxt.setText(String.valueOf(order.getWeight()));
-            userCbb.setValue(order.getUser());
-            shipperNameTxt.setText(order.getUser().getFullName());
-            shipperTelTxt.setText(order.getUser().getTel());
-            shipperEmailTxt.setText(order.getUser().getEmail());
+            if (order.getUser() != null){
+                userCbb.setValue(order.getUser());
+                shipperNameTxt.setText(order.getUser().getFullName());
+                shipperTelTxt.setText(order.getUser().getTel());
+                shipperEmailTxt.setText(order.getUser().getEmail());
+            }
             
             orderCodeLabel.setText(order.getOrderCode());
         }
