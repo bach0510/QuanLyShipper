@@ -13,9 +13,13 @@ import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.CustomerService;
 import com.company.quanlyshipper.service.OrderService;
 import com.company.quanlyshipper.service.UserService;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,6 +30,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -69,6 +77,10 @@ public class Quanlydonhang implements Initializable {
     private TableColumn<Orders, String> createDate;
     @FXML
     private TableColumn<Orders, String> status;
+    @FXML
+    private TableColumn<Orders, String> shipperCode;
+    @FXML
+    private TableColumn<Orders, String> cusName;
     
     @FXML
     private TableColumn<OrderDetail, String> orderDetailName;
@@ -83,9 +95,42 @@ public class Quanlydonhang implements Initializable {
     private TableColumn<OrderDetail, String> sumPrice;
     @FXML
     private ComboBox statusCbb;
+    
+    @FXML
+    private Button exportBtn;
+    
+    private List<Orders> orderList;
     /**
      * Initializes the controller class.
      */
+    @FXML 
+    void exportExcel() throws FileNotFoundException, IOException {
+        Workbook workbook = new HSSFWorkbook();
+        Sheet spreadsheet = workbook.createSheet("donhang");
+
+        Row row = spreadsheet.createRow(0);
+
+        for (int j = 0; j < orderTable.getColumns().size(); j++) {
+            row.createCell(j).setCellValue(orderTable.getColumns().get(j).getText());
+        }
+
+        for (int i = 0; i < orderTable.getItems().size(); i++) {
+            row = spreadsheet.createRow(i + 1);
+            for (int j = 0; j < orderTable.getColumns().size(); j++) {
+                if(orderTable.getColumns().get(j).getCellData(i) != null) { 
+                    row.createCell(j).setCellValue(orderTable.getColumns().get(j).getCellData(i).toString()); 
+                }
+                else {
+                    row.createCell(j).setCellValue("");
+                }   
+            }
+        }
+
+        FileOutputStream fileOut = new FileOutputStream("DONHANG.xls");
+        workbook.write(fileOut);
+        fileOut.close();
+
+    }
     
     @FXML 
     void addOrderDetail() {
@@ -160,7 +205,7 @@ public class Quanlydonhang implements Initializable {
     void search(){
         orderTable.getItems().clear();
         String statusValue = statusCbb.getValue().toString() == "Tất cả" ? "" : statusCbb.getValue().toString();
-        List<Orders> orderList = service.getAllOrder(statusValue,orderCodeTxt.getText().toString() );
+        orderList = service.getAllOrder(statusValue,orderCodeTxt.getText().toString() );
         orderTable.getItems().addAll(orderList);
         this.order = null;
     }
@@ -175,6 +220,8 @@ public class Quanlydonhang implements Initializable {
         orderName.setCellValueFactory(new PropertyValueFactory<>("orderName"));
         createDate.setCellValueFactory(new PropertyValueFactory<>("createDate"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        shipperCode.setCellValueFactory(new PropertyValueFactory<>("user"));
+        cusName.setCellValueFactory(new PropertyValueFactory<>("customer"));
         
         orderTable.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2)

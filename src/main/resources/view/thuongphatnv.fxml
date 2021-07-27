@@ -21,7 +21,7 @@
             </ImageView>
             <TableView fx:id="bonusTable" layoutX="14.0" layoutY="135.0" prefHeight="455.0" prefWidth="367.0">
               <columns>
-                  <TableColumn fx:id="shipperName" prefWidth="97.0" text="Tên Shipper" />
+                  <TableColumn fx:id="shipperName" prefWidth="97.0" text="Mã shipper" />
                   <TableColumn fx:id="bonusName" prefWidth="117.0" text="Nội dung thưởng" />
                   <TableColumn fx:id="bonusDate" prefWidth="163.0" text="Ngày tạo" />
               </columns>
@@ -49,7 +49,7 @@
             </TextField>
             <TableView fx:id="punishTable" layoutX="428.0" layoutY="135.0" prefHeight="455.0" prefWidth="367.0">
                <columns>
-                  <TableColumn fx:id="shipperName2" prefWidth="107.0" text="Tên Shipper" />
+                  <TableColumn fx:id="shipperName2" prefWidth="107.0" text="Mã shipper" />
                   <TableColumn fx:id="punishName" prefWidth="136.0" text="Nội dung phạt" />
                   <TableColumn fx:id="punishDate" prefWidth="123.0" text="Ngày tạo" />
                </columns>

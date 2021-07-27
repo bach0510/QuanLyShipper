@@ -88,11 +88,10 @@ public class Thuongphatnv implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        bonusName.setCellValueFactory(new PropertyValueFactory<>("bonusName"));
-        punishName.setCellValueFactory(new PropertyValueFactory<>("punishName"));
-        shipperName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-        shipperName2.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        bonusName.setCellValueFactory(new PropertyValueFactory<>("bonus"));
+        punishName.setCellValueFactory(new PropertyValueFactory<>("punish"));
+        shipperName.setCellValueFactory(new PropertyValueFactory<>("user"));
+        shipperName2.setCellValueFactory(new PropertyValueFactory<>("user"));
         bonusDate.setCellValueFactory(new PropertyValueFactory<>("bonusTime"));
         punishDate.setCellValueFactory(new PropertyValueFactory<>("punishTime"));
         search();

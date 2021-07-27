@@ -111,6 +111,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="exportBtn" layoutX="552.0" layoutY="199.0" mnemonicParsing="false" onAction="#exportExcel" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Xuất excel">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </children>

@@ -118,23 +118,23 @@ public class Customer {
     
     public Customer(){}
 
-//     @Override
-//    public String toString(){
-//        return Code;
-//    }
-//    
-//    @Override
-//    public boolean equals(Object o){
-//        if(this == o)return true;
-//        if(!(o instanceof Customer )) return false;
-//        Customer user = (Customer)o;
-//        return Id == user.Id;
-//    }
-//    
-//    @Override 
-//    public int hashCode() {
-//        return Objects.hash(Id);
-//    }
+     @Override
+    public String toString(){
+        return CusName;
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this == o)return true;
+        if(!(o instanceof Customer )) return false;
+        Customer c = (Customer)o;
+        return Id == c.Id;
+    }
+    
+    @Override 
+    public int hashCode() {
+        return Objects.hash(Id);
+    }
     
 
 }

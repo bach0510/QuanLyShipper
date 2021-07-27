@@ -108,15 +108,17 @@ public class Chinhsuathuongphat implements Initializable {
         try{
 //            Users user = service.getShipperInfoByCode(code)
             if (type == 1){
-                bonus.setBonusName(payoffNameTxt.getText());    
-                bonus.setPrice(Double.parseDouble(priceTxt.getText())); 
+                bonus.setBonusName(payoffNameTxt.getText());   
+                double payoff = Double.parseDouble(priceTxt.getText() != null ? priceTxt.getText() : "0");
+                bonus.setPrice(payoff); 
         
                 saveHandlerBonus.accept(bonus);
             }
             if (type == 2){
                 String punishName = payoffNameTxt.getText();
                 punish.setPunishName(punishName); 
-                punish.setPrice(Double.parseDouble(priceTxt.getText()));   
+                double payoff = Double.parseDouble(priceTxt.getText() != null ? priceTxt.getText() : "0");
+                punish.setPrice(payoff);   
         
                 saveHandlerPunish.accept(punish);
             }

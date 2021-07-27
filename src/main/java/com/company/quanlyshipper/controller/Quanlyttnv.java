@@ -12,6 +12,9 @@ import com.company.quanlyshipper.repo.AreasRepo;
 import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.LoginService;
 import com.company.quanlyshipper.service.UserService;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -26,6 +29,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -156,6 +163,35 @@ public class Quanlyttnv implements Initializable {
                 areaCbb.getValue());
         tableView.getItems().addAll(userList);
         this.user = null;
+    }
+    
+    @FXML 
+    void exportExcel() throws FileNotFoundException, IOException {
+        Workbook workbook = new HSSFWorkbook();
+        Sheet spreadsheet = workbook.createSheet("donhang");
+
+        Row row = spreadsheet.createRow(0);
+
+        for (int j = 0; j < tableView.getColumns().size(); j++) {
+            row.createCell(j).setCellValue(tableView.getColumns().get(j).getText());
+        }
+
+        for (int i = 0; i < tableView.getItems().size(); i++) {
+            row = spreadsheet.createRow(i + 1);
+            for (int j = 0; j < tableView.getColumns().size(); j++) {
+                if(tableView.getColumns().get(j).getCellData(i) != null) { 
+                    row.createCell(j).setCellValue(tableView.getColumns().get(j).getCellData(i).toString()); 
+                }
+                else {
+                    row.createCell(j).setCellValue("");
+                }   
+            }
+        }
+
+        FileOutputStream fileOut = new FileOutputStream("DONHANG.xls");
+        workbook.write(fileOut);
+        fileOut.close();
+
     }
     
     @FXML

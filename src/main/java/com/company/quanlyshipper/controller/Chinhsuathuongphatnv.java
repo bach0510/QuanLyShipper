@@ -140,7 +140,6 @@ public class Chinhsuathuongphatnv implements Initializable {
                 saveHandlerBonus.accept(bonus);
             }
             if (type == 2){
-                String punishName = payoffNameTxt.getText();
                 punish.setPunish(punishCbb.getValue());  
                 punish.setUser(userCbb.getValue());               
                 punish.setPunishTime(currentDate);

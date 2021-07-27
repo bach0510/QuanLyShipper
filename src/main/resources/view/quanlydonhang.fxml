@@ -31,12 +31,14 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TableView fx:id="orderTable" layoutX="15.0" layoutY="114.0" prefHeight="416.0" prefWidth="766.0">
+            <TableView fx:id="orderTable" layoutX="15.0" layoutY="114.0" prefHeight="416.0" prefWidth="781.0">
               <columns>
                 <TableColumn fx:id="orderCode" prefWidth="115.0" text="Mã đơn " />
-                  <TableColumn fx:id="orderName" prefWidth="236.0" text="Tên đơn " />
-                <TableColumn fx:id="createDate" minWidth="0.0" prefWidth="167.0" text="Ngày tạo " />
-                  <TableColumn fx:id="status" minWidth="2.0" prefWidth="246.0" text="Trạng thái" />
+                  <TableColumn fx:id="orderName" prefWidth="128.0" text="Tên đơn " />
+                  <TableColumn fx:id="cusName" minWidth="2.0" prefWidth="114.0" text="Tên người nhận" />
+                  <TableColumn fx:id="shipperCode" minWidth="2.0" prefWidth="107.0" text="Mã shipper" />
+                <TableColumn fx:id="createDate" minWidth="0.0" prefWidth="137.0" text="Ngày tạo " />
+                  <TableColumn fx:id="status" minWidth="2.0" prefWidth="132.0" text="Trạng thái" />
               </columns>
             </TableView>
             <Button fx:id="addOrderBtn" layoutX="448.0" layoutY="544.0" mnemonicParsing="false" onAction="#addOrder" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Thêm đơn hàng ">
@@ -70,6 +72,14 @@
                </font>
             </Label>
             <TextField fx:id="orderCodeTxt" layoutX="373.0" layoutY="78.0" prefHeight="25.0" prefWidth="151.0" promptText="Nhập mã đơn" />
+            <Button fx:id="exportBtn" layoutX="273.0" layoutY="544.0" mnemonicParsing="false" onAction="#exportExcel" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Xuất excel">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </children>

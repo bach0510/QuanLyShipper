@@ -124,8 +124,8 @@ public class Thuongphat implements Initializable {
         punishTable.getItems().clear();
         List<Punish> punishList = payOffService.getAllPunish();
         punishTable.getItems().addAll(punishList);
-        this.bonus = null;        
-        this.punish = null;
+//        this.bonus = null;        
+//        this.punish = null;
 
     }
     
