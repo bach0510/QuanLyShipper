@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.quanlyshipper.controller.Tinhluong">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="811.0">
+         <children>
+            <ImageView fitHeight="608.0" fitWidth="811.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/v.jpg" />
+               </image>
+            </ImageView>
+            <TextField accessibleRole="BUTTON" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #FF99CC;" text="Lương nhân viên">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </TextField>
+            <Label layoutX="16.0" layoutY="81.0" text="Tháng">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TableView fx:id="salaryTable" layoutX="15.0" layoutY="114.0" prefHeight="416.0" prefWidth="781.0">
+              <columns>
+                <TableColumn fx:id="shipperName" prefWidth="175.0" text="Tên shipper" />
+                  <TableColumn fx:id="orderCount" prefWidth="117.0" text="Số đơn " />
+                  <TableColumn fx:id="bonus" minWidth="2.0" prefWidth="161.0" text="Tiền thưởng" />
+                  <TableColumn fx:id="punish" minWidth="2.0" prefWidth="149.0" text="Tiền phạt" />
+                <TableColumn fx:id="salary" minWidth="0.0" prefWidth="178.0" text="Lương" />
+              </columns>
+            </TableView>
+            <ComboBox fx:id="monthCbb" layoutX="81.0" layoutY="79.0" prefWidth="150.0" />
+            <Button fx:id="searchBtn" layoutX="532.0" layoutY="76.0" mnemonicParsing="false" onAction="#search" opacity="0.66" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #FF99CC;" text="Tìm kiếm">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="316.0" layoutY="81.0" text="Năm">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="exportBtn" layoutX="628.0" layoutY="542.0" mnemonicParsing="false" onAction="#exportExcel" opacity="0.66" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #FF99CC;" text="Xuất excel">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ComboBox fx:id="yearCbb" layoutX="357.0" layoutY="78.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

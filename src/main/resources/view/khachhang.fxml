@@ -76,7 +76,7 @@
                   <TableColumn fx:id="cusAdd" prefWidth="274.0" text="Địa chỉ" />
               </columns>
             </TableView>
-            <Button fx:id="addNewBtn" layoutX="14.0" layoutY="199.0" mnemonicParsing="false" onAction="#addNewUser" opacity="0.66" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #FF99CC;" text="Thêm mới nhân viên">
+            <Button fx:id="addNewBtn" layoutX="14.0" layoutY="199.0" mnemonicParsing="false" onAction="#addNewUser" opacity="0.66" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #FF99CC;" text="Thêm mới khách hàng">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -84,7 +84,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="deleteBtn" layoutX="206.0" layoutY="199.0" mnemonicParsing="false" onAction="#deleteUser" opacity="0.66" prefHeight="30.0" prefWidth="132.0" style="-fx-background-color: #FF99CC;" text="Xóa nhân viên">
+            <Button fx:id="deleteBtn" layoutX="206.0" layoutY="199.0" mnemonicParsing="false" onAction="#deleteUser" opacity="0.66" prefHeight="30.0" prefWidth="132.0" style="-fx-background-color: #FF99CC;" text="Xóa khách hàng">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

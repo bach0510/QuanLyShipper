@@ -6,10 +6,8 @@
 package com.company.quanlyshipper.service;
 
 import com.company.quanlyshipper.AppException;
-import com.company.quanlyshipper.model.OrderDetail;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Users;
-import com.company.quanlyshipper.repo.OrderDetailRepo;
 import com.company.quanlyshipper.repo.OrdersRepo;
 import com.microsoft.sqlserver.jdbc.StringUtils;
 import java.util.Optional;
@@ -28,8 +26,6 @@ import java.util.Map;
 public class OrderService {
     @Autowired
     private OrdersRepo orderRepo;
-    @Autowired
-    private OrderDetailRepo orderDetailRepo;
        
     public List<Orders> getAllOrder(String status , String code){
         StringBuffer sb = new StringBuffer(" select o from Orders o where 1=1");
@@ -63,13 +59,6 @@ public class OrderService {
         
         return orderRepo.findByQuery(sb.toString(), params);
     }
-    public List<OrderDetail> getAllOrderDetail(int orderId){
-        StringBuffer sb = new StringBuffer(" select od from OrderDetail od where 1=1");
-        Map<String,Object> params = new HashMap<>();
-        sb.append("and od.OrderId = :orderId");
-        params.put("orderId", orderId);
-        return orderDetailRepo.findByQuery(sb.toString(), params);
-    }
     
     public Orders searchOrderByCode (String orderCode){
         StringBuffer sb = new StringBuffer(" select o from Orders o where 1=1");
@@ -85,13 +74,6 @@ public class OrderService {
     
     public void deleteOrder(Orders order){
         orderRepo.delete(order);
-    }
-    public void saveOrderDetail(OrderDetail orderDetail){
-        orderDetailRepo.save(orderDetail);
-    }
-    
-    public void deleteOrderDetail(OrderDetail orderDetail){
-        orderDetailRepo.delete(orderDetail);
     }
     
 }

@@ -6,8 +6,6 @@ package com.company.quanlyshipper.controller;
  * and open the template in the editor.
  */
 
-import static com.company.quanlyshipper.controller.Chinhsuachitietdonhang.editOrderDetail;
-import com.company.quanlyshipper.model.OrderDetail;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.CustomerService;
@@ -53,7 +51,6 @@ public class Quanlydonhang implements Initializable {
     
     private Orders order;
     
-    private OrderDetail orderDetail;
 
     @Autowired
     private OrderService service;
@@ -68,8 +65,6 @@ public class Quanlydonhang implements Initializable {
     @FXML
     private TableView<Orders> orderTable;
     @FXML
-    private TableView<OrderDetail> orderDetailTable;
-    @FXML
     private TableColumn<Orders, String> orderCode;
     @FXML
     private TableColumn<Orders, String> orderName;
@@ -82,17 +77,6 @@ public class Quanlydonhang implements Initializable {
     @FXML
     private TableColumn<Orders, String> cusName;
     
-    @FXML
-    private TableColumn<OrderDetail, String> orderDetailName;
-
-    @FXML
-    private TableColumn<OrderDetail, String> qty;
-
-    @FXML
-    private TableColumn<OrderDetail, String> price;
-
-    @FXML
-    private TableColumn<OrderDetail, String> sumPrice;
     @FXML
     private ComboBox statusCbb;
     
@@ -132,26 +116,6 @@ public class Quanlydonhang implements Initializable {
 
     }
     
-    @FXML 
-    void addOrderDetail() {
-        if (this.order == null){
-            Thongbao.ThongbaoBuilder.builder()
-                .title("Không thể tìm thấy thông tin")
-                .message("Vui lòng chọn 1 đơn hàng bên trên để thêm mặt hàng")
-                .build().show();
-        }
-        else {
-           Chinhsuachitietdonhang.addNew(this.order.getId(),this::saveOrderDetail);
-        }
-        
-    }
-    
-    private void saveOrderDetail(OrderDetail orderDetail){
-        service.saveOrderDetail(orderDetail);
-        orderDetailTable.getItems().clear();
-        List<OrderDetail> orderDetailList = service.getAllOrderDetail(this.order.getId());
-        orderDetailTable.getItems().addAll(orderDetailList);
-    }
     
      @FXML 
     void addOrder() {
@@ -182,24 +146,6 @@ public class Quanlydonhang implements Initializable {
         
     }
     
-    @FXML
-    private void deleteOrderDetail(){
-        if (this.orderDetail == null){
-            Thongbao.ThongbaoBuilder.builder()
-                .title("Không thể tìm thấy thông tin")
-                .message("Vui lòng chọn 1 thông tin trong bảng để thực hiện thao tác")
-                .build().show();
-        } else {
-           Thongbao.ThongbaoBuilder.builder()
-                .title("Thông tin của mặt hàng này sẽ bị xóa ra khỏi hệ thống")
-                .message("Việc làm này sẽ không thể hoàn tác , Bạn có chắc chắn muốn xóa thông tin này không ?")
-                .okAction(()-> {
-                    service.deleteOrderDetail(this.orderDetail);
-                    search();
-                }).build().show(); 
-        }
-        
-    }
     
     @FXML
     void search(){

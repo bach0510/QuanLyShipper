@@ -68,6 +68,12 @@ public class Thuongphat implements Initializable {
 
     @FXML
     private TableColumn<Punish, String> punishName;
+    
+    @FXML
+    private TableColumn<Bonus, String> bonusPrice;
+
+    @FXML
+    private TableColumn<Punish, String> punishPrice;
 
     
     private Bonus bonus;
@@ -82,6 +88,8 @@ public class Thuongphat implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         bonusName.setCellValueFactory(new PropertyValueFactory<>("bonusName"));
         punishName.setCellValueFactory(new PropertyValueFactory<>("punishName"));
+        bonusPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        punishPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         search();
         
         bonusTable.setOnMouseClicked(e -> {

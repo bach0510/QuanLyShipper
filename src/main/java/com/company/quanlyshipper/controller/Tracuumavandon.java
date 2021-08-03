@@ -7,7 +7,7 @@ package com.company.quanlyshipper.controller;
  */
 
 import com.company.quanlyshipper.model.Areas;
-import com.company.quanlyshipper.model.OrderDetail;
+//import com.company.quanlyshipper.model.OrderDetail;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.service.OrderService;
@@ -43,20 +43,20 @@ public class Tracuumavandon implements Initializable {
     @FXML
     private TextField orderCodeTxt;
 
-    @FXML
-    private TableView<OrderDetail> orderDetailTable;
-
-    @FXML
-    private TableColumn<OrderDetail, String> orderDetailName;
-
-    @FXML
-    private TableColumn<OrderDetail, String> qty;
-
-    @FXML
-    private TableColumn<OrderDetail, String> price;
-
-    @FXML
-    private TableColumn<OrderDetail, String> sumPrice;
+//    @FXML
+//    private TableView<OrderDetail> orderDetailTable;
+//
+//    @FXML
+//    private TableColumn<OrderDetail, String> orderDetailName;
+//
+//    @FXML
+//    private TableColumn<OrderDetail, String> qty;
+//
+//    @FXML
+//    private TableColumn<OrderDetail, String> price;
+//
+//    @FXML
+//    private TableColumn<OrderDetail, String> sumPrice;
 
     @FXML
     private TextField cusTelTxt;
@@ -107,9 +107,9 @@ public class Tracuumavandon implements Initializable {
     @FXML
     void searchOrderInfo() {
         Orders order = service.searchOrderByCode(orderCodeTxt.getText());
-        orderDetailTable.getItems().clear();
-        List<OrderDetail> orderDetailList = service.getAllOrderDetail(order.getId());
-        orderDetailTable.getItems().addAll(orderDetailList);
+//        orderDetailTable.getItems().clear();
+//        List<OrderDetail> orderDetailList = service.getAllOrderDetail(order.getId());
+//        orderDetailTable.getItems().addAll(orderDetailList);
         
         deliveryAddTxt.setText(order.getDeliveryAdd()); 
 
@@ -123,9 +123,9 @@ public class Tracuumavandon implements Initializable {
         shipperEmailTxt.setText(order.getUser().getEmail());
         
         orderSumPrice = 0;
-        orderDetailList.forEach(e ->{
-            orderSumPrice = orderSumPrice + e.getSumPrice();
-        });
+//        orderDetailList.forEach(e ->{
+//            orderSumPrice = orderSumPrice + e.getSumPrice();
+//        });
         
         sumPriceTxt.setText(String.valueOf(orderSumPrice));
     }
@@ -133,9 +133,9 @@ public class Tracuumavandon implements Initializable {
     //search khi có thông tin order đc chọn từ màn khác
     void searchFromOtherView(String orderCode) {
         Orders order = service.searchOrderByCode(orderCode);
-        orderDetailTable.getItems().clear();
-        List<OrderDetail> orderDetailList = service.getAllOrderDetail(order.getId());
-        orderDetailTable.getItems().addAll(orderDetailList);
+//        orderDetailTable.getItems().clear();
+//        List<OrderDetail> orderDetailList = service.getAllOrderDetail(order.getId());
+//        orderDetailTable.getItems().addAll(orderDetailList);
         
         deliveryAddTxt.setText(order.getDeliveryAdd()); 
 
@@ -149,19 +149,19 @@ public class Tracuumavandon implements Initializable {
         shipperEmailTxt.setText(order.getUser().getEmail());
         
         orderSumPrice = 0;
-        orderDetailList.forEach(e ->{
-            orderSumPrice = orderSumPrice + e.getSumPrice();
-        });
+//        orderDetailList.forEach(e ->{
+//            orderSumPrice = orderSumPrice + e.getSumPrice();
+//        });
         
         sumPriceTxt.setText(String.valueOf(orderSumPrice));
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        orderDetailName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        qty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        sumPrice.setCellValueFactory(new PropertyValueFactory<>("sumPrice"));
+//        orderDetailName.setCellValueFactory(new PropertyValueFactory<>("name"));
+//        qty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+//        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+//        sumPrice.setCellValueFactory(new PropertyValueFactory<>("sumPrice"));
     }    
     
 }

@@ -188,7 +188,7 @@ public class Quanlyttnv implements Initializable {
             }
         }
 
-        FileOutputStream fileOut = new FileOutputStream("DONHANG.xls");
+        FileOutputStream fileOut = new FileOutputStream("NHANVIEN.xls");
         workbook.write(fileOut);
         fileOut.close();
 

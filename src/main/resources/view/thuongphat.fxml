@@ -21,7 +21,8 @@
             </ImageView>
             <TableView fx:id="bonusTable" layoutX="14.0" layoutY="135.0" prefHeight="455.0" prefWidth="332.0">
               <columns>
-                  <TableColumn fx:id="bonusName" prefWidth="331.0" text="Nội dung" />
+                  <TableColumn fx:id="bonusName" prefWidth="164.0" text="Nội dung" />
+                  <TableColumn fx:id="bonusPrice" prefWidth="167.0" text="Số tiền" />
               </columns>
             </TableView>
             <Button fx:id="addNewBtnBonus" layoutX="14.0" layoutY="79.0" mnemonicParsing="false" onAction="#addNewBonus" opacity="0.66" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #FF99CC;" text="Thêm mới  thưởng">
@@ -47,7 +48,8 @@
             </TextField>
             <TableView fx:id="punishTable" layoutX="428.0" layoutY="135.0" prefHeight="455.0" prefWidth="332.0">
                <columns>
-                  <TableColumn fx:id="punishName" prefWidth="331.0" text="Nội dung" />
+                  <TableColumn fx:id="punishName" prefWidth="171.0" text="Nội dung" />
+                  <TableColumn fx:id="punishPrice" prefWidth="171.0" text="Số tiền" />
                </columns>
             </TableView>
             <Button fx:id="addNewBtnPunish" layoutX="428.0" layoutY="79.0" mnemonicParsing="false" onAction="#addNewPunish" opacity="0.66" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #FF99CC;" text="Thêm mới phạt">

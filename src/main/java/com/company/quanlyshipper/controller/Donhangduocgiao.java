@@ -6,8 +6,6 @@ package com.company.quanlyshipper.controller;
  * and open the template in the editor.
  */
 
-import static com.company.quanlyshipper.controller.Chinhsuachitietdonhang.editOrderDetail;
-import com.company.quanlyshipper.model.OrderDetail;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.service.AreaService;
@@ -46,7 +44,6 @@ public class Donhangduocgiao implements Initializable {
     
     private Orders order;
     
-    private OrderDetail orderDetail;
 
     @Autowired
     private OrderService service;
@@ -57,8 +54,6 @@ public class Donhangduocgiao implements Initializable {
     
     @FXML
     private TableView<Orders> orderTable;
-    @FXML
-    private TableView<OrderDetail> orderDetailTable;
     @FXML
     private TableColumn<Orders, String> orderCode;
     @FXML

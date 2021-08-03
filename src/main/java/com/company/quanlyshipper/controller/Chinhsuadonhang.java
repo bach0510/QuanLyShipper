@@ -330,6 +330,8 @@ public class Chinhsuadonhang implements Initializable {
             shipperTelTxt.clear();
             shipperEmailTxt.clear();
             orderCodeLabel.setVisible(false);
+            //deliveryDatepicker.disableProperty(true);
+
             for (Users u : this.shipperList){
                 if (u.getArea().getId() == area.getId()){
                     userCbb.getItems().add(u);
@@ -358,6 +360,13 @@ public class Chinhsuadonhang implements Initializable {
                 shipperNameTxt.setText(order.getUser().getFullName());
                 shipperTelTxt.setText(order.getUser().getTel());
                 shipperEmailTxt.setText(order.getUser().getEmail());
+            }
+            if (areaCbb.getValue()==null){
+                Areas area = new Areas();
+                area.setAreaName("Thanh Xuân");
+                area.setAreaCode("TX");
+                area.setId(1);
+                areaCbb.setValue(area);
             }
             
             orderCodeLabel.setText(order.getOrderCode());

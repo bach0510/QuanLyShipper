@@ -7,14 +7,12 @@ package com.company.quanlyshipper.service;
 
 import com.company.quanlyshipper.AppException;
 import com.company.quanlyshipper.model.Bonus;
-import com.company.quanlyshipper.model.OrderDetail;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Punish;
 import com.company.quanlyshipper.model.UserBonus;
 import com.company.quanlyshipper.model.UserPunish;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.repo.BonusRepo;
-import com.company.quanlyshipper.repo.OrderDetailRepo;
 import com.company.quanlyshipper.repo.OrdersRepo;
 import com.company.quanlyshipper.repo.PunishRepo;
 import com.company.quanlyshipper.repo.UserBonusRepo;
