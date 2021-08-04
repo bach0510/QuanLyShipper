@@ -144,6 +144,8 @@ public class Chinhsuadonhang implements Initializable {
     
     @FXML
     private Consumer<Orders> saveHandler;
+    @FXML
+    private Consumer<Customer> saveCusHandler;
 
     private SimpleDateFormat dateFormat;
     
@@ -204,10 +206,13 @@ public class Chinhsuadonhang implements Initializable {
                 order.setCustomer(cus);
             }
             else {
+                cus = new Customer();
                 cus.setCusName(cusNameTxt.getText());
                 cus.setCusTel(cusTelTxt.getText());
                 cus.setCusAdd(cusAddTxt.getText());
                 cus.setCusEmail(cusEmailTxt.getText());
+                saveCusHandler.accept(cus);
+                
                 order.setCustomer(cus);
             }
             saveHandler.accept(order);
@@ -253,6 +258,7 @@ public class Chinhsuadonhang implements Initializable {
                             }
                             else
                             {
+//                                cus = null;
                                 cusNameTxt.setText("");
                                 cusAddTxt.setText("");
                                 cusEmailTxt.setText("");
@@ -267,34 +273,18 @@ public class Chinhsuadonhang implements Initializable {
                                         .message("Thông tin của khách hàng này sẽ tự động được điền vào đơn")
                                         .build().show();
                         }
+//                        else
+//                        {
+//                            cus = new Customer();
+//                            cus.setCusName(cusNameTxt.getText());
+//                            cus.setCusEmail(cusEmailTxt.getText());
+//                            cus.setCusTel(cusTelTxt.getText());
+//                            cus.setCusAdd(cusAddTxt.getText());
+//                        }
                 }
             }
         });
-//        cusTelTxt.textProperty().addListener(new ChangeListener<String>() {
-//            @Override
-//            public void changed(ObservableValue<? extends String> observable,
-//			String oldValue, String newValue) {
-//                        cusList.forEach(customer -> {
-//                            if ( customer.getCusTel().contains(newValue))
-//                            {
-//                                cus = customer;
-//                            }
-//                            else
-//                            {
-//                                cusNameTxt.setText("");
-//                                cusAddTxt.setText("");
-//                                cusEmailTxt.setText("");
-//                            }
-//                        });
-//                        if (cus != null){
-//                            cusNameTxt.setText(cus.getCusName());
-//                            cusAddTxt.setText(cus.getCusAdd());
-//                            cusEmailTxt.setText(cus.getCusEmail());
-//                        }
-//                        
-//                }
-//        });
-        
+
         areaCbb.setOnAction(e -> {
             Areas area = areaCbb.getSelectionModel().getSelectedItem();
             userCbb.getItems().clear();
@@ -317,7 +307,7 @@ public class Chinhsuadonhang implements Initializable {
         
     }    
     
-    public static void editOrder(Orders order , Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Users>> userList, Supplier<List<Customer>> cusList){
+    public static void editOrder(Orders order ,Consumer<Customer> saveCusHandler, Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Users>> userList, Supplier<List<Customer>> cusList){
         try{
             Stage stage = new Stage(StageStyle.UNDECORATED);
             FXMLLoader loader = new FXMLLoader(Chinhsuadonhang.class.getClassLoader().getResource("view/chinhsuadonhang.fxml"));
@@ -325,18 +315,18 @@ public class Chinhsuadonhang implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             
             Chinhsuadonhang controller = loader.getController();
-            controller.init(order , saveHandler,areaList,userList,cusList);
+            controller.init(order , saveCusHandler,saveHandler,areaList,userList,cusList);
 
             stage.show();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
-    public static void addNew(Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Users>> userList,Supplier<List<Customer>> cusList  ){
-        editOrder(null,saveHandler,areaList,userList,cusList);
+    public static void addNew(Consumer<Customer> saveCusHandler,Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Users>> userList,Supplier<List<Customer>> cusList  ){
+        editOrder(null,saveCusHandler,saveHandler,areaList,userList,cusList);
     }
     
-    private void init(Orders order , Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList, Supplier<List<Users>> userList,Supplier<List<Customer>> cusList) throws FileNotFoundException, IOException{
+    private void init(Orders order ,Consumer<Customer> saveCusHandler, Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList, Supplier<List<Users>> userList,Supplier<List<Customer>> cusList) throws FileNotFoundException, IOException{
         this.order = order;
         areaCbb.getItems().clear();
         areaCbb.getItems().addAll(areaList.get());
@@ -345,6 +335,7 @@ public class Chinhsuadonhang implements Initializable {
         this.shipperList = userList.get();
         this.cusList = cusList.get();
         this.saveHandler = saveHandler;
+        this.saveCusHandler = saveCusHandler;
         
         if(order == null){
             titleTxt.setText("Thêm mới đơn hàng");

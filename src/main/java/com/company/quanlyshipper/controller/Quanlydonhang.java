@@ -6,6 +6,7 @@ package com.company.quanlyshipper.controller;
  * and open the template in the editor.
  */
 
+import com.company.quanlyshipper.model.Customer;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.CustomerService;
@@ -119,11 +120,15 @@ public class Quanlydonhang implements Initializable {
     
      @FXML 
     void addOrder() {
-        Chinhsuadonhang.addNew(this::save,areaService::getAllArea,userService::getAllShipper,cusService::getAllCus);
+        Chinhsuadonhang.addNew(this::saveCus,this::save,areaService::getAllArea,userService::getAllShipper,cusService::getAllCus);
     }
     
     private void save(Orders order){
         service.save(order);
+        search();
+    }
+    private void saveCus(Customer cus){
+        cusService.save(cus);
         search();
     }
     
@@ -175,7 +180,7 @@ public class Quanlydonhang implements Initializable {
                 Orders order = orderTable.getSelectionModel().getSelectedItem();
                 this.order = order;
                 if (order != null){
-                    Chinhsuadonhang.editOrder(order, this::save,areaService::getAllArea,userService::getAllShipper,cusService::getAllCus);
+                    Chinhsuadonhang.editOrder(order,this::saveCus, this::save,areaService::getAllArea,userService::getAllShipper,cusService::getAllCus);
                 }
             }
             if (e.getClickCount() >= 1)

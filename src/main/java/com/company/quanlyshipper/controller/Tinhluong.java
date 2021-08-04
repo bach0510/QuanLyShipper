@@ -119,21 +119,25 @@ public class Tinhluong implements Initializable {
     void search(){
         salaryTable.getItems().clear();
         //String statusValue = statusCbb.getValue().toString() == "Tất cả" ? "" : statusCbb.getValue().toString();
-        salaryList = payOffService.getAllSalary(7,2021);
+        salaryList = payOffService.getAllSalary(monthCbb.getValue(),yearCbb.getValue());
         salaryTable.getItems().addAll(salaryList);
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        ObservableList<String> listCbb = FXCollections.observableArrayList("Tất cả","Mới tạo","Đang giao","Thành công","Không thành công");
-//        statusCbb.getItems().clear();
-//        statusCbb.setItems(listCbb);
-//        statusCbb.setValue("Tất cả");
+        ObservableList<Integer> monthList = FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10,11,12);
+        monthCbb.getItems().clear();
+        monthCbb.setItems(monthList);
+        monthCbb.setValue(1);
+        ObservableList<Integer> yearList = FXCollections.observableArrayList(2021,2020);
+        yearCbb.getItems().clear();
+        yearCbb.setItems(yearList);
+        yearCbb.setValue(2021);
         shipperName.setCellValueFactory(new PropertyValueFactory<>("fullName"));        
-//        orderName.setCellValueFactory(new PropertyValueFactory<>("orderName"));
-//        createDate.setCellValueFactory(new PropertyValueFactory<>("createDate"));
-//        status.setCellValueFactory(new PropertyValueFactory<>("status"));
-//        shipperCode.setCellValueFactory(new PropertyValueFactory<>("user"));
+        orderCount.setCellValueFactory(new PropertyValueFactory<>("soDon"));
+        bonus.setCellValueFactory(new PropertyValueFactory<>("tienThuong"));
+        punish.setCellValueFactory(new PropertyValueFactory<>("tienPhat"));
+        salary.setCellValueFactory(new PropertyValueFactory<>("tienLuong"));
 //        cusName.setCellValueFactory(new PropertyValueFactory<>("customer"));
         
 //        orderTable.setOnMouseClicked(e -> {

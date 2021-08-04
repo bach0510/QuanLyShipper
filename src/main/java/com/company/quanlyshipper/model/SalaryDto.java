@@ -24,10 +24,10 @@ import lombok.Data;
  */
 @Entity
 @Table(name="sp_GetSalary")
-//@NamedStoredProcedureQuery(name = "sp_GetSalary", procedureName = "sp_GetSalary",
-//        resultClasses = SalaryDto.class, parameters = {
-//            @StoredProcedureParameter(name = "month", type = Integer.class) , 
-//            @StoredProcedureParameter(name = "year", type = Long.class)})
+@NamedStoredProcedureQuery(name = "sp_GetSalary", procedureName = "sp_GetSalary",
+        resultClasses = SalaryDto.class, parameters = {
+            @StoredProcedureParameter(name = "month", type = Integer.class) , 
+            @StoredProcedureParameter(name = "year", type = Long.class)})
 public class SalaryDto {
     @Id
     

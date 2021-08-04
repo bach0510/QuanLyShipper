@@ -48,7 +48,7 @@ public class PayOffService {
     private SalaryRepo salaryRepo;
     
     public List<SalaryDto> getAllSalary(int month , int year  ){
-        return salaryRepo.sp_GetSalary(month, year);
+        return salaryRepo.getSalary(month, year);
     }
        
     public List<Bonus> getAllBonus(){

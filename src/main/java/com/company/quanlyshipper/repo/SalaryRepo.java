@@ -22,7 +22,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SalaryRepo extends BaseRepository<SalaryDto, Integer> {
-    @Query(nativeQuery = true,value = "sp_GetSalary(?month , ?year)")
+    @Query(nativeQuery = true,value = "{call sp_GetSalary(? , ?)}")
     //@Procedure(name = "sp_GetSalary")
-    List<SalaryDto> sp_GetSalary(@Param("month") Integer month,@Param("year") long year);
+    List<SalaryDto> getSalary( Integer month, long year);
 }
