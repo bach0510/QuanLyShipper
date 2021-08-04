@@ -235,12 +235,19 @@ public class Chinhsuadonhang implements Initializable {
         orderStatusCbb.getItems().clear();
         orderStatusCbb.setItems(listCbb);
         
-        cusTelTxt.textProperty().addListener(new ChangeListener<String>() {
+        cusTelTxt.focusedProperty().addListener(new ChangeListener<Boolean>()
+        {
             @Override
-            public void changed(ObservableValue<? extends String> observable,
-			String oldValue, String newValue) {
-                        cusList.forEach(customer -> {
-                            if ( customer.getCusTel().contains(newValue))
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+            {
+                if (newPropertyValue)
+                {
+                    System.out.println("Textfield on focus");
+                }
+                else
+                {
+                    cusList.forEach(customer -> {
+                            if ( customer.getCusTel().toString().equals(cusTelTxt.getText().toString()))
                             {
                                 cus = customer;
                             }
@@ -255,10 +262,38 @@ public class Chinhsuadonhang implements Initializable {
                             cusNameTxt.setText(cus.getCusName());
                             cusAddTxt.setText(cus.getCusAdd());
                             cusEmailTxt.setText(cus.getCusEmail());
+                                    Thongbao.ThongbaoBuilder.builder()
+                                        .title("Thông tin khách hàng đã có trong hệ thống")
+                                        .message("Thông tin của khách hàng này sẽ tự động được điền vào đơn")
+                                        .build().show();
                         }
-                        
                 }
+            }
         });
+//        cusTelTxt.textProperty().addListener(new ChangeListener<String>() {
+//            @Override
+//            public void changed(ObservableValue<? extends String> observable,
+//			String oldValue, String newValue) {
+//                        cusList.forEach(customer -> {
+//                            if ( customer.getCusTel().contains(newValue))
+//                            {
+//                                cus = customer;
+//                            }
+//                            else
+//                            {
+//                                cusNameTxt.setText("");
+//                                cusAddTxt.setText("");
+//                                cusEmailTxt.setText("");
+//                            }
+//                        });
+//                        if (cus != null){
+//                            cusNameTxt.setText(cus.getCusName());
+//                            cusAddTxt.setText(cus.getCusAdd());
+//                            cusEmailTxt.setText(cus.getCusEmail());
+//                        }
+//                        
+//                }
+//        });
         
         areaCbb.setOnAction(e -> {
             Areas area = areaCbb.getSelectionModel().getSelectedItem();
@@ -330,11 +365,18 @@ public class Chinhsuadonhang implements Initializable {
             shipperTelTxt.clear();
             shipperEmailTxt.clear();
             orderCodeLabel.setVisible(false);
-            //deliveryDatepicker.disableProperty(true);
+            deliveryDatepicker.disableProperty().setValue(true);
 
             for (Users u : this.shipperList){
-                if (u.getArea().getId() == area.getId()){
-                    userCbb.getItems().add(u);
+                if(area != null){
+                    if (u.getArea().getId() == area.getId()){
+                        userCbb.getItems().add(u);
+                    }
+                }
+                else{
+                    if (u.getArea().getId() == areaCbb.getValue().getId()){
+                        userCbb.getItems().add(u);
+                    }
                 }
             }
         }
@@ -347,6 +389,7 @@ public class Chinhsuadonhang implements Initializable {
             cusNameTxt.setText(order.getCustomer().getCusName());
             cusAddTxt.setText(order.getCustomer().getCusAdd());
             cusEmailTxt.setText(order.getCustomer().getCusEmail());
+            deliveryDatepicker.disableProperty().setValue(false);
             
             deliveryDatepicker.setValue(order.getReceiveDate());
             createDatepicker.setValue(order.getCreateDate());

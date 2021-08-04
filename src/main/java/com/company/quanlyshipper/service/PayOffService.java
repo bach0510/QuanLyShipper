@@ -9,12 +9,14 @@ import com.company.quanlyshipper.AppException;
 import com.company.quanlyshipper.model.Bonus;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Punish;
+import com.company.quanlyshipper.model.SalaryDto;
 import com.company.quanlyshipper.model.UserBonus;
 import com.company.quanlyshipper.model.UserPunish;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.repo.BonusRepo;
 import com.company.quanlyshipper.repo.OrdersRepo;
 import com.company.quanlyshipper.repo.PunishRepo;
+import com.company.quanlyshipper.repo.SalaryRepo;
 import com.company.quanlyshipper.repo.UserBonusRepo;
 import com.company.quanlyshipper.repo.UserPunishRepo;
 import com.microsoft.sqlserver.jdbc.StringUtils;
@@ -25,6 +27,7 @@ import com.company.quanlyshipper.repo.UsersRepo;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -40,6 +43,13 @@ public class PayOffService {
     private UserBonusRepo userBonusRepo;
     @Autowired
     private UserPunishRepo userPunishRepo;
+    
+    @Autowired
+    private SalaryRepo salaryRepo;
+    
+    public List<SalaryDto> getAllSalary(int month , int year  ){
+        return salaryRepo.sp_GetSalary(month, year);
+    }
        
     public List<Bonus> getAllBonus(){
         return bonusRepo.findAll();

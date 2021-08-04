@@ -7,9 +7,11 @@ package com.company.quanlyshipper.controller;
  */
 
 import com.company.quanlyshipper.model.Orders;
+import com.company.quanlyshipper.model.SalaryDto;
 import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.CustomerService;
 import com.company.quanlyshipper.service.OrderService;
+import com.company.quanlyshipper.service.PayOffService;
 import com.company.quanlyshipper.service.UserService;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -43,26 +45,28 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class Tinhluong implements Initializable {
 
-        @FXML
-    private TableView<?> salaryTable;
+    @Autowired
+    private PayOffService payOffService;
+    @FXML
+    private TableView<SalaryDto> salaryTable;
 
     @FXML
-    private TableColumn<?, ?> shipperName;
+    private TableColumn<SalaryDto, String> shipperName;
 
     @FXML
-    private TableColumn<?, ?> orderCount;
+    private TableColumn<SalaryDto, String> orderCount;
 
     @FXML
-    private TableColumn<?, ?> bonus;
+    private TableColumn<SalaryDto, String> bonus;
 
     @FXML
-    private TableColumn<?, ?> punish;
+    private TableColumn<SalaryDto, String> punish;
 
     @FXML
-    private TableColumn<?, ?> salary;
+    private TableColumn<SalaryDto, String> salary;
 
     @FXML
-    private ComboBox<?> monthCbb;
+    private ComboBox<Integer> monthCbb;
 
     @FXML
     private Button searchBtn;
@@ -71,17 +75,10 @@ public class Tinhluong implements Initializable {
     private Button exportBtn;
 
     @FXML
-    private ComboBox<?> yearCbb;
+    private ComboBox<Integer> yearCbb;
     
-
-    @Autowired
-    private OrderService service;
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private AreaService areaService;
-    @Autowired
-    private CustomerService cusService;
+    private List<SalaryDto> salaryList;
+    
     @FXML
     private TextField orderCodeTxt;
 
@@ -120,11 +117,10 @@ public class Tinhluong implements Initializable {
     
     @FXML
     void search(){
-//        orderTable.getItems().clear();
-//        String statusValue = statusCbb.getValue().toString() == "Tất cả" ? "" : statusCbb.getValue().toString();
-//        orderList = service.getAllOrder(statusValue,orderCodeTxt.getText().toString() );
-//        orderTable.getItems().addAll(orderList);
-//        this.order = null;
+        salaryTable.getItems().clear();
+        //String statusValue = statusCbb.getValue().toString() == "Tất cả" ? "" : statusCbb.getValue().toString();
+        salaryList = payOffService.getAllSalary(7,2021);
+        salaryTable.getItems().addAll(salaryList);
     }
     
     @Override
@@ -133,7 +129,7 @@ public class Tinhluong implements Initializable {
 //        statusCbb.getItems().clear();
 //        statusCbb.setItems(listCbb);
 //        statusCbb.setValue("Tất cả");
-//        orderCode.setCellValueFactory(new PropertyValueFactory<>("orderCode"));        
+        shipperName.setCellValueFactory(new PropertyValueFactory<>("fullName"));        
 //        orderName.setCellValueFactory(new PropertyValueFactory<>("orderName"));
 //        createDate.setCellValueFactory(new PropertyValueFactory<>("createDate"));
 //        status.setCellValueFactory(new PropertyValueFactory<>("status"));

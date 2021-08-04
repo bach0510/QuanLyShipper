@@ -178,6 +178,11 @@ public class Chinhsuattnv implements Initializable {
             this.user.setRoleId(2);
             this.user.setType("Ship lấy");
             typeCbb.setValue(this.user.getType());
+            Areas area = new Areas();
+            area.setAreaName("Thanh Xuân");
+            area.setAreaCode("TX");
+            area.setId(1);
+            areaCbb.setValue(area);
         }
         else {
             titleTxt.setText("Chỉnh sửa nhân viên");
