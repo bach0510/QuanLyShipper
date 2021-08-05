@@ -178,58 +178,125 @@ public class Chinhsuadonhang implements Initializable {
     @FXML
     private void save() {
         try{
-//            ZoneId defaultZoneId = ZoneId.systemDefault();
-//            currentDate = new Date().toInstant().atZone(defaultZoneId).toLocalDate();
-            currentDate = LocalDate.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyy");
-//            dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");            
-//            SimpleDateFormat dateFormat2 = new SimpleDateFormat("ddMMyy");
-            String address = cusAddTxt.getText() != null ? cusAddTxt.getText() : "";
-            order.setDeliveryAdd(address);
-            order.setOrderName(orderNameTxt.getText());
-            order.setReceiveDate(deliveryDatepicker.getValue());
-            order.setCreateDate(currentDate);
-            order.setPrice(Double.parseDouble(priceTxt.getText()));
-            order.setWeight(Double.parseDouble(weightTxt.getText()));
-            order.setStatus(orderStatusCbb.getValue().toString());
+            if(validate() == true){
+
+                currentDate = LocalDate.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyy");
+
+                String address = cusAddTxt.getText() != null ? cusAddTxt.getText() : "";
+                order.setDeliveryAdd(address);
+                order.setOrderName(orderNameTxt.getText());
+                order.setReceiveDate(deliveryDatepicker.getValue());
+                order.setCreateDate(currentDate);
+                order.setPrice(Double.parseDouble(priceTxt.getText()));
+                order.setWeight(Double.parseDouble(weightTxt.getText()));
+                order.setStatus(orderStatusCbb.getValue().toString());
+
+                order.setArea(areaCbb.getValue());
+                order.setUser(userCbb.getValue());
+
+                if (userCbb.getValue() !=  null){
+                    order.setStatus("Đang giao");
+                }
+                if (deliveryDatepicker.getValue() != null){
+                    order.setStatus("Thành công");
+                }
+                cusList.forEach(customer -> {
+                    if ( customer.getCusTel().toString().equals(cusTelTxt.getText().toString()))
+                    {
+                        cus = customer;
+                    }
+                });
+                if (cus != null){
+                    order.setCustomer(cus);
+                }
+                else {
+                    cus = new Customer();
+                    cus.setCusName(cusNameTxt.getText());
+                    cus.setCusTel(cusTelTxt.getText());
+                    cus.setCusAdd(cusAddTxt.getText());
+                    cus.setCusEmail(cusEmailTxt.getText());
+                    saveCusHandler.accept(cus);
+
+                    order.setCustomer(cus);
+                }
+                saveHandler.accept(order);
+                cancel();
+                    String orderCode = "HN." 
+                        + areaCbb.getValue().getAreaCode() + "."
+                        + order.getId() +"."
+                        + currentDate.format(formatter);
+                order.setOrderCode(orderCode);
+                saveHandler.accept(order);
             
-            order.setArea(areaCbb.getValue());
-            order.setUser(userCbb.getValue());
+            }
             
-            if (userCbb.getValue() !=  null){
-                order.setStatus("Đang giao");
-            }
-            if (deliveryDatepicker.getValue() != null){
-                order.setStatus("Thành công");
-            }
-            if (cus != null){
-                order.setCustomer(cus);
-            }
-            else {
-                cus = new Customer();
-                cus.setCusName(cusNameTxt.getText());
-                cus.setCusTel(cusTelTxt.getText());
-                cus.setCusAdd(cusAddTxt.getText());
-                cus.setCusEmail(cusEmailTxt.getText());
-                saveCusHandler.accept(cus);
-                
-                order.setCustomer(cus);
-            }
-            saveHandler.accept(order);
             
-            String orderCode = "HN." 
-                    + areaCbb.getValue().getAreaCode() + "."
-                    + order.getId() +"."
-                    + currentDate.format(formatter);
-            order.setOrderCode(orderCode);
-            saveHandler.accept(order);
-            
-            cancel();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
     
+    private boolean validate(){
+        if (orderNameTxt.getText().toString() == null || orderNameTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Tên đơn không được để trống")
+                .build().show();
+            orderNameTxt.requestFocus();
+            return false;
+        }
+        if (priceTxt.getText().toString() == null || priceTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Đơn giá không được để trống")
+                .build().show();
+            priceTxt.requestFocus();
+            return false;
+        }
+        if (Double.parseDouble(priceTxt.getText()) < 0){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Đơn giá không được nhỏ hơn 0")
+                .build().show();
+            priceTxt.requestFocus();
+            return false;
+        }
+        if ((weightTxt.getText().toString() != null && !weightTxt.getText().toString().equals("")) && Double.parseDouble(weightTxt.getText()) < 0){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Cân nặng không được nhỏ hơn 0")
+                .build().show();
+            weightTxt.requestFocus();
+            return false;
+        }
+        if ((deliveryDatepicker.getValue() != null && !deliveryDatepicker.getValue().toString().equals("")) && deliveryDatepicker.getValue().isBefore(createDatepicker.getValue())){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Ngày nhận không được phép nhỏ hơn ngày tạo đơn")
+                .build().show();
+            weightTxt.requestFocus();
+            return false;
+        }
+        if (cusTelTxt.getText().toString() == null || cusTelTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Số điện thoại người nhận không được để trống")
+                .build().show();
+            cusTelTxt.requestFocus();
+            return false;
+        }      
+        if (cusNameTxt.getText().toString() == null || cusNameTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Tên người nhận không được để trống")
+                .build().show();
+            cusNameTxt.requestFocus();
+            return false;
+        }   
+        if (cusAddTxt.getText().toString() == null || cusAddTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Địa chỉ nhận không được để trống")
+                .build().show();
+            cusAddTxt.requestFocus();
+            return false;
+        }   
+        
+        return true;
+    }
 
     /**
      * Initializes the controller class.
@@ -272,6 +339,7 @@ public class Chinhsuadonhang implements Initializable {
                                         .title("Thông tin khách hàng đã có trong hệ thống")
                                         .message("Thông tin của khách hàng này sẽ tự động được điền vào đơn")
                                         .build().show();
+                            cus = null;
                         }
 //                        else
 //                        {

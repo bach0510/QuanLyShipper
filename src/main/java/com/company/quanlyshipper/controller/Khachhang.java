@@ -119,7 +119,7 @@ public class Khachhang implements Initializable {
                 Customer cus = tableView.getSelectionModel().getSelectedItem();
                 this.cus = cus;
                 if (cus != null){
-                    Chinhsuattkh.editUser(cus, this::save,areaService::getAllArea);
+                    Chinhsuattkh.editUser(cus, this::save,areaService::getAllArea,service::getAllCus);
                 }
             }
             if (e.getClickCount() >= 1)
@@ -157,7 +157,7 @@ public class Khachhang implements Initializable {
     
     @FXML
     void addNewUser(){
-        Chinhsuattkh.addNew(this::save,areaService::getAllArea);
+        Chinhsuattkh.addNew(this::save,areaService::getAllArea,service::getAllCus);
     }
     
     private void save(Customer cus){

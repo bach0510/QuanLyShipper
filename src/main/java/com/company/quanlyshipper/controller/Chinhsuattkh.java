@@ -111,6 +111,8 @@ public class Chinhsuattkh implements Initializable {
     private Consumer<Customer> saveHandler;
 
     private Supplier<List<Areas>> areaList;
+    
+    private Supplier<List<Customer>> cusList;
     @FXML
     void cancel() {
         cancelBtn.getScene().getWindow().hide();
@@ -119,19 +121,57 @@ public class Chinhsuattkh implements Initializable {
     @FXML
     private void save() {
         try{
-//            Users user = service.getShipperInfoByCode(code)
-            cus.setCusName(fullNameTxt.getText());            
-            cus.setCusTel(telTxt.getText());
-            cus.setCusCmnd(cmndTxt.getText());
-            cus.setCusEmail(emailTxt.getText());
-            cus.setArea(areaCbb.getValue());
-        
-            saveHandler.accept(cus);
-            
-            cancel();
+            if(validate()==true){
+                cus.setCusName(fullNameTxt.getText());            
+                cus.setCusTel(telTxt.getText());
+                cus.setCusCmnd(cmndTxt.getText());
+                cus.setCusEmail(emailTxt.getText());
+                cus.setArea(areaCbb.getValue());
+                cus.setCusAdd(addressTxt.getText());
+
+                saveHandler.accept(cus);
+
+                cancel();
+            }
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+    
+    private boolean validate(){
+        
+        if (fullNameTxt.getText().toString() == null || fullNameTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Tên không được để trống")
+                .build().show();
+            fullNameTxt.requestFocus();
+            return false;
+        }      
+        if (telTxt.getText().toString() == null || telTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Số điện thoại không được để trống")
+                .build().show();
+            telTxt.requestFocus();
+            return false;
+        }  
+        for(Customer x : cusList.get()){
+            if (telTxt.getText().toString().toLowerCase().equals(x.getCusTel().toString().toLowerCase())){
+                Thongbao.ThongbaoBuilder.builder()
+                    .message("Số điện thoại đã tồn tại")
+                    .build().show();
+                telTxt.requestFocus();
+                return false;
+            }
+        }
+        if (addressTxt.getText().toString() == null || addressTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Địa chỉ không được để trống")
+                .build().show();
+            addressTxt.requestFocus();
+            return false;
+        } 
+        
+        return true;
     }
     /**
      * Initializes the controller class.
@@ -143,7 +183,7 @@ public class Chinhsuattkh implements Initializable {
 //        typeCbb.setItems(listCbb);
     }    
     
-    public static void editUser(Customer cus , Consumer<Customer> saveHandler,Supplier<List<Areas>> areaList){
+    public static void editUser(Customer cus , Consumer<Customer> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Customer>> cusList){
         
         try{
             Stage stage = new Stage(StageStyle.UNDECORATED);
@@ -152,19 +192,20 @@ public class Chinhsuattkh implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             
             Chinhsuattkh controller = loader.getController();
-            controller.init(cus , saveHandler,areaList);
+            controller.init(cus , saveHandler,areaList,cusList);
 
             stage.show();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
-    public static void addNew(Consumer<Customer> saveHandler,Supplier<List<Areas>> areaList){
-        editUser(null,saveHandler,areaList);
+    public static void addNew(Consumer<Customer> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Customer>> cusList){
+        editUser(null,saveHandler,areaList,cusList);
     }
     
-    private void init(Customer cus , Consumer<Customer> saveHandler,Supplier<List<Areas>> areaList) throws FileNotFoundException, IOException{
+    private void init(Customer cus , Consumer<Customer> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Customer>> cusList) throws FileNotFoundException, IOException{
         this.cus = cus;
+        this.cusList = cusList;
         this.saveHandler = saveHandler;
         areaCbb.getItems().clear();
         areaCbb.getItems().addAll(areaList.get());
@@ -188,28 +229,7 @@ public class Chinhsuattkh implements Initializable {
         
         
     }
-//    @FXML
-//    void choosePicture(ActionEvent event) {
-//        Stage stage = (Stage)codeTxt.getScene().getWindow();
-//        FileChooser fc = new FileChooser();
-//        fc.setTitle("chọn ảnh");
-//        this.file = fc.showOpenDialog(stage);
-//        if(this.file != null){
-//            Image image = new Image(this.file.toURI().toString(),151,142,true,true);
-//            imageView.setImage(image);
-//            imageView.setFitWidth(151);
-//            imageView.setFitHeight(142);
-//            
-//            imageView.setPreserveRatio(true);
-//            try {
-//                byte[]img = Files.readAllBytes(file.toPath());
-//                
-//                this.user.setImage(img);
-//            } catch (Exception e){
-//                
-//            }
-//        }
-//    }
+
     
     
 }

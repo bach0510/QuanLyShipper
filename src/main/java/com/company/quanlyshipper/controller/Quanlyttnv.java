@@ -138,7 +138,7 @@ public class Quanlyttnv implements Initializable {
                 Users user = tableView.getSelectionModel().getSelectedItem();
                 this.user = user;
                 if (user != null){
-                    Chinhsuattnv.editUser(user, this::save,areaService::getAllArea);
+                    Chinhsuattnv.editUser(service::getAllShipper,user, this::save,areaService::getAllArea);
                 }
             }
             if (e.getClickCount() >= 1)
@@ -209,7 +209,7 @@ public class Quanlyttnv implements Initializable {
     
     @FXML
     void addNewUser(){
-        Chinhsuattnv.addNew(this::save,areaService::getAllArea);
+        Chinhsuattnv.addNew(service::getAllShipper,this::save,areaService::getAllArea);
     }
     
     private void save(Users user){

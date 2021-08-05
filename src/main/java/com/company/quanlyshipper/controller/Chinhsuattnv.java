@@ -109,7 +109,9 @@ public class Chinhsuattnv implements Initializable {
     @FXML
     private Consumer<Users> saveHandler;
 
-    private Supplier<List<Areas>> areaList;
+    private Supplier<List<Areas>> areaList;    
+    private Supplier<List<Users>> userList;
+
     @FXML
     void cancel() {
         cancelBtn.getScene().getWindow().hide();
@@ -129,13 +131,50 @@ public class Chinhsuattnv implements Initializable {
             user.setRegisterNo(registerNoTxt.getText());
             user.setUserName(codeTxt.getText());
             user.setPassword("1");
-        
-            saveHandler.accept(user);
+            if (validate()== true){
+                saveHandler.accept(user);
             
-            cancel();
+                cancel();
+            }
+            
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+    
+    private boolean validate(){
+        if (codeTxt.getText().toString() == null || codeTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Mã nhân viên không được để trống")
+                .build().show();
+            codeTxt.requestFocus();
+            return false;
+        }
+        for(Users x : userList.get()){
+            if (codeTxt.getText().toString().toLowerCase().equals(x.getCode().toString().toLowerCase())){
+                Thongbao.ThongbaoBuilder.builder()
+                    .message("Mã nhân viên đã tồn tại")
+                    .build().show();
+                codeTxt.requestFocus();
+                return false;
+            }
+        }
+        if (fullNameTxt.getText().toString() == null || fullNameTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Tên nhân viên không được để trống")
+                .build().show();
+            fullNameTxt.requestFocus();
+            return false;
+        }
+        if (telTxt.getText().toString() == null || telTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Số điện thoại không được để trống")
+                .build().show();
+            telTxt.requestFocus();
+            return false;
+        }
+        
+        return true;
     }
     /**
      * Initializes the controller class.
@@ -147,7 +186,7 @@ public class Chinhsuattnv implements Initializable {
         typeCbb.setItems(listCbb);
     }    
     
-    public static void editUser(Users user , Consumer<Users> saveHandler,Supplier<List<Areas>> areaList){
+    public static void editUser(Supplier<List<Users>> userList,Users user , Consumer<Users> saveHandler,Supplier<List<Areas>> areaList){
         
         try{
             Stage stage = new Stage(StageStyle.UNDECORATED);
@@ -156,19 +195,20 @@ public class Chinhsuattnv implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             
             Chinhsuattnv controller = loader.getController();
-            controller.init(user , saveHandler,areaList);
+            controller.init(userList,user , saveHandler,areaList);
 
             stage.show();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
-    public static void addNew(Consumer<Users> saveHandler,Supplier<List<Areas>> areaList){
-        editUser(null,saveHandler,areaList);
+    public static void addNew(Supplier<List<Users>> userList,Consumer<Users> saveHandler,Supplier<List<Areas>> areaList){
+        editUser(userList,null,saveHandler,areaList);
     }
     
-    private void init(Users user , Consumer<Users> saveHandler,Supplier<List<Areas>> areaList) throws FileNotFoundException, IOException{
+    private void init(Supplier<List<Users>> userList,Users user , Consumer<Users> saveHandler,Supplier<List<Areas>> areaList) throws FileNotFoundException, IOException{
         this.user = user;
+        this.userList = userList;
         this.saveHandler = saveHandler;
         areaCbb.getItems().clear();
         areaCbb.getItems().addAll(areaList.get());
