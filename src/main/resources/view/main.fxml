@@ -24,12 +24,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Text fill="#4d4d4d" layoutX="549.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="81.205078125">
+            <Text fill="#4d4d4d" layoutX="52.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="81.205078125">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Text>
-            <Text fx:id="currentNameText" fill="#656363" layoutX="642.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="258.205078125">
+            <Text fx:id="currentNameText" fill="#656363" layoutX="149.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="261.205078125">
                <font>
                   <Font size="18.0" />
                </font>
@@ -56,6 +56,14 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button id="chinhsuattcanhan" fx:id="chinhSuaTtCaNhanTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Thông tin cá nhân">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                   <Button id="quanlyttnv" fx:id="nhanVienTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Quản lý nhân viên">
                      <font>
                         <Font name="System Bold" size="13.0" />
@@ -65,14 +73,6 @@
                      </cursor>
                   </Button>
                   <Button id="donhangduocgiao" fx:id="donHangShipperTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Các đơn hàng được giao">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button id="tracuumavandon" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Tra cứu mã vận đơn">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -120,17 +120,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="baoCaoTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Báo cáo">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                </children>
             </VBox>
-            <StackPane fx:id="ContentView" layoutX="178.0" prefHeight="608.0" prefWidth="811.0" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0" />
+            <StackPane id="chinhsuattcanhan" fx:id="ContentView" layoutX="178.0" prefHeight="608.0" prefWidth="811.0" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>

@@ -57,7 +57,13 @@ public class Thuongphatnv implements Initializable {
     private TableView<UserPunish> punishTable;
     
     @FXML
-    private Button deleteBtn;
+    private Button deleteBtnBonus;
+    @FXML
+    private Button deleteBtnPunish;
+    @FXML
+    private Button addNewBtnBonus;
+    @FXML
+    private Button addNewBtnPunish;
     
     @FXML
     private Button refreshBtn;
@@ -94,6 +100,17 @@ public class Thuongphatnv implements Initializable {
         shipperName2.setCellValueFactory(new PropertyValueFactory<>("user"));
         bonusDate.setCellValueFactory(new PropertyValueFactory<>("bonusTime"));
         punishDate.setCellValueFactory(new PropertyValueFactory<>("punishTime"));
+        
+        if(Main.currentUser.getRoleId() == 2){
+            addNewBtnBonus.setVisible(false);
+            addNewBtnBonus.setManaged(false);
+            addNewBtnPunish.setVisible(false);
+            addNewBtnPunish.setManaged(false);
+            deleteBtnBonus.setVisible(false);
+            deleteBtnBonus.setManaged(false);
+            deleteBtnPunish.setVisible(false);
+            deleteBtnPunish.setManaged(false);
+        }
         search();
         
         bonusTable.setOnMouseClicked(e -> {

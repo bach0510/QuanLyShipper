@@ -33,6 +33,10 @@ public class UserService {
         return userRepo.findByQuery(sb.toString(), params);
 
     }
+    public Users findById(Integer id){
+        return userRepo.findInfoById(id);
+
+    }
     public List<Users> getAllShipperInfo(String fullname,String cmnd,String tel,String code,String email,String type,Areas area){
 //        List<Users> shippers = userRepo.findShipperByArgument(fullname, cmnd, tel, code, email,type,areaId);
 //        //List<Users> shippers = userRepo.findAll();

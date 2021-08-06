@@ -25,6 +25,9 @@ public interface UsersRepo extends BaseRepository<Users, Integer> {
     @Query("SELECT u FROM Users u WHERE u.Code = ?1 AND u.RoleId = 2")
     Users findShipperByCode(String code);
     
+    @Query("SELECT u FROM Users u WHERE u.Id = ?1")
+    Users findInfoById(Integer id);
+    
     @Query("SELECT u.Code FROM Users u WHERE u.RoleId = 2")
     ObservableList<String> findAllShippersCode();
     

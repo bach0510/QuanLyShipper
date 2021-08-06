@@ -6,9 +6,11 @@ package com.company.quanlyshipper.controller;
  * and open the template in the editor.
  */
 
+import com.company.quanlyshipper.model.Customer;
 import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.service.AreaService;
+import com.company.quanlyshipper.service.CustomerService;
 import com.company.quanlyshipper.service.OrderService;
 import com.company.quanlyshipper.service.UserService;
 import java.net.URL;
@@ -51,6 +53,8 @@ public class Donhangduocgiao implements Initializable {
     private UserService userService;
     @Autowired
     private AreaService areaService;
+    @Autowired
+    private CustomerService cusService;
     
     @FXML
     private TableView<Orders> orderTable;
@@ -77,6 +81,15 @@ public class Donhangduocgiao implements Initializable {
         this.order = null;
     }
     
+    private void save(Orders order){
+        service.save(order);
+        search();
+    }
+    private void saveCus(Customer cus){
+        cusService.save(cus);
+        search();
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<String> listCbb = FXCollections.observableArrayList("Tất cả","Mới tạo","Đang giao","Đã giao","Hoàn trả");
@@ -91,11 +104,19 @@ public class Donhangduocgiao implements Initializable {
         orderTable.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2)
             {
+                if (e.getClickCount() == 2)
+            {
                 Orders order = orderTable.getSelectionModel().getSelectedItem();
                 this.order = order;
                 if (order != null){
-//                    /Tracuumavandon.loadView(order);
+                    Chinhsuadonhangduocgiao.editOrder(order,this::saveCus, this::save,areaService::getAllArea,userService::getAllShipper,cusService::getAllCus);
                 }
+            }
+            if (e.getClickCount() >= 1)
+            {
+                Orders order = orderTable.getSelectionModel().getSelectedItem();
+                this.order = order;
+            }
             }
         });
         search();

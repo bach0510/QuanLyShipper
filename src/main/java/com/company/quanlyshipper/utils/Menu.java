@@ -16,7 +16,8 @@ public enum Menu {
     quanlyttnv("quanlyttnv"),    
     tinhluong("tinhluong"),
     thuongphat("thuongphat"),
-    thuongphatnv("thuongphatnv"),
+    thuongphatnv("thuongphatnv"),    
+    chinhsuattcanhan("chinhsuattcanhan"),
     donhangduocgiao("donhangduocgiao");
     
     private String title;

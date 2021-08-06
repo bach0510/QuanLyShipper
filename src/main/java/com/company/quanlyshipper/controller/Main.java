@@ -55,6 +55,10 @@ public class Main implements Initializable {
     
     @FXML
     private Button donHangShipperTab;
+    @FXML
+    private Button thuongPhatTab;
+    @FXML
+    private Button thuongPhatNvTab;
     
     @FXML
     private Button khachHangTab;
@@ -209,10 +213,12 @@ public class Main implements Initializable {
             donHangQuanlyTab.setManaged(false);
             nhanVienTab.setVisible(false);
             nhanVienTab.setManaged(false);
-            tinhLuongTab.setVisible(false);
-            tinhLuongTab.setManaged(false);
-            baoCaoTab.setVisible(false);
-            baoCaoTab.setManaged(false);
+//            tinhLuongTab.setVisible(false);
+//            tinhLuongTab.setManaged(false);
+            thuongPhatTab.setVisible(false);
+            thuongPhatTab.setManaged(false);
+//            thuongPhatNvTab.setVisible(false);
+//            thuongPhatNvTab.setManaged(false);
             khachHangTab.setVisible(false);
             khachHangTab.setManaged(false);
         }
