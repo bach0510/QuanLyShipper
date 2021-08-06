@@ -7,10 +7,12 @@ package com.company.quanlyshipper.controller;
  */
 
 import com.company.quanlyshipper.model.Areas;
+import com.company.quanlyshipper.model.Orders;
 import com.company.quanlyshipper.model.Users;
 import com.company.quanlyshipper.repo.AreasRepo;
 import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.LoginService;
+import com.company.quanlyshipper.service.OrderService;
 import com.company.quanlyshipper.service.UserService;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -46,6 +48,8 @@ public class Quanlyttnv implements Initializable {
 
     @Autowired
     private UserService service;
+    @Autowired
+    private OrderService orderService;
     
     @Autowired
     private AreaService areaService;
@@ -224,13 +228,29 @@ public class Quanlyttnv implements Initializable {
                 .message("Vui lòng chọn 1 thông tin trong bảng để thực hiện thao tác")
                 .build().show();
         } else {
-           Thongbao.ThongbaoBuilder.builder()
+           boolean isHaveOrder = false;
+           for(Orders x : orderService.getAllOrder("", "")){
+               if(x.getUser()!= null){
+                   if(x.getUser().getId() == this.user.getId()){
+                        isHaveOrder = true;
+                    }
+               }
+               
+           }
+           if(isHaveOrder == true){
+               Thongbao.ThongbaoBuilder.builder()
+                .message("Bạn không thể xóa nhân viên đang có đơn hàng")
+                .build().show(); 
+           }
+           if(isHaveOrder == false){
+               Thongbao.ThongbaoBuilder.builder()
                 .title("Thông tin của nhân viên này sẽ bị xóa ra khỏi hệ thống")
                 .message("Việc làm này sẽ không thể hoàn tác , Bạn có chắc chắn muốn xóa thông tin này không ?")
                 .okAction(()-> {
                     service.deleteUser(this.user);
                     search();
                 }).build().show(); 
+           }
         }
         
     }
