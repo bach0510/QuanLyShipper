@@ -164,6 +164,9 @@ public class Thongtincanhan implements Initializable {
 
         if (validate()== true){
             save(user);
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Đã lưu thành công")
+                .build().show();
         }
     }
     private boolean validate(){

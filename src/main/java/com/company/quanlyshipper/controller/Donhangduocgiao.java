@@ -92,7 +92,7 @@ public class Donhangduocgiao implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> listCbb = FXCollections.observableArrayList("Tất cả","Mới tạo","Đang giao","Đã giao","Hoàn trả");
+        ObservableList<String> listCbb = FXCollections.observableArrayList("Tất cả","Đang giao","Thành công","Không thành công");
         statusCbb.getItems().clear();
         statusCbb.setItems(listCbb);
         statusCbb.setValue("Tất cả");

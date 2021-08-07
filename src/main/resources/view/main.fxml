@@ -112,7 +112,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button id="tinhluong" fx:id="tinhLuongTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Tính lương">
+                  <Button id="tinhluong" fx:id="tinhLuongTab" mnemonicParsing="false" onMouseClicked="#clickMenu" prefHeight="27.0" prefWidth="178.0" text="Lương">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

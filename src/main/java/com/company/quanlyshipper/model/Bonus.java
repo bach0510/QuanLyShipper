@@ -67,7 +67,7 @@ public class Bonus {
     
     @Override
     public String toString(){
-        return BonusName;
+        return BonusName + '-' + String.valueOf(Price);
     }
     
     @Override

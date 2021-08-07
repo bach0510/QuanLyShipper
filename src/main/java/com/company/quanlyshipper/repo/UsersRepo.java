@@ -19,7 +19,7 @@ import org.springframework.data.repository.query.Param;
  * @author Admin
  */
 public interface UsersRepo extends BaseRepository<Users, Integer> {
-    @Query("SELECT u FROM Users u WHERE u.UserName = ?1 AND u.Password = ?2")
+    @Query("SELECT u FROM Users u WHERE LOWER(u.UserName) = LOWER(?1) AND LOWER(u.Password) = LOWER(?2)")
     Users findByNameAndPassword(String username,String password);
     
     @Query("SELECT u FROM Users u WHERE u.Code = ?1 AND u.RoleId = 2")

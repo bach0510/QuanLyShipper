@@ -155,12 +155,23 @@ public class Chinhsuattkh implements Initializable {
             return false;
         }  
         for(Customer x : cusList.get()){
-            if (telTxt.getText().toString().toLowerCase().equals(x.getCusTel().toString().toLowerCase())){
+            if (cus == null){
+                if (telTxt.getText().toString().toLowerCase().equals(x.getCusTel().toString().toLowerCase())){
                 Thongbao.ThongbaoBuilder.builder()
                     .message("Số điện thoại đã tồn tại")
                     .build().show();
                 telTxt.requestFocus();
                 return false;
+                }
+            }
+            else{
+                if (cus.getId() != x.getId() && telTxt.getText().toString().toLowerCase().equals(x.getCusTel().toString().toLowerCase())){
+                Thongbao.ThongbaoBuilder.builder()
+                    .message("Số điện thoại đã tồn tại")
+                    .build().show();
+                telTxt.requestFocus();
+                return false;
+                }
             }
         }
         if (addressTxt.getText().toString() == null || addressTxt.getText().toString().equals("")){

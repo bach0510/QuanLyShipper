@@ -151,12 +151,24 @@ public class Chinhsuattnv implements Initializable {
             return false;
         }
         for(Users x : userList.get()){
-            if (codeTxt.getText().toString().toLowerCase().equals(x.getCode().toString().toLowerCase())){
+            
+            if (user == null){
+                if (codeTxt.getText().toString().toLowerCase().equals(x.getCode().toString().toLowerCase())){
                 Thongbao.ThongbaoBuilder.builder()
                     .message("Mã nhân viên đã tồn tại")
                     .build().show();
                 codeTxt.requestFocus();
                 return false;
+                }
+            }
+            else{
+                if (user.getId() != x.getId() && codeTxt.getText().toString().toLowerCase().equals(x.getCode().toString().toLowerCase())){
+                Thongbao.ThongbaoBuilder.builder()
+                    .message("Mã nhân viên đã tồn tại")
+                    .build().show();
+                codeTxt.requestFocus();
+                return false;
+                }
             }
         }
         if (fullNameTxt.getText().toString() == null || fullNameTxt.getText().toString().equals("")){

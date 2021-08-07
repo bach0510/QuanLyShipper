@@ -68,7 +68,7 @@ public class Punish {
     
     @Override
     public String toString(){
-        return PunishName;
+        return PunishName + '-' + String.valueOf(Price);
     }
     
     @Override

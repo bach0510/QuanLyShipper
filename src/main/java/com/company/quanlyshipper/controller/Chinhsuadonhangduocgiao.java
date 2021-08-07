@@ -116,6 +116,8 @@ public class Chinhsuadonhangduocgiao implements Initializable {
 
     @FXML
     private TextField shipperCodeTxt;
+     @FXML
+    private TextField deliveryAddTxt;
 
     @FXML
     private ComboBox orderStatusCbb;
@@ -138,8 +140,7 @@ public class Chinhsuadonhangduocgiao implements Initializable {
     @FXML
     private ComboBox<Users> userCbb;
     
-    @FXML
-    private TextField deliveryAddTxt;
+   
 
     
     @FXML
@@ -192,12 +193,6 @@ public class Chinhsuadonhangduocgiao implements Initializable {
                 order.setWeight(Double.parseDouble(weightTxt.getText()));
                 order.setStatus(orderStatusCbb.getValue().toString());
 
-                order.setArea(areaCbb.getValue());
-                order.setUser(userCbb.getValue());
-
-                if (userCbb.getValue() !=  null){
-                    order.setStatus("Đang giao");
-                }
                 if (deliveryDatepicker.getValue() != null){
                     order.setStatus("Thành công");
                 }
@@ -279,10 +274,6 @@ public class Chinhsuadonhangduocgiao implements Initializable {
     
     private void init(Orders order ,Consumer<Customer> saveCusHandler, Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList, Supplier<List<Users>> userList,Supplier<List<Customer>> cusList) throws FileNotFoundException, IOException{
         this.order = order;
-        areaCbb.getItems().clear();
-        areaCbb.getItems().addAll(areaList.get());
-        userCbb.getItems().clear();
-        userCbb.getItems().addAll(userList.get());
         this.shipperList = userList.get();
         this.cusList = cusList.get();
         this.saveHandler = saveHandler;
@@ -303,24 +294,10 @@ public class Chinhsuadonhangduocgiao implements Initializable {
             
             deliveryDatepicker.setValue(order.getReceiveDate());
             createDatepicker.setValue(order.getCreateDate());
-            areaCbb.setValue(order.getArea());
             orderStatusCbb.setValue(order.getStatus().toString());
             orderNameTxt.setText(order.getOrderName().toString());
             priceTxt.setText(String.valueOf(order.getPrice()));
             weightTxt.setText(String.valueOf(order.getWeight()));
-            if (order.getUser() != null){
-                userCbb.setValue(order.getUser());
-                shipperNameTxt.setText(order.getUser().getFullName());
-                shipperTelTxt.setText(order.getUser().getTel());
-                shipperEmailTxt.setText(order.getUser().getEmail());
-            }
-            if (areaCbb.getValue()==null){
-                Areas area = new Areas();
-                area.setAreaName("Thanh Xuân");
-                area.setAreaCode("TX");
-                area.setId(1);
-                areaCbb.setValue(area);
-            }
             
             orderCodeLabel.setText(order.getOrderCode());
         
