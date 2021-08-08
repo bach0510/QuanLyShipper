@@ -118,7 +118,7 @@ public class Thuongphatnv implements Initializable {
             {
                 UserBonus b = bonusTable.getSelectionModel().getSelectedItem();
                 this.bonus = b;
-                if (b != null){
+                if (b != null && Main.currentUser.getRoleId() == 1){
                     Chinhsuathuongphatnv.editPayoff(1, b ,this::saveBonus,null, this::savePunish,userService::getAllShipper,payOffService::getAllBonus,payOffService::getAllPunish);
                 }
             }
@@ -133,7 +133,7 @@ public class Thuongphatnv implements Initializable {
             {
                 UserPunish p = punishTable.getSelectionModel().getSelectedItem();
                 this.punish = p;
-                if (p != null){
+                if (p != null && Main.currentUser.getRoleId() == 1){
                     Chinhsuathuongphatnv.editPayoff(2, null ,this::saveBonus,p, this::savePunish,userService::getAllShipper,payOffService::getAllBonus,payOffService::getAllPunish);
                 }
             }

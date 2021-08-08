@@ -12,9 +12,11 @@ import com.company.quanlyshipper.service.AreaService;
 import com.company.quanlyshipper.service.CustomerService;
 import com.company.quanlyshipper.service.OrderService;
 import com.company.quanlyshipper.service.UserService;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,6 +31,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -110,11 +115,21 @@ public class Quanlydonhang implements Initializable {
                 }   
             }
         }
-
-        FileOutputStream fileOut = new FileOutputStream("DONHANG.xls");
+        
+        FileChooser fc = new  FileChooser();
+        Stage stage = (Stage)exportBtn.getScene().getWindow();
+        fc.setInitialFileName("DANH SACH DON HANG.xls");
+        fc.getExtensionFilters().addAll(
+            new ExtensionFilter("Excel File", "*.xls"));
+        File file = fc.showSaveDialog(stage);
+        
+        FileOutputStream fileOut = new FileOutputStream(file.getPath());
+        
         workbook.write(fileOut);
         fileOut.close();
-
+        Thongbao.ThongbaoBuilder.builder()
+                .message("Đã Xuất thành công!")
+                .build().show();
     }
     
     

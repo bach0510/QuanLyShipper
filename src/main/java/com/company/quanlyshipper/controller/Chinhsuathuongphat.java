@@ -107,26 +107,55 @@ public class Chinhsuathuongphat implements Initializable {
     private void save() {
         try{
 //            Users user = service.getShipperInfoByCode(code)
-            if (type == 1){
-                bonus.setBonusName(payoffNameTxt.getText());   
-                double payoff = Double.parseDouble(priceTxt.getText() != null ? priceTxt.getText() : "0");
-                bonus.setPrice(payoff); 
-        
-                saveHandlerBonus.accept(bonus);
-            }
-            if (type == 2){
-                String punishName = payoffNameTxt.getText();
-                punish.setPunishName(punishName); 
-                double payoff = Double.parseDouble(priceTxt.getText() != null ? priceTxt.getText() : "0");
-                punish.setPrice(payoff);   
-        
-                saveHandlerPunish.accept(punish);
+            if(validate()==true){
+                if (type == 1){
+                    bonus.setBonusName(payoffNameTxt.getText());   
+                    double payoff = Double.parseDouble(priceTxt.getText() != null ? priceTxt.getText() : "0");
+                    bonus.setPrice(payoff); 
+
+                    saveHandlerBonus.accept(bonus);
+                }
+                if (type == 2){
+                    String punishName = payoffNameTxt.getText();
+                    punish.setPunishName(punishName); 
+                    double payoff = Double.parseDouble(priceTxt.getText() != null ? priceTxt.getText() : "0");
+                    punish.setPrice(payoff);   
+
+                    saveHandlerPunish.accept(punish);
+                }
+                cancel();
             }
             
-            cancel();
+            
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+    private boolean validate(){
+        
+        if (payoffNameTxt.getText().toString() == null || payoffNameTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Nội dung không được để trống")
+                .build().show();
+            payoffNameTxt.requestFocus();
+            return false;
+        }
+        if (priceTxt.getText().toString() == null || priceTxt.getText().toString().equals("")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Số tiền không được để trống")
+                .build().show();
+            priceTxt.requestFocus();
+            return false;
+        }
+        if (Double.parseDouble(priceTxt.getText()) < 0){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Số tiền không được nhỏ hơn 0")
+                .build().show();
+            priceTxt.requestFocus();
+            return false;
+        }
+        
+        return true;
     }
     /**
      * Initializes the controller class.
