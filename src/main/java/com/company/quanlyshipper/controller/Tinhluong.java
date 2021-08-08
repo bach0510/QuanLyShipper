@@ -132,8 +132,18 @@ public class Tinhluong implements Initializable {
     void search(){
         salaryTable.getItems().clear();
         //String statusValue = statusCbb.getValue().toString() == "Tất cả" ? "" : statusCbb.getValue().toString();
+        
         salaryList = payOffService.getAllSalary(monthCbb.getValue(),yearCbb.getValue());
-        salaryTable.getItems().addAll(salaryList);
+        if(Main.currentUser.getRoleId() == 1){
+            salaryTable.getItems().addAll(salaryList);
+        }
+        else{
+            for(SalaryDto x : salaryList){
+                if(x.getUserId() == Main.currentUser.getId()){
+                    salaryTable.getItems().add(x);
+                }
+            }
+        }
     }
     
     @Override
@@ -151,6 +161,10 @@ public class Tinhluong implements Initializable {
         bonus.setCellValueFactory(new PropertyValueFactory<>("tienThuong"));
         punish.setCellValueFactory(new PropertyValueFactory<>("tienPhat"));
         salary.setCellValueFactory(new PropertyValueFactory<>("tienLuong"));
+        if (Main.currentUser.getRoleId() != 1){
+            exportBtn.setVisible(false);
+            exportBtn.setManaged(false);
+        }
 //        cusName.setCellValueFactory(new PropertyValueFactory<>("customer"));
         
 //        orderTable.setOnMouseClicked(e -> {

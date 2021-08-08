@@ -248,7 +248,13 @@ public class Chinhsuadonhangduocgiao implements Initializable {
             deliveryAddTxt.requestFocus();
             return false;
         }   
-        
+        if ((deliveryDatepicker.getValue() != null && !deliveryDatepicker.getValue().toString().equals("")) && deliveryDatepicker.getValue().isBefore(createDatepicker.getValue())){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Ngày nhận không được phép nhỏ hơn ngày tạo đơn")
+                .build().show();
+            weightTxt.requestFocus();
+            return false;
+        }
         return true;
     }
 
@@ -324,6 +330,22 @@ public class Chinhsuadonhangduocgiao implements Initializable {
             deliveryDatepicker.disableProperty().setValue(false);            
             deliveryAddTxt.setText(order.getDeliveryAdd());
 
+            if(order.getStatus().equals("Không thành công")){
+                errStatusCbb.setVisible(true);
+                errStatusCbb.setManaged(true);
+                
+                errStatusCbb.setValue(order.getErrStatus());
+                reason.setVisible(true);
+                reason.setManaged(true);
+            }
+            else{
+                errStatusCbb.setVisible(false);
+                errStatusCbb.setManaged(false);
+                errStatusCbb.setValue("");
+                reason.setVisible(false);
+                reason.setManaged(false);
+                orderStatusCbb.disableProperty().setValue(true);
+            }
             
             deliveryDatepicker.setValue(order.getReceiveDate());
             createDatepicker.setValue(order.getCreateDate());

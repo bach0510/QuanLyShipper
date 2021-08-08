@@ -149,10 +149,28 @@ public class Thuongphatnv implements Initializable {
     void search(){
         bonusTable.getItems().clear();
         List<UserBonus> bonusList = payOffService.getAllUserBonus();
-        bonusTable.getItems().addAll(bonusList);
+        if(Main.currentUser.getRoleId() == 1){
+            bonusTable.getItems().addAll(bonusList);
+        }
+        else{
+            for(UserBonus x : bonusList){
+                if(x.getUser().getId() == Main.currentUser.getId()){
+                    bonusTable.getItems().add(x);
+                }
+            }
+        }
         punishTable.getItems().clear();
         List<UserPunish> punishList = payOffService.getAllUserPunish();
-        punishTable.getItems().addAll(punishList);
+        if(Main.currentUser.getRoleId() == 1){
+            punishTable.getItems().addAll(punishList);
+        }
+        else{
+            for(UserPunish x : punishList){
+                if(x.getUser().getId() == Main.currentUser.getId()){
+                    punishTable.getItems().add(x);
+                }
+            }
+        }
         this.bonus = null;        
         this.punish = null;
 

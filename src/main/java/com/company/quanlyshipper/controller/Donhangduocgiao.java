@@ -64,6 +64,8 @@ public class Donhangduocgiao implements Initializable {
     private TableColumn<Orders, String> createDate;
     @FXML
     private TableColumn<Orders, String> status;
+    @FXML
+    private TableColumn<Orders, String> errStatus;
     
     @FXML
     private ComboBox statusCbb;
@@ -99,7 +101,9 @@ public class Donhangduocgiao implements Initializable {
         
         orderCode.setCellValueFactory(new PropertyValueFactory<>("orderCode"));
         createDate.setCellValueFactory(new PropertyValueFactory<>("createDate"));
-        status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        status.setCellValueFactory(new PropertyValueFactory<>("status"));        
+        errStatus.setCellValueFactory(new PropertyValueFactory<>("errStatus"));
+
         
         orderTable.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2)

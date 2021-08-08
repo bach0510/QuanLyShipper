@@ -31,7 +31,7 @@ public class OrderService {
         StringBuffer sb = new StringBuffer(" select o from Orders o where 1=1");
         Map<String,Object> params = new HashMap<>();
         if(!StringUtils.isEmpty(status)){
-            sb.append(" and o.Status like concat('%',:status,'%')");
+            sb.append(" and o.Status = :status");
             params.put("status", status);
         }
         if(!StringUtils.isEmpty(code)){
@@ -52,7 +52,7 @@ public class OrderService {
             params.put("user", user);
         }
         if(!StringUtils.isEmpty(status)){
-            sb.append(" and o.Status like concat('%',:status,'%')");
+            sb.append(" and o.Status o.Status = :status");
             params.put("status", status);
         }
         

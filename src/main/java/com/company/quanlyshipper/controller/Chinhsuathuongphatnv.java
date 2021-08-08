@@ -130,28 +130,53 @@ public class Chinhsuathuongphatnv implements Initializable {
     @FXML
     private void save() {
         try{
-            LocalDate currentDate = LocalDate.now();
-//            Users user = service.getShipperInfoByCode(code)
-            if (type == 1){
-                Bonus b = (bonusCbb.getValue());
-                bonus.setBonus(b);           
-                bonus.setUser(userCbb.getValue());
-                bonus.setBonusTime(currentDate);
-                saveHandlerBonus.accept(bonus);
-            }
-            if (type == 2){
-                punish.setPunish(punishCbb.getValue());  
-                punish.setUser(userCbb.getValue());               
-                punish.setPunishTime(currentDate);
+            if(validate()==true){
+                LocalDate currentDate = LocalDate.now();
+    //            Users user = service.getShipperInfoByCode(code)
+                if (type == 1){
+                    Bonus b = (bonusCbb.getValue());
+                    bonus.setBonus(b);           
+                    bonus.setUser(userCbb.getValue());
+                    bonus.setBonusTime(currentDate);
+                    saveHandlerBonus.accept(bonus);
+                }
+                if (type == 2){
+                    punish.setPunish(punishCbb.getValue());  
+                    punish.setUser(userCbb.getValue());               
+                    punish.setPunishTime(currentDate);
 
-        
-                saveHandlerPunish.accept(punish);
+
+                    saveHandlerPunish.accept(punish);
+                }
+
+                cancel();
             }
-            
-            cancel();
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+    private boolean validate(){
+        
+        if (userCbb.getValue() == null|| userCbb.getValue().toString() == ""){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Hãy chọn 1 nhân viên")
+                .build().show();
+            return false;
+        }
+        if (type == 2 && (punishCbb.getValue() == null|| punishCbb.getValue().toString() == "")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Hãy chọn nội dung phạt")
+                .build().show();
+            return false;
+        }
+        if (type == 1 && (bonusCbb.getValue() == null || bonusCbb.getValue().toString() == "")){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Hãy chọn nội dung thưởng")
+                .build().show();
+            return false;
+        }
+        
+        return true;
     }
     /**
      * Initializes the controller class.

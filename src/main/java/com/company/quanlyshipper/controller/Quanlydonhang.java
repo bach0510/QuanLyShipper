@@ -82,6 +82,8 @@ public class Quanlydonhang implements Initializable {
     private TableColumn<Orders, String> shipperCode;
     @FXML
     private TableColumn<Orders, String> cusName;
+    @FXML
+    private TableColumn<Orders, String> errStatus;
     
     @FXML
     private ComboBox statusCbb;
@@ -188,6 +190,7 @@ public class Quanlydonhang implements Initializable {
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         shipperCode.setCellValueFactory(new PropertyValueFactory<>("user"));
         cusName.setCellValueFactory(new PropertyValueFactory<>("customer"));
+        errStatus.setCellValueFactory(new PropertyValueFactory<>("errStatus"));
         
         orderTable.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2)

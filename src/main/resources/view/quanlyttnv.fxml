@@ -62,12 +62,6 @@
                </font>
             </Label>
             <TextField fx:id="emailTxt" layoutX="14.0" layoutY="162.0" prefHeight="25.0" prefWidth="204.0" promptText="Email" />
-            <Label layoutX="373.0" layoutY="136.0" text="Vị trí làm việc">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="typeCbb" layoutX="373.0" layoutY="161.0" prefHeight="25.0" prefWidth="132.0" promptText="Chọn vị trí" />
             <Button fx:id="refreshBtn" layoutX="532.0" layoutY="159.0" mnemonicParsing="false" onAction="#reloadSearchInput" opacity="0.66" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #FF99CC;" text="Nhập lại">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -91,8 +85,7 @@
                   <TableColumn fx:id="cmnd" prefWidth="106.0" text="CMND" />
                   <TableColumn fx:id="tel" minWidth="0.0" prefWidth="101.0" text="Sđt" />
                   <TableColumn fx:id="email" minWidth="9.0" prefWidth="134.0" text="Email" />
-                  <TableColumn fx:id="area" prefWidth="95.0" text="Khu vực" />
-                  <TableColumn fx:id="type" minWidth="0.0" prefWidth="144.0" text="Vị trí làm việc" />
+                  <TableColumn fx:id="area" prefWidth="183.0" text="Khu vực" />
               </columns>
             </TableView>
             <Button fx:id="addNewBtn" layoutX="14.0" layoutY="199.0" mnemonicParsing="false" onAction="#addNewUser" opacity="0.66" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: #FF99CC;" text="Thêm mới nhân viên">

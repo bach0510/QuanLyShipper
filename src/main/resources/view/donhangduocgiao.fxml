@@ -34,8 +34,9 @@
             <TableView fx:id="orderTable" layoutX="15.0" layoutY="114.0" prefHeight="481.0" prefWidth="761.0">
               <columns>
                 <TableColumn fx:id="orderCode" prefWidth="219.0" text="Mã đơn " />
-                <TableColumn fx:id="createDate" prefWidth="265.0" text="Ngày tạo " />
-                  <TableColumn fx:id="status" prefWidth="276.0" text="Trạng thái" />
+                <TableColumn fx:id="createDate" prefWidth="186.0" text="Ngày tạo " />
+                  <TableColumn fx:id="status" prefWidth="153.0" text="Trạng thái" />
+                  <TableColumn fx:id="errStatus" prefWidth="202.0" text="Lý do không thành công" />
               </columns>
             </TableView>
             <ComboBox fx:id="statusCbb" layoutX="154.0" layoutY="78.0" prefWidth="150.0" />

@@ -125,17 +125,12 @@ public class Quanlyttnv implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         areaCbb.getItems().clear();
         areaCbb.getItems().addAll(areaService.getAllArea());
-        ObservableList<String> listCbb = FXCollections.observableArrayList("Tất cả","Ship lấy","Ship giao");
-        typeCbb.getItems().clear();
-        typeCbb.setItems(listCbb);
-        typeCbb.setValue("Tất cả");
         tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         code.setCellValueFactory(new PropertyValueFactory<>("code"));
         cmnd.setCellValueFactory(new PropertyValueFactory<>("cmnd"));
         cmnd.setCellValueFactory(new PropertyValueFactory<>("cmnd"));
-        type.setCellValueFactory(new PropertyValueFactory<>("type"));
         area.setCellValueFactory(new PropertyValueFactory<>("area"));
         search();
         
@@ -159,14 +154,13 @@ public class Quanlyttnv implements Initializable {
     @FXML
     void search(){
         tableView.getItems().clear();
-        String typeValue = typeCbb.getValue().toString() == "Tất cả" ?  "" : typeCbb.getValue().toString();
         List<Users> userList = service.getAllShipperInfo(
                 fullNameTxt.getText().toString(), 
                 cmndTxt.getText().toString(), 
                 telTxt.getText().toString(), 
                 codeTxt.getText().toString(), 
                 emailTxt.getText().toString(),
-                typeValue,
+                "",
                 areaCbb.getValue());
         tableView.getItems().addAll(userList);
         this.user = null;

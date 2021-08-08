@@ -146,6 +146,10 @@ public class Chinhsuadonhang implements Initializable {
     private Consumer<Orders> saveHandler;
     @FXML
     private Consumer<Customer> saveCusHandler;
+    @FXML
+    private ComboBox errStatusCbb;
+    @FXML
+    private Label reason;
 
     private SimpleDateFormat dateFormat;
     
@@ -191,6 +195,7 @@ public class Chinhsuadonhang implements Initializable {
                 order.setPrice(Double.parseDouble(priceTxt.getText()));
                 order.setWeight(Double.parseDouble(weightTxt.getText()));
                 order.setStatus(orderStatusCbb.getValue().toString());
+                order.setErrStatus(errStatusCbb.getValue().toString());
 
                 order.setArea(areaCbb.getValue());
                 order.setUser(userCbb.getValue());
@@ -306,6 +311,32 @@ public class Chinhsuadonhang implements Initializable {
         ObservableList<String> listCbb = FXCollections.observableArrayList("Mới tạo","Đang giao","Thành công","Không thành công");
         orderStatusCbb.getItems().clear();
         orderStatusCbb.setItems(listCbb);
+        ObservableList<String> listErrCbb = FXCollections.observableArrayList("ko liên lạc được vs khách","Khách ko nghe máy","Khách hẹn lại giao trong ngày","Khách đổi đc giao hàng");
+        errStatusCbb.getItems().clear();
+        errStatusCbb.setItems(listErrCbb);
+        errStatusCbb.setVisible(false);
+        errStatusCbb.setManaged(false);
+        errStatusCbb.setValue("");
+        reason.setVisible(false);
+        reason.setManaged(false);
+                
+        orderStatusCbb.setOnAction(e -> {
+            String value = orderStatusCbb.getSelectionModel().getSelectedItem().toString();
+            if(value.equals("Không thành công")){
+                errStatusCbb.setVisible(true);
+                errStatusCbb.setManaged(true);
+                reason.setVisible(true);
+                reason.setManaged(true);
+            }
+            else{
+                errStatusCbb.setVisible(false);
+                errStatusCbb.setManaged(false);
+                errStatusCbb.setValue("");
+                reason.setVisible(false);
+                reason.setManaged(false);
+                errStatusCbb.setValue("");
+            }
+        });
         
         cusTelTxt.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
@@ -452,6 +483,36 @@ public class Chinhsuadonhang implements Initializable {
             cusEmailTxt.setText(order.getCustomer().getCusEmail());
             deliveryDatepicker.disableProperty().setValue(false);
             
+            if(order.getStatus().equals("Không thành công")){
+                errStatusCbb.setVisible(true);
+                errStatusCbb.setManaged(true);
+                
+                errStatusCbb.setValue(order.getErrStatus());
+                reason.setVisible(true);
+                reason.setManaged(true);
+            }
+            else if(order.getStatus().equals("Thành công")){
+                errStatusCbb.setVisible(false);
+                errStatusCbb.setManaged(false);
+                errStatusCbb.setValue("");
+                reason.setVisible(false);
+                reason.setManaged(false);
+                orderStatusCbb.disableProperty().setValue(true);
+            }
+            else{
+                errStatusCbb.setVisible(false);
+                errStatusCbb.setManaged(false);
+                errStatusCbb.setValue("");
+                reason.setVisible(false);
+                reason.setManaged(false);
+                orderStatusCbb.disableProperty().setValue(true);
+            }
+            
+            if(!order.getStatus().equals("Mới tạo")){
+                ObservableList<String> listCbb = FXCollections.observableArrayList("Đang giao","Thành công","Không thành công");
+                orderStatusCbb.getItems().clear();
+                orderStatusCbb.setItems(listCbb);
+            }
             deliveryDatepicker.setValue(order.getReceiveDate());
             createDatepicker.setValue(order.getCreateDate());
             areaCbb.setValue(order.getArea());

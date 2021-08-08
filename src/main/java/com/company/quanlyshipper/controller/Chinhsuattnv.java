@@ -126,7 +126,7 @@ public class Chinhsuattnv implements Initializable {
             user.setTel(telTxt.getText());
             user.setCmnd(cmndTxt.getText());
             user.setEmail(emailTxt.getText());
-            user.setType(typeCbb.getValue().toString());
+            user.setType("");
             user.setArea(areaCbb.getValue());
             user.setRegisterNo(registerNoTxt.getText());
             user.setUserName(codeTxt.getText());
@@ -193,9 +193,7 @@ public class Chinhsuattnv implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> listCbb = FXCollections.observableArrayList("Ship lấy","Ship giao");
-        typeCbb.getItems().clear();
-        typeCbb.setItems(listCbb);
+
     }    
     
     public static void editUser(Supplier<List<Users>> userList,Users user , Consumer<Users> saveHandler,Supplier<List<Areas>> areaList){
@@ -228,8 +226,7 @@ public class Chinhsuattnv implements Initializable {
             titleTxt.setText("Thêm mới nhân viên");
             this.user = new Users();
             this.user.setRoleId(2);
-            this.user.setType("Ship lấy");
-            typeCbb.setValue(this.user.getType());
+            this.user.setType("");
             Areas area = new Areas();
             area.setAreaName("Thanh Xuân");
             area.setAreaCode("TX");
@@ -244,7 +241,6 @@ public class Chinhsuattnv implements Initializable {
             telTxt.setText(user.getTel()); 
             cmndTxt.setText(user.getCmnd());  
             emailTxt.setText(user.getEmail()); 
-            typeCbb.setValue(user.getType());            
             registerNoTxt.setText(user.getRegisterNo());
             areaCbb.setValue(user.getArea());
             if(user.getImage() != null){
