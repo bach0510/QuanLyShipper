@@ -41,30 +41,30 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="37.0" layoutY="449.0" text="Tên người nhận">
+            <Label layoutX="37.0" layoutY="480.0" text="Tên người nhận">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusNameTxt" editable="false" layoutX="162.0" layoutY="447.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập tên người nhận" />
+            <TextField fx:id="cusNameTxt" editable="false" layoutX="162.0" layoutY="478.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập tên người nhận" />
             <Label layoutX="34.0" layoutY="210.0" text="Ngày nhận">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="orderStatusCbb" layoutX="160.0" layoutY="247.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn trạng thái" />
+            <ComboBox fx:id="orderStatusCbb" layoutX="162.0" layoutY="287.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn trạng thái" />
             <DatePicker fx:id="deliveryDatepicker" layoutX="161.0" layoutY="208.0" prefHeight="25.0" prefWidth="385.0" promptText="Chọn ngày nhận" />
-            <Label layoutX="33.0" layoutY="250.0" text="Trạng thái đơn">
+            <Label layoutX="35.0" layoutY="290.0" text="Trạng thái đơn">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="488.0" text="Email">
+            <Label layoutX="38.0" layoutY="519.0" text="Email">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusEmailTxt" editable="false" layoutX="162.0" layoutY="485.0" prefHeight="25.0" prefWidth="385.0" promptText="Email người nhận" />
+            <TextField fx:id="cusEmailTxt" editable="false" layoutX="162.0" layoutY="516.0" prefHeight="25.0" prefWidth="385.0" promptText="Email người nhận" />
             <TextField fx:id="orderCodeLabel" alignment="CENTER_RIGHT" editable="false" layoutX="293.0" layoutY="11.0" prefHeight="41.0" prefWidth="274.0">
                <font>
                   <Font size="24.0" />
@@ -94,29 +94,35 @@
                </font>
             </Label>
             <DatePicker fx:id="createDatepicker" disable="true" editable="false" layoutX="160.0" layoutY="168.0" prefHeight="25.0" prefWidth="385.0" />
-            <TextField fx:id="titleTxt1" editable="false" layoutX="35.0" layoutY="364.0" style="-fx-background-color: #FF99CC;" text="Thông tin người nhận">
+            <TextField fx:id="titleTxt1" editable="false" layoutX="35.0" layoutY="395.0" style="-fx-background-color: #FF99CC;" text="Thông tin người nhận">
                <font>
                   <Font name="Arial Bold" size="19.0" />
                </font>
             </TextField>
-            <Label layoutX="36.0" layoutY="524.0" text="Địa chỉ cụ thể">
+            <Label layoutX="36.0" layoutY="555.0" text="Địa chỉ cụ thể">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusAddTxt" editable="false" layoutX="160.0" layoutY="521.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập địa chỉ cụ thể" />
-            <Label layoutX="35.0" layoutY="412.0" text="SĐT Người nhận">
+            <TextField fx:id="cusAddTxt" editable="false" layoutX="160.0" layoutY="552.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập địa chỉ cụ thể" />
+            <Label layoutX="35.0" layoutY="443.0" text="SĐT Người nhận">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cusTelTxt" editable="false" layoutX="162.0" layoutY="409.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập số điện thoại" />
-            <Label layoutX="33.0" layoutY="292.0" text="Địa chỉ giao">
+            <TextField fx:id="cusTelTxt" editable="false" layoutX="162.0" layoutY="440.0" prefHeight="25.0" prefWidth="385.0" promptText="Nhập số điện thoại" />
+            <Label layoutX="35.0" layoutY="250.0" text="Địa chỉ giao">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="deliveryAddTxt" editable="false" layoutX="160.0" layoutY="290.0" prefHeight="25.0" prefWidth="385.0" promptText="Địa chỉ giao" />
+            <TextField fx:id="deliveryAddTxt" editable="false" layoutX="162.0" layoutY="248.0" prefHeight="25.0" prefWidth="385.0" promptText="Địa chỉ giao" />
+            <ComboBox fx:id="errStatusCbb" editable="true" layoutX="33.0" layoutY="354.0" prefHeight="25.0" prefWidth="513.0" promptText="Lý do" />
+            <Label fx:id="reason" layoutX="35.0" layoutY="327.0" text="Lý do không thành công">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

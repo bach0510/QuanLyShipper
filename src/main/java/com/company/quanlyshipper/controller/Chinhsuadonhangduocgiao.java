@@ -121,7 +121,10 @@ public class Chinhsuadonhangduocgiao implements Initializable {
 
     @FXML
     private ComboBox orderStatusCbb;
-
+    
+    @FXML
+    private ComboBox errStatusCbb;
+    
     @FXML
     private TextField shipperTelTxt;
 
@@ -140,7 +143,9 @@ public class Chinhsuadonhangduocgiao implements Initializable {
     @FXML
     private ComboBox<Users> userCbb;
     
-   
+   @FXML
+    private Label reason;
+    
 
     
     @FXML
@@ -192,9 +197,11 @@ public class Chinhsuadonhangduocgiao implements Initializable {
                 order.setPrice(Double.parseDouble(priceTxt.getText()));
                 order.setWeight(Double.parseDouble(weightTxt.getText()));
                 order.setStatus(orderStatusCbb.getValue().toString());
+                order.setErrStatus(errStatusCbb.getValue().toString());
 
                 if (deliveryDatepicker.getValue() != null){
                     order.setStatus("Thành công");
+                    order.setErrStatus("");
                 }
                 cusList.forEach(customer -> {
                     if ( customer.getCusTel().toString().equals(cusTelTxt.getText().toString()))
@@ -254,6 +261,32 @@ public class Chinhsuadonhangduocgiao implements Initializable {
         orderStatusCbb.getItems().clear();
         orderStatusCbb.setItems(listCbb);
         
+        ObservableList<String> listErrCbb = FXCollections.observableArrayList("ko liên lạc được vs khách","Khách ko nghe máy","Khách hẹn lại giao trong ngày","Khách đổi đc giao hàng");
+        errStatusCbb.getItems().clear();
+        errStatusCbb.setItems(listErrCbb);
+        errStatusCbb.setVisible(false);
+        errStatusCbb.setManaged(false);
+        errStatusCbb.setValue("");
+        reason.setVisible(false);
+        reason.setManaged(false);
+                
+        orderStatusCbb.setOnAction(e -> {
+            String value = orderStatusCbb.getSelectionModel().getSelectedItem().toString();
+            if(value.equals("Không thành công")){
+                errStatusCbb.setVisible(true);
+                errStatusCbb.setManaged(true);
+                reason.setVisible(true);
+                reason.setManaged(true);
+            }
+            else{
+                errStatusCbb.setVisible(false);
+                errStatusCbb.setManaged(false);
+                errStatusCbb.setValue("");
+                reason.setVisible(false);
+                reason.setManaged(false);
+                errStatusCbb.setValue("");
+            }
+        });
     }    
     
     public static void editOrder(Orders order ,Consumer<Customer> saveCusHandler, Consumer<Orders> saveHandler,Supplier<List<Areas>> areaList,Supplier<List<Users>> userList, Supplier<List<Customer>> cusList){

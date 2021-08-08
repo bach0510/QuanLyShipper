@@ -425,6 +425,8 @@ public class Chinhsuadonhang implements Initializable {
             shipperEmailTxt.clear();
             orderCodeLabel.setVisible(false);
             deliveryDatepicker.disableProperty().setValue(true);
+            orderStatusCbb.disableProperty().setValue(true);
+            
 
             for (Users u : this.shipperList){
                 if(area != null){
