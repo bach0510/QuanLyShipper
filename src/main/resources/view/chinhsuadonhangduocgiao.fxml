@@ -116,7 +116,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="deliveryAddTxt" editable="false" layoutX="162.0" layoutY="248.0" prefHeight="25.0" prefWidth="385.0" promptText="Địa chỉ giao" />
+            <TextField fx:id="deliveryAddTxt" layoutX="162.0" layoutY="248.0" prefHeight="25.0" prefWidth="385.0" promptText="Địa chỉ giao" />
             <ComboBox fx:id="errStatusCbb" editable="true" layoutX="33.0" layoutY="354.0" prefHeight="25.0" prefWidth="513.0" promptText="Lý do" />
             <Label fx:id="reason" layoutX="35.0" layoutY="327.0" text="Lý do không thành công">
                <font>

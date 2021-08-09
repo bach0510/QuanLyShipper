@@ -44,15 +44,15 @@ public class OrderService {
     }
     
     public List<Orders> getAllAssignedOrder(String status, Users user){
-        StringBuffer sb = new StringBuffer(" select o from Orders o where 1=1");
+        StringBuffer sb = new StringBuffer(" select o from Orders o where 1=1 ");
         Map<String,Object> params = new HashMap<>();
         
         if(user != null){
-            sb.append("and o.User = :user");
+            sb.append(" and o.User = :user");
             params.put("user", user);
         }
         if(!StringUtils.isEmpty(status)){
-            sb.append(" and o.Status o.Status = :status");
+            sb.append(" and o.Status = :status");
             params.put("status", status);
         }
         
