@@ -160,6 +160,13 @@ public class Chinhsuattnv implements Initializable {
                 codeTxt.requestFocus();
                 return false;
                 }
+                if (emailTxt.getText().toString().toLowerCase().equals(x.getEmail().toString().toLowerCase())){
+                Thongbao.ThongbaoBuilder.builder()
+                    .message("Email đã tồn tại")
+                    .build().show();
+                emailTxt.requestFocus();
+                return false;
+                }
             }
             else{
                 if (user.getId() != x.getId() && codeTxt.getText().toString().toLowerCase().equals(x.getCode().toString().toLowerCase())){
@@ -167,6 +174,13 @@ public class Chinhsuattnv implements Initializable {
                     .message("Mã nhân viên đã tồn tại")
                     .build().show();
                 codeTxt.requestFocus();
+                return false;
+                }
+                if (user.getId() != x.getId() && emailTxt.getText().toString().toLowerCase().equals(x.getEmail().toString().toLowerCase())){
+                Thongbao.ThongbaoBuilder.builder()
+                    .message("Email đã tồn tại")
+                    .build().show();
+                emailTxt.requestFocus();
                 return false;
                 }
             }
@@ -185,9 +199,19 @@ public class Chinhsuattnv implements Initializable {
             telTxt.requestFocus();
             return false;
         }
-        
+        if ((emailTxt.getText().toString() != null && !emailTxt.getText().toString().equals("")) && !isValid(emailTxt.getText())){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Email không hợp lệ")
+                .build().show();
+            emailTxt.requestFocus();
+            return false;
+        }  
         return true;
     }
+    static boolean isValid(String email) {
+      String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+      return email.matches(regex);
+   }
     /**
      * Initializes the controller class.
      */

@@ -206,6 +206,10 @@ public class Chinhsuadonhang implements Initializable {
                 if (deliveryDatepicker.getValue() != null){
                     order.setStatus("Thành công");
                 }
+                if (orderStatusCbb.getValue().equals("Thành công") &&(deliveryDatepicker.getValue() == null || deliveryDatepicker.getValue().toString().equals("")) ){
+                    order.setReceiveDate(currentDate);
+                    order.setStatus(orderStatusCbb.getValue().toString());
+                }
                 cusList.forEach(customer -> {
                     if ( customer.getCusTel().toString().equals(cusTelTxt.getText().toString()))
                     {
@@ -213,6 +217,13 @@ public class Chinhsuadonhang implements Initializable {
                     }
                 });
                 if (cus != null){
+                    Customer cusValue = new Customer();
+                    cusValue.setId(cus.getId());
+                    cusValue.setCusName(cusNameTxt.getText());
+                    cusValue.setCusTel(cusTelTxt.getText());
+                    cusValue.setCusAdd(cusAddTxt.getText());
+                    cusValue.setCusEmail(cusEmailTxt.getText());
+                    saveCusHandler.accept(cusValue);
                     order.setCustomer(cus);
                 }
                 else {
@@ -221,6 +232,7 @@ public class Chinhsuadonhang implements Initializable {
                     cus.setCusTel(cusTelTxt.getText());
                     cus.setCusAdd(cusAddTxt.getText());
                     cus.setCusEmail(cusEmailTxt.getText());
+                    
                     saveCusHandler.accept(cus);
 
                     order.setCustomer(cus);
@@ -292,6 +304,14 @@ public class Chinhsuadonhang implements Initializable {
             cusNameTxt.requestFocus();
             return false;
         }   
+        
+        if ((cusEmailTxt.getText().toString() != null && !cusEmailTxt.getText().toString().equals("")) && !isValid(cusEmailTxt.getText())){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Email không hợp lệ")
+                .build().show();
+            cusEmailTxt.requestFocus();
+            return false;
+        }   
         if (cusAddTxt.getText().toString() == null || cusAddTxt.getText().toString().equals("")){
             Thongbao.ThongbaoBuilder.builder()
                 .message("Địa chỉ nhận không được để trống")
@@ -299,10 +319,19 @@ public class Chinhsuadonhang implements Initializable {
             cusAddTxt.requestFocus();
             return false;
         }   
-        
+        if (userCbb.getValue() == null|| userCbb.getValue().toString() == ""){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Hãy chọn 1 shipper để giao đơn hàng này")
+                .build().show();
+            return false;
+        }
         return true;
     }
 
+    static boolean isValid(String email) {
+      String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+      return email.matches(regex);
+   }
     /**
      * Initializes the controller class.
      */
@@ -497,7 +526,9 @@ public class Chinhsuadonhang implements Initializable {
                 errStatusCbb.setValue("");
                 reason.setVisible(false);
                 reason.setManaged(false);
-                orderStatusCbb.disableProperty().setValue(true);
+                orderStatusCbb.disableProperty().setValue(true);                
+                deliveryDatepicker.disableProperty().setValue(true);
+
             }
             else{
                 errStatusCbb.setVisible(false);
@@ -505,10 +536,9 @@ public class Chinhsuadonhang implements Initializable {
                 errStatusCbb.setValue("");
                 reason.setVisible(false);
                 reason.setManaged(false);
-                orderStatusCbb.disableProperty().setValue(true);
             }
             
-            if(!order.getStatus().equals("Mới tạo")){
+            if(!order.getStatus().equals("Mới tạo") || order.getUser() != null){
                 ObservableList<String> listCbb = FXCollections.observableArrayList("Đang giao","Thành công","Không thành công");
                 orderStatusCbb.getItems().clear();
                 orderStatusCbb.setItems(listCbb);

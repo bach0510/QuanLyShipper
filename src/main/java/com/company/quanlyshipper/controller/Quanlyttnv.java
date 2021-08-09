@@ -124,7 +124,11 @@ public class Quanlyttnv implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         areaCbb.getItems().clear();
+        Areas areaValue = new Areas();
+        areaValue.setAreaName("Tất cả");
+        areaCbb.getItems().add(areaValue);
         areaCbb.getItems().addAll(areaService.getAllArea());
+        areaCbb.setValue(areaValue);
         tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         fullname.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));

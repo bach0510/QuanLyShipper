@@ -109,7 +109,11 @@ public class Khachhang implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         areaCbb.getItems().clear();
+        Areas areaValue = new Areas();
+        areaValue.setAreaName("Tất cả");
+        areaCbb.getItems().add(areaValue);
         areaCbb.getItems().addAll(areaService.getAllArea());
+        areaCbb.setValue(areaValue);
         cusTel.setCellValueFactory(new PropertyValueFactory<>("cusTel"));
         cusName.setCellValueFactory(new PropertyValueFactory<>("cusName"));
         cusEmail.setCellValueFactory(new PropertyValueFactory<>("cusEmail"));

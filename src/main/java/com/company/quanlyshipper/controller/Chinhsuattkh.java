@@ -137,7 +137,10 @@ public class Chinhsuattkh implements Initializable {
             e.printStackTrace();
         }
     }
-    
+    static boolean isValid(String email) {
+      String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+      return email.matches(regex);
+   }
     private boolean validate(){
         
         if (fullNameTxt.getText().toString() == null || fullNameTxt.getText().toString().equals("")){
@@ -163,6 +166,13 @@ public class Chinhsuattkh implements Initializable {
                 telTxt.requestFocus();
                 return false;
                 }
+                if (emailTxt.getText().toString().toLowerCase().equals(x.getCusEmail().toString().toLowerCase())){
+                Thongbao.ThongbaoBuilder.builder()
+                    .message("Email đã tồn tại")
+                    .build().show();
+                emailTxt.requestFocus();
+                return false;
+                }
             }
             else{
                 if (cus.getId() != x.getId() && telTxt.getText().toString().toLowerCase().equals(x.getCusTel().toString().toLowerCase())){
@@ -170,6 +180,13 @@ public class Chinhsuattkh implements Initializable {
                     .message("Số điện thoại đã tồn tại")
                     .build().show();
                 telTxt.requestFocus();
+                return false;
+                }
+                if (cus.getId() != x.getId() && emailTxt.getText().toString().toLowerCase().equals(x.getCusEmail().toString().toLowerCase())){
+                Thongbao.ThongbaoBuilder.builder()
+                    .message("Số điện thoại đã tồn tại")
+                    .build().show();
+                emailTxt.requestFocus();
                 return false;
                 }
             }
@@ -181,7 +198,13 @@ public class Chinhsuattkh implements Initializable {
             addressTxt.requestFocus();
             return false;
         } 
-        
+        if ((emailTxt.getText().toString() != null && !emailTxt.getText().toString().equals("")) && !isValid(emailTxt.getText())){
+            Thongbao.ThongbaoBuilder.builder()
+                .message("Email không hợp lệ")
+                .build().show();
+            emailTxt.requestFocus();
+            return false;
+        }   
         return true;
     }
     /**
@@ -221,14 +244,14 @@ public class Chinhsuattkh implements Initializable {
         areaCbb.getItems().clear();
         areaCbb.getItems().addAll(areaList.get());
         if(cus == null){
-            //titleTxt.setText("Thêm mới nhân viên");
             this.cus = new Customer();
-//            this.cus.setRoleId(2);
-//            this.cus.setType("Ship lấy");
-//            typeCbb.setValue(this.cus.getType());
+            Areas area = new Areas();
+            area.setAreaName("Thanh Xuân");
+            area.setAreaCode("TX");
+            area.setId(1);
+            areaCbb.setValue(area);
         }
         else {
-            //titleTxt.setText("Chỉnh sửa nhân viên");
             this.cus = cus;
             fullNameTxt.setText(cus.getCusName());     
             telTxt.setText(cus.getCusTel()); 

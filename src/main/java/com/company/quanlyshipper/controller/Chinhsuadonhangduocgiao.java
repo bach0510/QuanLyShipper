@@ -344,6 +344,7 @@ public class Chinhsuadonhangduocgiao implements Initializable {
                 errStatusCbb.setValue("");
                 reason.setVisible(false);
                 reason.setManaged(false);
+                deliveryDatepicker.disableProperty().setValue(true);
                 orderStatusCbb.disableProperty().setValue(true);
             }
             

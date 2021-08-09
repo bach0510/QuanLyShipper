@@ -43,7 +43,7 @@ public class UserService {
 //        return shippers;
         StringBuffer sb = new StringBuffer(" select u from Users u where u.RoleId = 2");
         Map<String,Object> params = new HashMap<>();
-        if(area != null){
+        if(area != null && !area.getAreaName().equals("Tất cả")){
             sb.append("and u.Area = :area");
             params.put("area", area);
         }

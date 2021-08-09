@@ -35,7 +35,7 @@ public class CustomerService {
 //        return shippers;
         StringBuffer sb = new StringBuffer(" select c from Customer c where 1=1");
         Map<String,Object> params = new HashMap<>();
-        if(area != null){
+        if(area != null && !area.getAreaName().equals("Tất cả")){
             sb.append("and c.Area = :area");
             params.put("area", area);
         }
