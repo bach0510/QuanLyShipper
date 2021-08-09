@@ -184,7 +184,7 @@ public class Chinhsuattkh implements Initializable {
                 }
                 if (cus.getId() != x.getId() && emailTxt.getText().toString().toLowerCase().equals(x.getCusEmail().toString().toLowerCase())){
                 Thongbao.ThongbaoBuilder.builder()
-                    .message("Số điện thoại đã tồn tại")
+                    .message("Email đã tồn tại")
                     .build().show();
                 emailTxt.requestFocus();
                 return false;
