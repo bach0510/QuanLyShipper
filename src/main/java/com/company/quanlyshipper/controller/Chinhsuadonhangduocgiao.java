@@ -338,6 +338,13 @@ public class Chinhsuadonhangduocgiao implements Initializable {
                 reason.setVisible(true);
                 reason.setManaged(true);
             }
+            else if(order.getStatus().equals("Đang giao")){
+                errStatusCbb.setVisible(false);
+                errStatusCbb.setManaged(false);
+                errStatusCbb.setValue("");
+                reason.setVisible(false);
+                reason.setManaged(false);
+            }
             else{
                 errStatusCbb.setVisible(false);
                 errStatusCbb.setManaged(false);
